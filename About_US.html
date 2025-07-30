@@ -7,6 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+  <!-- Include in <head> -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&display=swap" rel="stylesheet">
+
 
   <style>
     * {
@@ -14,14 +19,15 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #222;
-      overflow-x: hidden;
-    }
+body {
+  font-family: 'Arimo', sans-serif;
+  background: #ffffff;
+  color: #222;
+  overflow-x: hidden;
+}
 
-   
+
+
     /* Header */
     header {
       display: flex;
@@ -38,17 +44,15 @@
     header img {
       height: 72px;
     }
-header h2 {
-  flex: 1;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(to right, #6a8dff, #ff71c0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-right: 40px; /* 👈 Pushes social-icons and hamburger to the left */
-}
-
+    header h2 {
+      flex: 1;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #6a8dff, #ff71c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     /* Hamburger */
     .hamburger {
@@ -77,19 +81,21 @@ header h2 {
     }
 
     /* Sidebar Navigation */
+/* ================= Sidebar Navigation ================= */
 nav {
   position: fixed;
   top: 0;
   right: 0;
   width: 320px;
   height: 100vh;
-  background: linear-gradient(to bottom, #ff6ec4, #7873f5);
+background: linear-gradient(135deg, #001d3d, #003566);
+
   backdrop-filter: blur(12px);
   transform: translateX(100%);
   transition: transform 0.5s ease;
   z-index: 1000;
   box-shadow: -8px 0 20px rgba(0, 0, 0, 0.25);
-  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 nav.show {
@@ -98,12 +104,13 @@ nav.show {
 
 .menu-content {
   padding: 80px 20px 30px;
-  color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  color: #fff; /* Bright text */
+   font-family: 'Arimo', sans-serif;
   overflow-y: auto;
   height: 100%;
 }
 
+/* ================= Navigation Links ================= */
 .nav-links {
   list-style: none;
   padding: 0;
@@ -116,7 +123,7 @@ nav.show {
 
 .nav-links a {
   font-size: 1.15rem;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -127,10 +134,10 @@ nav.show {
 }
 
 .nav-links a:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #FFE600;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffeb3b;
   transform: translateX(6px);
-  box-shadow: 0 0 8px #FFE600;
+  box-shadow: 0 0 8px #ffe600;
 }
 
 .nav-links a i {
@@ -139,20 +146,21 @@ nav.show {
 
 .nav-links a:hover i {
   transform: rotate(15deg) scale(1.2);
-  color: #00BFE6;
+  color: #00e6e6;
 }
 
+/* ================= Section Headings ================= */
 .menu-content h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   margin: 25px 0 10px;
-  background: linear-gradient(to right, #FFE600, #EC1C74);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding-bottom: 6px;
+  letter-spacing: 1px;
 }
 
+/* ================= Enhanced List Styling ================= */
 .menu-content ul.enhanced-list {
   list-style: none;
   padding-left: 0;
@@ -170,115 +178,120 @@ nav.show {
   font-weight: 900;
   position: absolute;
   left: 0;
-  color: #FFE600;
+  color: #ffeb3b;
   font-size: 1rem;
 }
 
 .menu-content ul.enhanced-list li a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
+  font-size: 1.05rem;
   transition: all 0.3s;
 }
 
 .menu-content ul.enhanced-list li a:hover {
-  color: #FFE600;
+  color: #ffe600;
   transform: translateX(5px);
   text-decoration: underline;
 }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px 16px;
-      }
+/* ================= Responsive (Mobile) ================= */
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 16px;
+  }
 
-      header img {
-        height: 64px;
-      }
+  header img {
+    height: 64px;
+  }
 
-      header h2 {
-        font-size: 1rem;
-        text-align: left;
-        flex: unset;
-        max-width: 180px;
-        line-height: 1.2;
-      }
+  header h2 {
+    font-size: 1rem;
+    text-align: left;
+    flex: unset;
+    max-width: 180px;
+    line-height: 1.2;
+    color: #fff;
+  }
 
-      .hamburger {
-        width: 24px;
-        height: 18px;
-      }
+  .hamburger {
+    width: 24px;
+    height: 18px;
+  }
 
-      .hamburger span {
-        height: 2.5px;
-      }
+  .hamburger span {
+    height: 2.5px;
+  }
 
-      .content {
-        padding: 80px 16px;
-      }
+  .content {
+    padding: 80px 16px;
+  }
 
-      .content h1 {
-        font-size: 1.6rem;
-      }
+  .content h1 {
+    font-size: 1.6rem;
+    color: #fff;
+  }
 
-      .content p {
-        font-size: 0.95rem;
-      }
+  .content p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+  }
 
-      nav {
-        width: 100%;
-        box-shadow: none;
-        right: 0;
-      }
+  nav {
+    width: 100%;
+    box-shadow: none;
+    right: 0;
+  }
 
-      .menu-content {
-        padding: 72px 16px 20px;
-      }
+  .menu-content {
+    padding: 72px 16px 20px;
+  }
 
-      .nav-links a {
-        font-size: 1.05rem;
-      }
+  .nav-links a {
+    font-size: 1.05rem;
+  }
 
-      .menu-content h3 {
-        font-size: 1rem;
-        margin: 20px 0 8px;
-      }
+  .menu-content h3 {
+    font-size: 0.95rem;
+    margin: 20px 0 8px;
+    color: #fff;
+  }
 
-      .menu-content ul.enhanced-list li a {
-        font-size: 0.95rem;
-      }
+  .menu-content ul.enhanced-list li a {
+    font-size: 0.95rem;
+  }
 
-      #loader .loader-content img {
-        max-width: 200px;
-      }
+  #loader .loader-content img {
+    max-width: 200px;
+  }
 
-      #loader .loader-content p {
-        font-size: 0.9rem;
-        padding: 0 10px;
-      }
+  #loader .loader-content p {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
 
-      #loader .diagonal-box {
-        height: 100%;
-        top: -120%;
-      }
-    }
+  #loader .diagonal-box {
+    height: 100%;
+    top: -120%;
+  }
+}
+
   </style>
 </head>
 <body>
 
 
+
   <!-- Header -->
-<header>
-  <img src="images/final logo.png" alt="Logo">
-  <h2>One Stop Solution for Printing Material</h2>
-  
-
-
-  <div class="hamburger" onclick="toggleMenu(this)">
-    <span></span><span></span><span></span>
-  </div>
-</header>
+  <header>
+    <img src="images/final logo.png" alt="Logo">
+    <h2>One Stop Solution for Printing Material</h2>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
 
   <!-- Sidebar Navigation -->
   <nav id="sideMenu">
@@ -286,7 +299,7 @@ nav.show {
       <ul class="nav-links">
         <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="About_US.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-        <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
+        <li><a href="Products.html"><i class="fas fa-box-open"></i> Products</a></li>
         <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
         <li><a href="Contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
       </ul>
@@ -311,7 +324,6 @@ nav.show {
       </ul>
     </div>
   </nav>
-
 
 
 
