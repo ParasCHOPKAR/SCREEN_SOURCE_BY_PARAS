@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Screen Source - One Stop Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+  <!-- Include in <head> -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+body {
+  font-family: 'Arimo', sans-serif;
+  background: #ffffff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
+      background: #f5f8ff;
+      display: flex; justify-content: center; align-items: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
+    #loader .bg-layer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #f5f8ff;
+      z-index: 1;
+    }
+    #loader .diagonal-box {
+      position: absolute;
+      width: 200%; height: 90%;
+      background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
+      top: -100%; left: -60%;
+      transform: rotate(-30deg);
+      z-index: 2;
+      animation: slideInBoxBounce 1.5s ease-out forwards;
+    }
+    #loader .loader-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out 0.5s forwards;
+      opacity: 0;
+      padding: 0 20px;
+    }
+    #loader .loader-content img {
+      max-width: 380px;
+      margin-bottom: 10px;
+    }
+    #loader .loader-content p {
+      font-size: 18px;
+      color: #2c2c2c;
+      font-weight: 600;
+    }
+    @keyframes slideInBoxBounce {
+      0% { top: -100%; }
+      70% { top: 20%; }
+      100% { top: 15%; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 24px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+    }
+    header img {
+      height: 72px;
+    }
+    header h2 {
+      flex: 1;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #6a8dff, #ff71c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 26px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    .hamburger span {
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+      transition: all 0.4s;
+    }
+    .hamburger.cross span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.cross span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.cross span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Sidebar Navigation */
+/* ================= Sidebar Navigation ================= */
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+background: linear-gradient(135deg, #001d3d, #003566);
+
+  backdrop-filter: blur(12px);
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+  z-index: 1000;
+  box-shadow: -8px 0 20px rgba(0, 0, 0, 0.25);
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+nav.show {
+  transform: translateX(0%);
+}
+
+.menu-content {
+  padding: 80px 20px 30px;
+  color: #fff; /* Bright text */
+   font-family: 'Arimo', sans-serif;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* ================= Navigation Links ================= */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.nav-links li {
+  margin: 18px 0;
+}
+
+.nav-links a {
+  font-size: 1.15rem;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffeb3b;
+  transform: translateX(6px);
+  box-shadow: 0 0 8px #ffe600;
+}
+
+.nav-links a i {
+  transition: all 0.3s;
+}
+
+.nav-links a:hover i {
+  transform: rotate(15deg) scale(1.2);
+  color: #00e6e6;
+}
+
+/* ================= Section Headings ================= */
+.menu-content h3 {
+  font-size: 1.05rem;
+  margin: 25px 0 10px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+/* ================= Enhanced List Styling ================= */
+.menu-content ul.enhanced-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-content ul.enhanced-list li {
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.menu-content ul.enhanced-list li::before {
+  content: "\f105";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: #ffeb3b;
+  font-size: 1rem;
+}
+
+.menu-content ul.enhanced-list li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: all 0.3s;
+}
+
+.menu-content ul.enhanced-list li a:hover {
+  color: #ffe600;
+  transform: translateX(5px);
+  text-decoration: underline;
+}
+
+/* ================= Responsive (Mobile) ================= */
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 16px;
+  }
+
+  header img {
+    height: 64px;
+  }
+
+  header h2 {
+    font-size: 1rem;
+    text-align: left;
+    flex: unset;
+    max-width: 180px;
+    line-height: 1.2;
+    color: #fff;
+  }
+
+  .hamburger {
+    width: 24px;
+    height: 18px;
+  }
+
+  .hamburger span {
+    height: 2.5px;
+  }
+
+  .content {
+    padding: 80px 16px;
+  }
+
+  .content h1 {
+    font-size: 1.6rem;
+    color: #fff;
+  }
+
+  .content p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+  }
+
+  nav {
+    width: 100%;
+    box-shadow: none;
+    right: 0;
+  }
+
+  .menu-content {
+    padding: 72px 16px 20px;
+  }
+
+  .nav-links a {
+    font-size: 1.05rem;
+  }
+
+  .menu-content h3 {
+    font-size: 0.95rem;
+    margin: 20px 0 8px;
+    color: #fff;
+  }
+
+  .menu-content ul.enhanced-list li a {
+    font-size: 0.95rem;
+  }
+
+  #loader .loader-content img {
+    max-width: 200px;
+  }
+
+  #loader .loader-content p {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  #loader .diagonal-box {
+    height: 100%;
+    top: -120%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="bg-layer"></div>
+    <div class="diagonal-box"></div>
+    <div class="loader-content">
+      <img src="images/final logo.png" alt="Screen Source Logo" />
+      <p>One Stop Solution for Printing Material</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <img src="images/final logo.png" alt="Logo">
+    <h2>One Stop Solution for Printing Material</h2>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sideMenu">
+    <div class="menu-content">
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="About_US.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
+        <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+        <li><a href="Contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+
+      <h3>Our Product Range</h3>
+      <ul class="enhanced-list">
+        <li><a href="#">MacDermid Enthone Films</a></li>
+        <li><a href="#">Autotex (PET & PC), Autoflex, Autostat, XtraForm 3D</a></li>
+        <li><a href="#">Autoprep Gel</a></li>
+        <li><a href="#">Capillex Films – 25, 18, CX, CP</a></li>
+        <li><a href="#">Emulsions – Plus Lava, 9000, 8000, 6000, 1 SR</a></li>
+        <li><a href="#">Post-press Chemicals – Autostrip, Screen Wash K3, Autohaze</a></li>
+        <li><a href="#">Fimor Serilor Squeegees – SR1, SR3, HR1, HR3</a></li>
+        <li><a href="#">Self-Adhesive Vinyl (SunSui), Anti-static Rollers, Lint-free wipes</a></li>
+      </ul>
+
+      <h3>Our Services</h3>
+      <ul class="enhanced-list">
+        <li><a href="#">Screen Stretching (guitar-based tensioning)</a></li>
+        <li><a href="#">Screen Exposing (high-quality stencils)</a></li>
+        <li><a href="#">Technical guidance on stencil prep, mesh compatibility, and print optimization</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('images/HERO_01.png') no-repeat center center/cover;
+  text-align: center;
+  color: white;
+   font-family: 'Arimo', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: -1;
+">
+  <!-- Overlay -->
+  <div style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+  "></div>
+
+  <!-- Content -->
+  <div style="position: relative; z-index: 2; max-width: 900px; padding: 20px;">
+    <h1 style="
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #6a8dff, #ff71c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    ">
+      Premium Screen Printing Materials & Services
+    </h1>
+
+    <p style="
+      font-size: 1.2rem;
+      color: #f0f0f0;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    ">
+      Explore our extensive range of high-performance films, emulsions, squeegees, and technical services tailored for industrial and commercial screen printing excellence.
+    </p>
+
+    <div style="margin-top: 20px;">
+      <button onclick="scrollToProducts()" style="
+        padding: 14px 28px;
+        font-size: 1rem;
+        background: #6a8dff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 0 10px;
+        transition: 0.3s;
+      ">View Products</button>
+
+      <button onclick="scrollToServices()" style="
+        padding: 14px 28px;
+        font-size: 1rem;
+        background: #ff71c0;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 0 10px;
+        transition: 0.3s;
+      ">Our Services</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- About Section --><!-- About Section -->
+
+ <section id="about" style="padding: 100px 20px; background: linear-gradient(to bottom, #f5f8ff, #e2ebf7);  font-family: 'Arimo', sans-serif; margin-top: 100vh;">
+  <div class="about-wrapper" style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+    
+    <!-- Text Content -->
+    <div class="about-text" style="flex: 1; min-width: 300px; opacity: 0; transform: translateY(50px);">
+      <h2 style="font-size: 2.4rem; color: #0d2f53; margin-bottom: 20px; font-weight: 800;">
+        Your Trusted Partner in <span style="color: #6a8dff;">Screen Printing</span> Solutions
+      </h2>
+      <p style="font-size: 1.1rem; color: #333; line-height: 1.8;">
+        With years of expertise, we deliver industry-grade screen printing supplies — from high-precision emulsions and durable squeegees to mesh fabrics and reclaiming services. Whether you're a startup or an established brand, our support scales with your vision.
+      </p>
+      <ul style="margin-top: 25px; color: #333; font-size: 1rem; line-height: 1.8;">
+        <li>✅ <strong>Top-tier emulsions & stencils</strong></li>
+        <li>✅ <strong>Durable & ergonomic squeegees</strong></li> 
+        <li>✅ <strong>Custom film output solutions</strong></li>
+        <li>✅ <strong>Expert technical support</strong></li>
+      </ul>
+    </div>
+
+    <!-- Image -->
+    <div class="about-image" style="flex: 1; min-width: 300px; text-align: center; opacity: 0; transform: translateY(50px);">
+      <img src="images/SECTION_02.png" alt="Screen Printing Materials" style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);" />
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Customers & Partners Section -->
+
+<!-- Customers & Partners Section -->
+<section style="position: relative; background: linear-gradient(to bottom, #e2ebf7,#f5f8ff);  padding: 60px 0; overflow: hidden;">
+  <style>
+    @media (max-width: 768px) {
+      section[style*="position: relative"] > div {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 16px;
+      }
+
+      section[style*="position: relative"] .swiper {
+        padding: 40px 0 20px;
+        width: 100%;
+      }
+
+      section[style*="position: relative"] .swiper-slide {
+        width: 110px !important;
+        height: 110px !important;
+        margin-right: 16px !important;
+      }
+
+      section[style*="position: relative"] .swiper-slide img {
+        width: 80%;
+      }
+
+      section[style*="position: relative"] > div > div[style*="position: sticky"] {
+        position: relative !important;
+        width: 100%;
+        justify-content: center;
+        padding: 0 0 20px;
+        background: transparent;
+      }
+
+      section[style*="position: relative"] h2 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    }
+  </style>
+  <div style="display: flex; align-items: center; width: 100%;">
+    <!-- Sticky Left Heading -->
+    <div style="position: -webkit-sticky; position: sticky; left: 0; z-index: 10; background: #f6f8ff; padding: 0 40px; flex-shrink: 0; height: 100%; display: flex; align-items: center;">
+      <h2 style="font-size: 2rem; font-weight: 800; margin: 0; color: #0d2f53;">
+        WE <span style="color: #6a8dff;">Deals In</span>
+      </h2>
+    </div>
+    <!-- Slider -->
+    <div class="swiper mySwiper" style="flex: 1; min-width: 0; padding: 60px 0;">
+      <div class="swiper-wrapper" style="display: flex; align-items: center;">
+        <!-- Slides: repeat this up to 36 times -->
+        <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_01.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_02.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_03.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/Nittoku.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_05.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_06.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_07.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_08.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_09.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_10.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_11.jpeg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/Nitto.webp" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+        <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_01.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_02.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_03.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/Nittoku.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_05.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_06.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_07.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_08.png" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_09.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_10.jpg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/COMPANY_LOGO_11.jpeg" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+             <div class="swiper-slide" style="width: 150px; height: 150px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(45deg); box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-right: 30px;">
+          <img src="images/Nitto.webp" alt="Logo" style="width: 80%; height: auto; transform: rotate(-45deg); object-fit: contain;">
+        </div>
+    
+        <!-- Add more .swiper-slide elements for logos -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- //////////////////////////////////////// SECTION POLYSTER  -->
+ 
+<!-- //////////////////////////////////////// SECTION POLYSTER  -->
+
+
+<!-- //////////////////////////////////////// SECTION POLYSTER  -->
+<section style="width: 100%; background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); padding: 100px 0; font-family: 'Arimo', sans-serif; overflow-x: auto; overflow-y: hidden;">
+
+  <div style="text-align: center; margin-bottom: 60px; padding: 0 20px;">
+    <h2 style="font-size: 3rem; font-weight: 800; background: linear-gradient(90deg,#6a8dff,#ff71c0); -webkit-background-clip: text; color: transparent;">
+      Polyester & Industrial Films
+    </h2>
+    <p style="color: #444; font-size: 1.1rem;">Explore our high-performance film solutions for overlays, electronics & 3D applications.</p>
+  </div>
+
+  <!-- Horizontal card container with gap -->
+  <div class="horizontal-card-slider" style="
+    display: flex;
+    gap: 30px;
+    padding: 0 40px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  ">
+
+    <!-- Card 1 -->
+    <div class="card-box" style="min-width: 300px; flex: 0 0 auto; background: #000; color: #fff; border-radius: 12px; scroll-snap-align: start;">
+      <div style="padding: 110px;">
+        <h3 style="font-size: 1.8rem; margin-bottom: 15px;">MacDermid Enthone</h3>
+        <p>High-spec PET/PC films (75–500μm) with abrasion, chemical, and glare resistance. Used in overlays, electronics, and membrane switches.</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card-box" style="min-width: 300px; flex: 0 0 auto; background: #fff; color: #000; border-radius: 12px; scroll-snap-align: start;">
+      <div style="padding: 70px;">
+        <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Autotex Film Range</h3>
+        <p>Durable tactile films (Fine, Velvet, Touch, AM, XE) for overlays, fascias & nameplates. UV & chemical resistant.</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card-box" style="min-width: 300px; flex: 0 0 auto; background: #0d2f53; color: #fff; border-radius: 12px; scroll-snap-align: start;">
+      <div style="padding: 130px;">
+        <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Autoflex Film Range</h3>
+        <p>Gloss & anti-glare PET films for displays, smart cards, and touchscreens. High optical clarity and scratch resistance.</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card-box" style="min-width: 300px; flex: 0 0 auto; background: #fff; color: #000; border-radius: 12px; scroll-snap-align: start;">
+      <div style="padding: 80px;">
+        <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Autostat</h3>
+        <p>Heat-stabilized PET with excellent flatness and thermal stability. Ideal for printed circuits and smart surfaces.</p>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card-box" style="min-width: 300px; flex: 0 0 auto; background: linear-gradient(90deg, #6a8dff, #ff71c0); color: #fff; border-radius: 12px; scroll-snap-align: start;">
+      <div style="padding: 90px;">
+        <h3 style="font-size: 1.8rem; margin-bottom: 15px;">XtraForm 3D</h3>
+        <p>Formable hard-coated PC films for deep-draw molding. Gloss & matte finish with consistent stretch in 3D applications.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<!-- //////////////////////////////////////// SECTION POLYSTER  -->
+
+<!-- //////////////////////////////////////// SECTION POLYSTER  -->
+
+
+<!-- //////////////////////////////////////// SECTION POLYSTER  -->
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="prepress-chemicals" style="margin:0; padding:0; font-family:'Poppins', sans-serif; background: linear-gradient(to bottom, #e2ebf7, #f5f8ff); overflow: hidden;">
+
+  <div style="text-align:center; padding: 80px 20px 40px;">
+    <h2 style="font-size:3rem; background:linear-gradient(90deg,#6a8dff,#ff71c0); -webkit-background-clip:text; color:transparent; font-weight:700; margin: 0;">
+      Prepress & Postpress Solutions
+    </h2>
+    <p style="font-size:1rem; color:#555; margin-top:10px;">Innovative products that enhance printing quality and production efficiency.</p>
+  </div>
+
+  <div id="horizontal-slider-container" style="
+    display: flex; /* Keeps items in a row */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS */
+    gap: 40px; /* Space between cards */
+    padding: 40px; /* Padding around the cards, including scroll area */
+    box-sizing: border-box;
+    /* Optional: Hide scrollbar but keep functionality for a cleaner look */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  ">
+    <style>
+      /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+      #horizontal-slider-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Your existing product card styles - mostly unchanged */
+      .product-card {
+        flex: 0 0 300px; /* Fixed width for each card, important for consistent sizing */
+        background: rgba(255,255,255,0.25);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+      }
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .product-card h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      .product-card p {
+        font-size: 0.95rem;
+        color: #333;
+        margin-top: 10px;
+        line-height: 1.5;
+      }
+      .product-card button {
+        margin-top: 15px;
+        background: linear-gradient(90deg,#6a8dff,#ff71c0);
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      @media (max-width: 768px) {
+        .product-card {
+          flex: 0 0 260px;
+        }
+      }
+    </style>
+
+    <div class="product-card"><img src="SOURCE/01.jpg"><div style="padding:25px;"><h3 style="color:#6a8dff;">Autoprep Gel</h3><p>Micro-abrading gel for mesh adhesion enhancement and stencil efficiency.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/02.jpg"><div style="padding:25px;"><h3 style="color:#ff71c0;">Capillex 25</h3><p>Capillary film for quality print across industrial and electronic segments.</p><button>View Details</button></div></div>
+<div class="product-card">
+  <img src="SOURCE/03.jpg">
+  <div style="padding:25px;">
+    <h3 style="color:#6a8dff;">CAPILLEX 18</h3>
+    <p>Screen cleaner and ink remover for effective reclaiming. Powerful, reliable, efficient.</p>
+    <button>View Details</button>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="SOURCE/04.jpg">
+  <div style="padding:25px;">
+    <h3 style="color:#ff71c0;">CAPILLEX CX</h3>
+    <p>Removes oils and residues for stencil adhesion improvement. Safe, fast, essential.</p>
+    <button>View Details</button>
+  </div>
+</div>
+
+    <div class="product-card"><img src="SOURCE/05.jpg"><div style="padding:25px;"><h3 style="color:#6a8dff;">CAPILLEX CP</h3><p>3D formable hardcoated polycarbonate film for automotive & appliance panels.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/06.jpg"><div style="padding:25px;"><h3 style="color:#ff71c0;">PLUS LAVA</h3><p>Heat stabilized polyester films for membrane switches and electronics.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/07.jpg"><div style="padding:25px;"><h3 style="color:#6a8dff;">PLUS 9000</h3><p>Textured polyester overlay film for tactile control panel graphics.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/08.jpg"><div style="padding:25px;"><h3 style="color:#ff71c0;">PLUS 8000</h3><p>Hardcoated polyester film with excellent printability and chemical resistance.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/09.jpg"><div style="padding:25px;"><h3 style="color:#6a8dff;">PLUS 6000</h3><p>Durable polyurethane squeegees for precision screen printing applications.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/10.jpg"><div style="padding:25px;"><h3 style="color:#ff71c0;">PLUS 1 SR</h3><p>Industrial-grade printing films for electronics and automotive industries.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/11.jpg"><div style="padding:25px;"><h3 style="color:#6a8dff;">SCREEN WASH K3</h3><p>Stencil haze remover for improving mesh clarity and print definition.</p><button>View Details</button></div></div>
+    <div class="product-card"><img src="SOURCE/12.jpg"><div style="padding:25px;"><h3 style="color:#ff71c0;">AUTOHAZE</h3><p>Self-adhesive waterproof vinyl for signage and industrial label printing.</p><button>View Details</button></div></div>
+  </div>
+
+</section>
+
+
+<section id="our-services" style="margin:0; padding:0; font-family:'Poppins', sans-serif; background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); overflow: hidden;">
+  <!-- Heading -->
+  <div style="text-align:center; padding: 80px 20px 30px;">
+    <h2 style="font-size:3rem; background:linear-gradient(90deg,#6a8dff,#ff71c0); -webkit-background-clip:text; color:transparent; font-weight:700; margin: 0;">
+      Our Services
+    </h2>
+  </div>
+
+  <!-- Services Grid -->
+  <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; padding: 40px 30px;">
+    <style>
+      .service-card {
+        background: rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        padding: 30px 25px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      }
+      .service-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #0d2f53;
+        margin: 20px 0 10px;
+      }
+      .service-card p {
+        font-size: 0.9rem;
+        color: #444;
+        line-height: 1.5;
+      }
+      .service-icon {
+        font-size: 28px;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background: linear-gradient(90deg,#6a8dff,#ff71c0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+      .service-card a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+
+    <!-- Cards -->
+    <div class="service-card"><a href="#"><div class="service-icon">📄</div><h3>Industrial Polyester Films</h3><p>We deal in high-performance polyester films used for industrial printing and fabrication.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🖨️</div><h3>Stretching, Exposing, Printing & Drying Machines</h3><p>All essential machines for screen printing from pre-press to final cure.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🖼️</div><h3>Screen Stretching Service</h3><p>High-tension screen stretching for consistent mesh tension and durability.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🌞</div><h3>Screen Exposing Service</h3><p>Accurate exposure using calibrated equipment for sharp image transfer.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🎨</div><h3>Custom Ink Matching</h3><p>Color-matched industrial inks tailored to your exact print application.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧵</div><h3>Mesh</h3><p>High-quality mesh rolls and pre-cut frames suitable for all printing demands.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧴</div><h3>Frame Adhesive</h3><p>Reliable bonding solutions for long-lasting frame & mesh adhesion.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">📃</div><h3>SABIC Polycarbonate Films</h3><p>Durable and optical-grade films ideal for membrane switch and overlays.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧪</div><h3>Pre-Press Emulsions & Chemicals</h3><p>All chemicals required for stencil making and screen reclamation.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧽</div><h3>Squeegee Rubber</h3><p>Premium squeegee blades in multiple profiles and hardness levels.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">📐</div><h3>Adhesive Tapes</h3><p>Industrial tapes for screen alignment, masking, and secure prints.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🔲</div><h3>Vinyl for Printing</h3><p>High-grade printable vinyls for durable industrial applications.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧷</div><h3>Spacer Tapes (DSM7 & DSM)</h3><p>Precision-cut spacer tapes ideal for membrane switches and spacing.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🛡️</div><h3>Surface Protection Films</h3><p>Protective films that prevent damage during production & handling.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">📦</div><h3>Release Papers</h3><p>High-performance liners used in printing and lamination processes.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">📏</div><h3>Tension Meter</h3><p>Measure mesh tension accurately for optimal screen print results.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🔍</div><h3>Cross Hatch & Hardness Tester</h3><p>Tools to test adhesion and film hardness with industry standard checks.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">📊</div><h3>Squeegee Hardness Meter</h3><p>Precision hardness testing for squeegee blade quality control.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧼</div><h3>Sticky Mats</h3><p>Dust-control mats for maintaining clean print zones and labs.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧰</div><h3>Printing Accessories</h3><p>Essential accessories used across all screen printing operations.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🧻</div><h3>Lint-Free Wipes</h3><p>Non-abrasive cleaning wipes to keep screens and surfaces spotless.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">📚</div><h3>RAL & Pantone Guides</h3><p>Standardized color reference guides for accurate color matching.</p></a></div>
+    <div class="service-card"><a href="#"><div class="service-icon">🛠️</div><h3>Technical Guidance</h3><p>Expert advice on screen printing setup, chemicals, and production flow.</p></a></div>
+  </div>
+</section>
+
+<!-- Testimonial Slider Section -->
+<!-- Testimonial Slider Section -->
+<section id="testimonials" style="background: linear-gradient(to bottom,#e2ebf7, #f5f8ff); color:#333; font-family:'Poppins', sans-serif; padding:100px 20px; position:relative;">
+  <div style="max-width:1300px; margin:auto;">
+    <h2 style="text-align:center; font-size:3rem; background:linear-gradient(90deg,#6a8dff,#ff71c0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:60px;">
+      What Our Clients Say
+    </h2>
+
+    <!-- Swiper -->
+    <div class="swiper testimonial-swiper" style="padding-bottom: 60px;">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
+          <p style="font-size:1rem; line-height:1.8;">“The quality and durability of their industrial films exceeded our expectations. Truly professional and timely service!”</p>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#6a8dff;">Amit Sharma</h4>
+          <span style="font-size:0.9rem; color:#555;">Production Manager, BrightTech</span>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
+          <p style="font-size:1rem; line-height:1.8;">“Excellent customer support and reliable products. Their film range is unmatched in terms of performance.”</p>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#ff71c0;">Sneha Verma</h4>
+          <span style="font-size:0.9rem; color:#555;">Procurement Head, InnoPlast</span>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
+          <p style="font-size:1rem; line-height:1.8;">“They delivered customized solutions quickly. The Autotex and Autostat films performed flawlessly.”</p>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#6a8dff;">Ravi Mehta</h4>
+          <span style="font-size:0.9rem; color:#555;">Director, PrintEdge</span>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
+          <p style="font-size:1rem; line-height:1.8;">“ScreenSource guided us perfectly on the best film choice for our application. Extremely satisfied!”</p>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#ff71c0;">Nikita Rao</h4>
+          <span style="font-size:0.9rem; color:#555;">Founder, Printomate</span>
+        </div>
+
+      </div>
+
+      <!-- Pagination Dots -->
+      <div class="swiper-pagination" style="margin-top:30px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ?????????????????????????  FOOTER ????????????????????????????????// -->
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<footer style="background: linear-gradient(90deg, #002855, #00509d); color: white; padding: 70px 20px; font-family: 'Poppins', sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+
+<!-- Company Info -->
+<div style="flex: 1 1 260px;">
+<h3 style="font-size: 26px; font-weight: 800; margin: 0 0 10px 0; letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;">
+  Screen Source
+</h3>
+
+  <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
+    Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
+  </p>
+  <div style="display: flex; gap: 15px; align-items: center;">
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-instagram"></i></a>
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1 1 160px;">
+      <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-link"></i> Quick Links</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
+        <li><a href="index.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Home</a></li>
+        <li><a href="About_US.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">About Us</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Products -->
+<!-- Products -->
+<div style="flex: 1 1 220px;">
+  <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
+  <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.9;">
+    <li>• MacDermid Enthone Films</li>
+    <li>• Autotex, Autoflex, Autostat</li>
+    <li>• XtraForm 3D, Capillex Films</li>
+    <li>• Autoprep Gel, Emulsions (Plus Lava, 9000, etc.)</li>
+    <li>• Post-press: Autostrip, Screen Wash K3</li>
+    <li>• Fimor Serilor Squeegees (SR1, HR3)</li>
+    <li>• SunSui Vinyl, Anti-static rollers</li>
+    <li>• Lint-free wipes & accessories</li>
+  </ul>
+</div>
+
+<!-- Services & Contact -->
+<div style="flex: 1 1 240px;">
+  <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-cogs"></i> Services</h4>
+  <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.9;">
+    <li>• Screen Stretching (guitar tensioning)</li>
+    <li>• Screen Exposing (HD stencils)</li>
+    <li>• Stencil preparation guidance</li>
+    <li>• Mesh compatibility consulting</li>
+    <li>• Custom film cutting & supply</li>
+    <li>• Prepress troubleshooting support</li>
+  </ul>
+
+  <h4 style="margin-top: 25px; margin-bottom: 15px; font-size: 17px; color: #ffb200;"><i class="fas fa-address-card"></i> Contact</h4>
+  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Pune, Maharashtra</p>
+  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>info@screensource.in</p>
+  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-phone" style="margin-right: 8px;"></i>+91 98765 43210</p>
+</div>
+
+  </div>
+
+  <hr style="margin: 40px auto 25px; border: 0; height: 1px; background: #ffffff33; width: 90%;">
+
+<div style="text-align: center; font-size: 14px; opacity: 0.85;">
+  © 2025 <strong>Screen Source</strong>. All rights reserved.
+</div>
+<div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
+  Developed By <strong>DW INNOVATION PVT. LTD.</strong>
+</div>
+</footer>
+
+
+
+<!-- Scroll to Top Button -->
+<button onclick="window.scrollTo({top:0, behavior:'smooth'})"
+  style="position:fixed; bottom:20px; right:20px; background:#FE320A; color:white; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer; font-size:18px; z-index:999;">
+  ↑
+</button>
+
+ <!-- ////////////////////    FOOTER END ////////////////////  -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+  <!-- JavaScript -->
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        loader.style.transition = "all 2s ease";
+        loader.style.transform = "translateY(-100%)";
+        loader.style.opacity = "0";
+        setTimeout(() => loader.style.display = "none", 2000);
+      }, 1900);
+    });
+
+    function toggleMenu(icon) {
+      icon.classList.toggle("cross");
+      const sideMenu = document.getElementById("sideMenu");
+      sideMenu.classList.toggle("show");
+      document.body.style.overflow = sideMenu.classList.contains("show") ? 'hidden' : 'auto';
+    }
+  </script>
+<!-- /////////////////////////////////    SIDE BAR ////////////////// -->
+<script>
+  function toggleMenu(icon) {
+    icon.classList.toggle("cross");
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("show");
+    document.body.style.overflow = sideMenu.classList.contains("show") ? 'hidden' : 'auto';
+
+    // Animate nav items using GSAP
+    const items = document.querySelectorAll('.nav-links li');
+    if (sideMenu.classList.contains("show")) {
+      gsap.fromTo(items, {
+        opacity: 0,
+        y: 20
+      }, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.2
+      });
+    }
+  }
+</script>
+
+<!-- //////////////////////////////////////// SIDE BAR END ///////////// -->
+<script>
+  function scrollToProducts() {
+    window.scrollTo({
+      top: document.querySelector('#about').offsetTop,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollToServices() {
+    window.scrollTo({
+      top: document.querySelector('#services').offsetTop,
+      behavior: 'smooth'
+    });
+  }
+</script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(".about-text", 
+    { opacity: 0, y: 50 }, 
+    { 
+      opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".about-text",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+
+  gsap.fromTo(".about-image", 
+    { opacity: 0, y: 50 }, 
+    { 
+      opacity: 1, y: 0, duration: 1.2, ease: "power3.out", delay: 0.2,
+      scrollTrigger: {
+        trigger: ".about-image",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+</script>
+<!-- //////////////////////////////////// SECTION --- 3333///////////////// -->
+<!-- Swiper Initialization -->
+<script>
+  new Swiper(".mySwiper", {
+    slidesPerView: "auto",
+    loop: true,
+    spaceBetween: 30,
+    speed: 3000,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false
+    },
+    freeMode: true,
+    freeModeMomentum: false,
+    grabCursor: true
+  });
+</script>
+
+<!-- Swiper Initialization -->
+<script>
+  new Swiper(".testimonial-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    grabCursor: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+</script>
+  <!-- Script -->
+<!-- jQuery and Slick JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    const $slider = $('.horizontal-card-slider');
+
+    $slider.slick({
+      dots: false,
+      arrows: false,
+      infinite: true,
+      speed: 5000,              // smooth scroll
+      cssEase: 'linear',
+      autoplay: true,
+      autoplaySpeed: 0,         // continuous scroll
+      slidesToShow: 2.7,
+      slidesToScroll: 1,
+      pauseOnHover: false,
+      pauseOnFocus: true,
+      draggable: true,
+      swipe: true,
+      touchMove: true,
+      adaptiveHeight: true,     // adjusts height on mobile
+      mobileFirst: true,        // ensures mobile-first logic
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            centerMode: true,
+            centerPadding: '20px'
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1.2,
+            centerMode: true,
+            centerPadding: '30px'
+          }
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 1400,
+          settings: {
+            slidesToShow: 2.7
+          }
+        }
+      ]
+    });
+
+    // Pause on hover (manual)
+    $slider.on('mouseenter', function(){
+      $slider.slick('slickPause');
+    });
+
+    $slider.on('mouseleave', function(){
+      $slider.slick('slickPlay');
+    });
+  });
+</script>
+
+</body>
+</html>

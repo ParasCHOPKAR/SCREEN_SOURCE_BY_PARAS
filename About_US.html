@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Screen Source - One Stop Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+   
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 24px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+    }
+    header img {
+      height: 72px;
+    }
+header h2 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #6a8dff, #ff71c0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-right: 40px; /* 👈 Pushes social-icons and hamburger to the left */
+}
+
+
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 26px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    .hamburger span {
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+      transition: all 0.4s;
+    }
+    .hamburger.cross span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.cross span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.cross span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Sidebar Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #ff6ec4, #7873f5);
+  backdrop-filter: blur(12px);
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+  z-index: 1000;
+  box-shadow: -8px 0 20px rgba(0, 0, 0, 0.25);
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+nav.show {
+  transform: translateX(0%);
+}
+
+.menu-content {
+  padding: 80px 20px 30px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.nav-links li {
+  margin: 18px 0;
+}
+
+.nav-links a {
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFE600;
+  transform: translateX(6px);
+  box-shadow: 0 0 8px #FFE600;
+}
+
+.nav-links a i {
+  transition: all 0.3s;
+}
+
+.nav-links a:hover i {
+  transform: rotate(15deg) scale(1.2);
+  color: #00BFE6;
+}
+
+.menu-content h3 {
+  font-size: 1rem;
+  margin: 25px 0 10px;
+  background: linear-gradient(to right, #FFE600, #EC1C74);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  padding-bottom: 6px;
+}
+
+.menu-content ul.enhanced-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-content ul.enhanced-list li {
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.menu-content ul.enhanced-list li::before {
+  content: "\f105";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: #FFE600;
+  font-size: 1rem;
+}
+
+.menu-content ul.enhanced-list li a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.menu-content ul.enhanced-list li a:hover {
+  color: #FFE600;
+  transform: translateX(5px);
+  text-decoration: underline;
+}
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 16px;
+      }
+
+      header img {
+        height: 64px;
+      }
+
+      header h2 {
+        font-size: 1rem;
+        text-align: left;
+        flex: unset;
+        max-width: 180px;
+        line-height: 1.2;
+      }
+
+      .hamburger {
+        width: 24px;
+        height: 18px;
+      }
+
+      .hamburger span {
+        height: 2.5px;
+      }
+
+      .content {
+        padding: 80px 16px;
+      }
+
+      .content h1 {
+        font-size: 1.6rem;
+      }
+
+      .content p {
+        font-size: 0.95rem;
+      }
+
+      nav {
+        width: 100%;
+        box-shadow: none;
+        right: 0;
+      }
+
+      .menu-content {
+        padding: 72px 16px 20px;
+      }
+
+      .nav-links a {
+        font-size: 1.05rem;
+      }
+
+      .menu-content h3 {
+        font-size: 1rem;
+        margin: 20px 0 8px;
+      }
+
+      .menu-content ul.enhanced-list li a {
+        font-size: 0.95rem;
+      }
+
+      #loader .loader-content img {
+        max-width: 200px;
+      }
+
+      #loader .loader-content p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+      }
+
+      #loader .diagonal-box {
+        height: 100%;
+        top: -120%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Header -->
+<header>
+  <img src="images/final logo.png" alt="Logo">
+  <h2>One Stop Solution for Printing Material</h2>
+  
+
+
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sideMenu">
+    <div class="menu-content">
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="About_US.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
+        <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+        <li><a href="Contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+
+      <h3>Our Product Range</h3>
+      <ul class="enhanced-list">
+        <li><a href="#">MacDermid Enthone Films</a></li>
+        <li><a href="#">Autotex (PET & PC), Autoflex, Autostat, XtraForm 3D</a></li>
+        <li><a href="#">Autoprep Gel</a></li>
+        <li><a href="#">Capillex Films – 25, 18, CX, CP</a></li>
+        <li><a href="#">Emulsions – Plus Lava, 9000, 8000, 6000, 1 SR</a></li>
+        <li><a href="#">Post-press Chemicals – Autostrip, Screen Wash K3, Autohaze</a></li>
+        <li><a href="#">Fimor Serilor Squeegees – SR1, SR3, HR1, HR3</a></li>
+        <li><a href="#">Self-Adhesive Vinyl (SunSui), Anti-static Rollers, Lint-free wipes</a></li>
+      </ul>
+
+      <h3>Our Services</h3>
+      <ul class="enhanced-list">
+        <li><a href="#">Screen Stretching (guitar-based tensioning)</a></li>
+        <li><a href="#">Screen Exposing (high-quality stencils)</a></li>
+        <li><a href="#">Technical guidance on stencil prep, mesh compatibility, and print optimization</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+  <style>
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: url('images/ABOUT\ US\ BANNER.png') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      z-index: -2;
+    }
+    section {
+      position: relative;
+      z-index: 2;
+    }
+    .banner-text {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      
+    }
+    h2 span {
+      background: linear-gradient(90deg, #6a8dff, #ff71c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-padding {
+      padding: 100px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+    .gradient-bg {
+      background: linear-gradient(to bottom, #f5f8ff, #e2ebf7);
+    }
+  </style>
+
+
+
+
+<!-- ABOUT US SECTION -->
+<!-- AOS CSS (Ensure this is in your <head>) -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- ABOUT SCREEN SOURCE SECTION -->
+<section class="section-padding gradient-bg" style="padding: 120px 20px; background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); font-family: 'Arimo', sans-serif;">
+  <div style="max-width: 950px; margin: auto; text-align: center;" data-aos="fade-up">
+
+    <!-- Heading -->
+    <h2 style="font-size: 3rem; font-weight: 800; color: #0d2f53; margin-bottom: 20px;">
+      About <span style="color: #ff71c0;">ScreenSource</span>
+    </h2>
+    <h4 style="font-size: 1.4rem; font-weight: 600; color: #fe320a; margin-bottom: 40px;">
+      One Stop Solution for Printing Materials
+    </h4>
+
+    <!-- Description Paragraphs -->
+    <p style="font-size: 1.15rem; color: #333; line-height: 1.8; margin-bottom: 25px;">
+      Welcome to <strong>ScreenSource</strong>, one of the most innovative suppliers of screen printing materials in the industry. Located in <strong>Dhayari, Pune</strong>, we empower manufacturing and creative businesses across India with high-performance solutions that deliver precision, durability, and reliability.
+    </p>
+    <p style="font-size: 1.15rem; color: #333; line-height: 1.8; margin-bottom: 40px;">
+      Our team is passionate about <strong>customer satisfaction</strong>, <strong>technical support</strong>, and continuous <strong>innovation</strong> to meet the needs of today’s fast-paced screen printing industry.
+    </p>
+
+    <!-- Our Vision -->
+    <div style="margin-bottom: 40px;" data-aos="fade-up">
+      <h4 style="font-size: 1.3rem; color: #0d2f53; font-weight: 700; margin-bottom: 12px;">
+        🌟 Our Vision
+      </h4>
+      <p style="font-size: 1.1rem; color: #333; line-height: 1.7;">
+        To become India's go-to destination for premium screen printing solutions — built on quality, trust, and continuous innovation.
+      </p>
+    </div>
+
+    <!-- What We Offer -->
+    <div data-aos="fade-up">
+      <h4 style="font-size: 1.3rem; color: #0d2f53; font-weight: 700; margin-bottom: 15px;">
+        🛠️ What We Offer
+      </h4>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; font-size: 1.05rem; color: #333;">
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          ✅ High-performance industrial films & emulsions
+        </div>
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          🧪 Screen chemicals, squeegees & accessories
+        </div>
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          🖼️ Screen exposing & stretching services
+        </div>
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          🤝 Expert consultation & custom support
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AOS JS (Place before </body>) -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<!-- PARALLAX BACKGROUND -->
+<div class="parallax-bg"></div>
+
+<!-- HERO BANNER -->
+<section class="banner-text">
+  Empowering the Print Revolution
+</section>
+<!-- PRODUCTS SECTION -->
+<section class="section-padding gradient-bg">
+  <div style="max-width: 1200px; margin: auto;">
+    <h2 style="text-align: center; font-size: 2.8rem; font-weight: 800; color: #0d2f53; margin-bottom: 20px;" data-aos="fade-up">
+      Our <span>Products</span>
+    </h2>
+    <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 50px;" data-aos="fade-up" data-aos-delay="100">
+      Reliable materials for high-performance screen printing.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+      <div class="card" data-aos="fade-up" data-aos-delay="0">
+        <h3 style="color:#ffb200;">Functional Films</h3>
+        <p>MacDermid, Autotex, Autoflex, Autostat – for overlays, smart devices & printed electronics.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h3 style="color:#0d2f53;">Capillary Films</h3>
+        <p>Capillex 25, 18, CX – ultra-fine stencil films for precision printing.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <h3 style="color:#6a8dff;">Emulsions</h3>
+        <p>PLUS LAVA, PLUS 9000 – high-performance emulsions for all screen types and ink systems.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h3 style="color:#ff71c0;">Chemicals</h3>
+        <p>Prepress & reclaim chemicals – Autostrip, Autohaze, Wash K3, and more.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <h3 style="color:#0d2f53;">Vinyl & Graphics</h3>
+        <p>SunSui adhesive vinyls – waterproof signage and digital printing films.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="500">
+        <h3 style="color:#ff71c0;">Squeegees</h3>
+        <p>Fimor Serilor SR1 / HR3 – precision squeegees for long-life industrial printing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="section-padding" style=" background: linear-gradient(to bottom, #e2ebf7), #f5f8ff; ">
+  <div style="max-width: 1200px; margin: auto;">
+    <h2 style="text-align: center; font-size: 2.8rem; font-weight: 800; color: #0d2f53; margin-bottom: 10px;" data-aos="fade-up">
+      Our <span>Services</span>
+    </h2>
+    <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 60px;" data-aos="fade-up" data-aos-delay="100">
+      Empowering screen printing with precision…
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px;">
+      <div class="card" data-aos="zoom-in" data-aos-delay="0">
+        <h3 style="color: #ff71c0;">Screen Stretching</h3>
+        <ul><li>Better exposure quality</li><li>Consistent tension</li></ul>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <h3 style="color: #6a8dff;">Screen Exposing</h3>
+        <ul><li>Sharp detail reproduction</li><li>Print life extended</li></ul>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <h3 style="color: #0d2f53;">Lint-Free Wipes</h3>
+        <p>For cleanroom, screen, and equipment cleaning.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="300">
+        <h3 style="color: #ffb200;">Anti-Static Rollers</h3>
+        <p>Minimize static for efficient production.</p>
+      </div>
+    </div>
+    <div style="margin-top: 100px;" data-aos="fade-up" data-aos-delay="200">
+   <h2 style="font-size: 2rem; color: #0d2f53; font-weight: 700; margin-bottom: 30px; text-align: center;">
+  Why Choose <span>ScreenSource?</span>
+</h2>
+
+      <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; list-style: none;">
+        <li>✅ Wide Range of Industrial Films</li>
+        <li>✅ Trusted Brands</li>
+        <li>✅ Custom Solutions</li>
+        <li>✅ One-Stop Supplier</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ?????????????????????????  FOOTER ????????????????????????????????// -->
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<footer style="background: linear-gradient(90deg, #002855, #00509d); color: white; padding: 70px 20px; font-family: 'Poppins', sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+
+<!-- Company Info -->
+<div style="flex: 1 1 260px;">
+<h3 style="font-size: 26px; font-weight: 800; margin: 0 0 10px 0; letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;">
+  Screen Source
+</h3>
+
+  <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
+    Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
+  </p>
+  <div style="display: flex; gap: 15px; align-items: center;">
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-instagram"></i></a>
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1 1 160px;">
+      <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-link"></i> Quick Links</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
+        <li><a href="index.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Home</a></li>
+        <li><a href="About_US.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">About Us</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Products -->
+<!-- Products -->
+<div style="flex: 1 1 220px;">
+  <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
+  <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.9;">
+    <li>• MacDermid Enthone Films</li>
+    <li>• Autotex, Autoflex, Autostat</li>
+    <li>• XtraForm 3D, Capillex Films</li>
+    <li>• Autoprep Gel, Emulsions (Plus Lava, 9000, etc.)</li>
+    <li>• Post-press: Autostrip, Screen Wash K3</li>
+    <li>• Fimor Serilor Squeegees (SR1, HR3)</li>
+    <li>• SunSui Vinyl, Anti-static rollers</li>
+    <li>• Lint-free wipes & accessories</li>
+  </ul>
+</div>
+
+<!-- Services & Contact -->
+<div style="flex: 1 1 240px;">
+  <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-cogs"></i> Services</h4>
+  <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.9;">
+    <li>• Screen Stretching (guitar tensioning)</li>
+    <li>• Screen Exposing (HD stencils)</li>
+    <li>• Stencil preparation guidance</li>
+    <li>• Mesh compatibility consulting</li>
+    <li>• Custom film cutting & supply</li>
+    <li>• Prepress troubleshooting support</li>
+  </ul>
+
+  <h4 style="margin-top: 25px; margin-bottom: 15px; font-size: 17px; color: #ffb200;"><i class="fas fa-address-card"></i> Contact</h4>
+  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Pune, Maharashtra</p>
+  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>info@screensource.in</p>
+  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-phone" style="margin-right: 8px;"></i>+91 98765 43210</p>
+</div>
+
+  </div>
+
+  <hr style="margin: 40px auto 25px; border: 0; height: 1px; background: #ffffff33; width: 90%;">
+
+<div style="text-align: center; font-size: 14px; opacity: 0.85;">
+  © 2025 <strong>Screen Source</strong>. All rights reserved.
+</div>
+<div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
+  Developed By <strong>DW INNOVATION PVT. LTD.</strong>
+</div>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+  <!-- JavaScript -->
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        loader.style.transition = "all 2s ease";
+        loader.style.transform = "translateY(-100%)";
+        loader.style.opacity = "0";
+        setTimeout(() => loader.style.display = "none", 2000);
+      }, 3000);
+    });
+
+    function toggleMenu(icon) {
+      icon.classList.toggle("cross");
+      const sideMenu = document.getElementById("sideMenu");
+      sideMenu.classList.toggle("show");
+      document.body.style.overflow = sideMenu.classList.contains("show") ? 'hidden' : 'auto';
+    }
+  </script>
+
+  <script>
+  function scrollToProducts() {
+    const el = document.querySelector('h3:nth-of-type(1)');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function scrollToServices() {
+    const el = document.querySelector('h3:nth-of-type(2)');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+
+<script>
+  function scrollToProducts() {
+    window.scrollTo({
+      top: document.querySelector('#about').offsetTop,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollToServices() {
+    window.scrollTo({
+      top: document.querySelector('#services').offsetTop,
+      behavior: 'smooth'
+    });
+  }
+</script>
+<!-- ////////////////////   ABOUT US /////////////////// -->
+ <!-- GSAP Animation Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  gsap.from(".service-box", {
+    opacity: 0,
+    y: 60,
+    rotateY: 15,
+    duration: 1.3,
+    ease: "power3.out",
+    stagger: 0.2
+  });
+</script>
+
+<!-- GSAP Product Cards Animation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  gsap.from(".product-box", {
+    opacity: 0,
+    y: 50,
+    duration: 1.2,
+    ease: "power3.out",
+    stagger: 0.15
+  });
+</script>
+
+
+
+
+<!-- ///////////////////////////////////////////////////// PARllex -->
+ <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+</body>
+</html>
