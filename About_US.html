@@ -19,312 +19,397 @@
       padding: 0;
       box-sizing: border-box;
     }
-body {
-  font-family: 'Arimo', sans-serif;
-  background: #ffffff;
-  color: #222;
-  overflow-x: hidden;
-}
 
-
-
-    /* Header */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0px 24px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1001;
-    }
-    header img {
-      height: 72px;
-    }
-    header h2 {
-      flex: 1;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(to right, #6a8dff, #ff71c0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    body {
+      font-family: 'Arimo', sans-serif;
+      background: #ffffff;
+      color: #222;
+      overflow-x: hidden;
     }
 
-    /* Hamburger */
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 26px;
-      height: 20px;
-      cursor: pointer;
-      z-index: 1100;
-    }
-    .hamburger span {
-      height: 3px;
-      background: #333;
-      border-radius: 2px;
-      transition: all 0.4s;
-    }
-    .hamburger.cross span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .hamburger.cross span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.cross span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        transition: background 0.4s ease, box-shadow 0.4s ease;
+        z-index: 1000;
+      }
 
-    /* Sidebar Navigation */
-/* ================= Sidebar Navigation ================= */
-nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 320px;
-  height: 100vh;
-background: linear-gradient(135deg, #001d3d, #003566);
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.55);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
 
-  backdrop-filter: blur(12px);
-  transform: translateX(100%);
-  transition: transform 0.5s ease;
-  z-index: 1000;
-  box-shadow: -8px 0 20px rgba(0, 0, 0, 0.25);
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
-}
+      .logo img {
+        height: 50px;
+      }
 
-nav.show {
-  transform: translateX(0%);
-}
+      .menu-toggle {
+        display: none;
+        font-size: 24px;
+        color: #111;
+        cursor: pointer;
+        z-index: 1001;
+      }
 
-.menu-content {
-  padding: 80px 20px 30px;
-  color: #fff; /* Bright text */
-   font-family: 'Arimo', sans-serif;
-  overflow-y: auto;
-  height: 100%;
-}
+      .nav-links {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        list-style: none;
+      }
 
-/* ================= Navigation Links ================= */
-.nav-links {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 30px;
-}
+      .nav-links li {
+        position: relative;
+      }
 
-.nav-links li {
-  margin: 18px 0;
-}
+      .nav-links > li > a {
+        color: #111;
+        text-decoration: none;
+        font-weight: 100;
+        font-size: 14px;
+        padding: 5px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
 
-.nav-links a {
-  font-size: 1.15rem;
-  color: #ffffff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
+      .nav-links > li > a:hover {
+        color: #EC008C;
+      }
 
-.nav-links a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffeb3b;
-  transform: translateX(6px);
-  box-shadow: 0 0 8px #ffe600;
-}
+      .nav-links > li > a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+        transition: width 0.3s ease;
+      }
 
-.nav-links a i {
-  transition: all 0.3s;
-}
+      .nav-links > li > a:hover::after {
+        width: 100%;
+      }
 
-.nav-links a:hover i {
-  transform: rotate(15deg) scale(1.2);
-  color: #00e6e6;
-}
+      .dropdown-menu,
+      .sub-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 240px;
+        background: white;
+        padding: 10px 0;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        flex-direction: column;
+        animation: fadeIn 0.3s ease-in-out;
+        z-index: 999;
+        border: 1px solid #eee;
+        list-style: none !important;
+      }
 
-/* ================= Section Headings ================= */
-.menu-content h3 {
-  font-size: 1.05rem;
-  margin: 25px 0 10px;
-  color: #ffffff;
-  text-transform: uppercase;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  padding-bottom: 6px;
-  letter-spacing: 1px;
-}
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-/* ================= Enhanced List Styling ================= */
-.menu-content ul.enhanced-list {
-  list-style: none;
-  padding-left: 0;
-}
+      .dropdown-menu a,
+      .sub-dropdown-menu a {
+        display: block;
+        padding: 12px 20px;
+        color: #222;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
 
-.menu-content ul.enhanced-list li {
-  margin-bottom: 10px;
-  padding-left: 24px;
-  position: relative;
-}
+      .dropdown-menu a:hover,
+      .sub-dropdown-menu a:hover {
+        background: linear-gradient(90deg, #00B5E2, #EC008C);
+        color: white;
+      }
 
-.menu-content ul.enhanced-list li::before {
-  content: "\f105";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  position: absolute;
-  left: 0;
-  color: #ffeb3b;
-  font-size: 1rem;
-}
+      .dropdown-menu a:not(:last-child),
+      .sub-dropdown-menu a:not(:last-child) {
+        border-bottom: 1px solid #f0f0f0;
+      }
 
-.menu-content ul.enhanced-list li a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.05rem;
-  transition: all 0.3s;
-}
+      .sub-dropdown {
+        position: relative;
+      }
 
-.menu-content ul.enhanced-list li a:hover {
-  color: #ffe600;
-  transform: translateX(5px);
-  text-decoration: underline;
-}
+      .sub-dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: 4px;
+        border-radius: 12px;
+      }
 
-/* ================= Responsive (Mobile) ================= */
-@media (max-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px 16px;
-  }
+      .nav-links li:hover > .dropdown-menu {
+        display: flex;
+      }
 
-  header img {
-    height: 64px;
-  }
+      .sub-dropdown:hover > .sub-dropdown-menu {
+        display: flex;
+      }
 
-  header h2 {
-    font-size: 1rem;
-    text-align: left;
-    flex: unset;
-    max-width: 180px;
-    line-height: 1.2;
-    color: #fff;
-  }
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 20px;
+          background: rgba(255, 255, 255, 0.95);
+        }
 
-  .hamburger {
-    width: 24px;
-    height: 18px;
-  }
+        .menu-toggle {
+          display: block;
+        }
 
-  .hamburger span {
-    height: 2.5px;
-  }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          left: -280px;
+          height: 100vh;
+          width: 280px;
+          background: #111;
+          flex-direction: column;
+          padding: 80px 20px;
+          transition: left 0.3s ease;
+          overflow-y: auto;
+          z-index: 999;
+        }
 
-  .content {
-    padding: 80px 16px;
-  }
+        .nav-links.active {
+          left: 0;
+        }
 
-  .content h1 {
-    font-size: 1.6rem;
-    color: #fff;
-  }
+        .nav-links li {
+          width: 100%;
+        }
 
-  .content p {
-    font-size: 0.95rem;
-    color: #e0e0e0;
-  }
+        .nav-links > li > a {
+          color: white;
+          padding: 12px 0;
+        }
 
-  nav {
-    width: 100%;
-    box-shadow: none;
-    right: 0;
-  }
+        .dropdown-menu,
+        .sub-dropdown-menu {
+          position: static;
+          background: #222;
+          box-shadow: none;
+          width: 100%;
+          display: none;
+          flex-direction: column;
+        }
 
-  .menu-content {
-    padding: 72px 16px 20px;
-  }
+        .dropdown-menu a,
+        .sub-dropdown-menu a {
+          color: white;
+          padding-left: 25px;
+        }
 
-  .nav-links a {
-    font-size: 1.05rem;
-  }
+        .dropdown-menu.show,
+        .sub-dropdown-menu.show {
+          display: flex !important;
+        }
 
-  .menu-content h3 {
-    font-size: 0.95rem;
-    margin: 20px 0 8px;
-    color: #fff;
-  }
+        .nav-links li:hover > .dropdown-menu,
+        .sub-dropdown:hover > .sub-dropdown-menu {
+          display: none;
+        }
+      }
 
-  .menu-content ul.enhanced-list li a {
-    font-size: 0.95rem;
-  }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 998;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+      }
 
-  #loader .loader-content img {
-    max-width: 200px;
-  }
-
-  #loader .loader-content p {
-    font-size: 0.9rem;
-    padding: 0 10px;
-  }
-
-  #loader .diagonal-box {
-    height: 100%;
-    top: -120%;
-  }
-}
-
-  </style>
-</head>
-<body>
+      .overlay.show {
+        display: block;
+      }
+    </style>
 
 
+    <div class="navbar" id="navbar">
+      <div class="logo">
+        <img src="images/LOGO_clear_improved.png" alt="Logo" />
+      </div>
+      <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">HOME</a></li>
+        <li>
+          <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
+          <ul class="dropdown-menu">
+    <li class="sub-dropdown">
+      <a href="#">Products & Materials <span class="dropdown-arrow">▸</span></a>
+      <ul class="sub-dropdown-menu">
+        <li><a href="#">Industrial Polyester Films</a></li>
+        <li><a href="#">Sabic Polycarbonate Films</a></li>
+        <li><a href="#">Vinyl for Industrial Printing</a></li>
+        <li><a href="#">Surface Protection Films</a></li>
+        <li><a href="#">Release Papers</a></li>
+        <li><a href="#">Velvet Films</a></li>
+        <li><a href="#">MacDermid Autotype Autotex (Fine & Velvet)</a></li>
+        <li><a href="#">MacDermid Autotype Autoflex EB</a></li>
+        <li><a href="#">Screen Printing Inks (Seiko Ink)</a></li>
+        <li><a href="#">Printing Chemicals</a></li>
+        <li><a href="#">Pre-Press Emulsions & Chemicals</a></li>
+        <li><a href="#">VIEW ALL</a></li>
+      
+      </ul>
+    </li>
+            <li class="sub-dropdown">
+      <a href="#">Frames & Mesh <span class="dropdown-arrow">▸</span></a>
+      <ul class="sub-dropdown-menu">
+        <li><a href="#">Aluminium Screen Printing Frames</a></li>
+        <li><a href="#">New Aluminium Frames</a></li>
+        <li><a href="#">Polyester Screen Printing Mesh</a></li>
+        <li><a href="#">Universal Mesh Prep</a></li>
+      </ul>
+    </li>
+    <!-- 🧽 Accessories & Tools -->
+    <li class="sub-dropdown">
+      <a href="#">Accessories & Tools <span class="dropdown-arrow">▸</span></a>
+      <ul class="sub-dropdown-menu">
+        <li><a href="#">Squeegee Rubber</a></li>
+        <li><a href="#">Squeegee Hardness Meter</a></li>
+        <li><a href="#">Tension Meter</a></li>
+        <li><a href="#">Cross Hatch Tester</a></li>
+        <li><a href="#">Pencil Hardness Tester</a></li>
+        <li><a href="#">Lint-Free Wipes</a></li>
+        <li><a href="#">Sticky Mat</a></li>
+        <li><a href="#">RAL & Pantone Formula Guide</a></li>
+      </ul>
+    </li>
 
-  <!-- Header -->
-  <header>
-    <img src="images/final logo.png" alt="Logo">
-    <h2>One Stop Solution for Printing Material</h2>
-    <div class="hamburger" onclick="toggleMenu(this)">
-      <span></span><span></span><span></span>
+    <!-- 🧷 Adhesives & Tapes -->
+    <li class="sub-dropdown">
+      <a href="#">Adhesives & Tapes <span class="dropdown-arrow">▸</span></a>
+      <ul class="sub-dropdown-menu">
+        <li><a href="#">Frame Adhesive</a></li>
+        <li><a href="#">Adhesive Tapes</a></li>
+        <li><a href="#">Adhesive Transfer Tapes</a></li>
+        <li><a href="#">Tissue Tape (3M 91091)</a></li>
+        <li><a href="#">Spacer Tapes (DSM7, Membrane)</a></li>
+        <li><a href="#">Nitto 5015 Tape</a></li>
+      </ul>
+    </li>
+
+    <!-- 🛠️ Machines & Equipment -->
+    <li class="sub-dropdown">
+      <a href="#">Machines & Equipment <span class="dropdown-arrow">▸</span></a>
+      <ul class="sub-dropdown-menu">
+        <li><a href="#">Stretching Machines</a></li>
+        <li><a href="#">Exposing Machines</a></li>
+        <li><a href="#">Printing Machines</a></li>
+        <li><a href="#">Drying Machines</a></li>
+      </ul>
+    </li>
+
+    <!-- 🛎️ Services -->
+    <li class="sub-dropdown">
+      <a href="#">Services <span class="dropdown-arrow">▸</span></a>
+      <ul class="sub-dropdown-menu">
+        <li><a href="#">Screen Exposing Services</a></li>
+        <li><a href="#">Screen Stretching Services</a></li>
+      </ul>
+    </li>
+
+    <!-- View All -->
+    <li><a href="#">View All Categories</a></li>
+  </ul>
+        <li><a href="About_US.html">ABOUT US</a></li>
+        <li><a href="Contact.html">CONTACT US</a></li>
+      </ul>
     </div>
-  </header>
 
-  <!-- Sidebar Navigation -->
-  <nav id="sideMenu">
-    <div class="menu-content">
-      <ul class="nav-links">
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="About_US.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-        <li><a href="Products.html"><i class="fas fa-box-open"></i> Products</a></li>
-        <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
-        <li><a href="Contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-      </ul>
+    <div class="overlay" id="overlay"></div>
 
-      <h3>Our Product Range</h3>
-      <ul class="enhanced-list">
-        <li><a href="#">MacDermid Enthone Films</a></li>
-        <li><a href="#">Autotex (PET & PC), Autoflex, Autostat, XtraForm 3D</a></li>
-        <li><a href="#">Autoprep Gel</a></li>
-        <li><a href="#">Capillex Films – 25, 18, CX, CP</a></li>
-        <li><a href="#">Emulsions – Plus Lava, 9000, 8000, 6000, 1 SR</a></li>
-        <li><a href="#">Post-press Chemicals – Autostrip, Screen Wash K3, Autohaze</a></li>
-        <li><a href="#">Fimor Serilor Squeegees – SR1, SR3, HR1, HR3</a></li>
-        <li><a href="#">Self-Adhesive Vinyl (SunSui), Anti-static Rollers, Lint-free wipes</a></li>
-      </ul>
+    <script>
+      const navbar = document.getElementById('navbar');
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      const overlay = document.getElementById('overlay');
 
-      <h3>Our Services</h3>
-      <ul class="enhanced-list">
-        <li><a href="#">Screen Stretching (guitar-based tensioning)</a></li>
-        <li><a href="#">Screen Exposing (high-quality stencils)</a></li>
-        <li><a href="#">Technical guidance on stencil prep, mesh compatibility, and print optimization</a></li>
-      </ul>
-    </div>
-  </nav>
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      });
 
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('show');
+      });
+
+      overlay.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        overlay.classList.remove('show');
+        closeAllMenus();
+      });
+
+      document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const menu = toggle.nextElementSibling;
+            menu.classList.toggle('show');
+            closeOthers(menu, '.dropdown-menu');
+          }
+        });
+      });
+
+      document.querySelectorAll('.sub-dropdown > a').forEach(sub => {
+        sub.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const subMenu = sub.nextElementSibling;
+            subMenu.classList.toggle('show');
+            closeOthers(subMenu, '.sub-dropdown-menu');
+          }
+        });
+      });
+
+      function closeOthers(current, selector) {
+        document.querySelectorAll(selector).forEach(menu => {
+          if (menu !== current) menu.classList.remove('show');
+        });
+      }
+
+      function closeAllMenus() {
+        document.querySelectorAll('.dropdown-menu, .sub-dropdown-menu').forEach(menu => {
+          menu.classList.remove('show');
+        });
+      }
+
+      document.querySelectorAll('.nav-links > li > a:not(.dropdown-toggle)').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('show');
+            closeAllMenus();
+          }
+        });
+      });
+    </script>
+  </section>
 
 
   <style>

@@ -59,7 +59,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 1px 80px;
+  padding: 11px 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,12 +100,13 @@ body {
 .nav-links > li > a {
   color: #111;
   text-decoration: none;
-  font-weight: 100;
+  font-weight: 550;
   font-size: 14px;
   padding: 5px;
   position: relative;
   transition: all 0.3s ease;
 }
+
 
 .nav-links > li > a:hover {
   color: #EC008C;
@@ -126,8 +127,7 @@ body {
   width: 100%;
 }
 
-/* Dropdowns */
-/* Updated Dropdowns */
+/* Dropdown container */
 .dropdown-menu,
 .sub-dropdown-menu {
   display: none;
@@ -136,7 +136,7 @@ body {
   left: 0;
   min-width: 240px;
   background: white;
-  padding: 10px 0;
+  padding: 10px 10px;
   border-radius: 12px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   flex-direction: column;
@@ -145,6 +145,8 @@ body {
   border: 1px solid #eee;
   list-style: none !important;
 }
+
+/* Fade animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -155,10 +157,12 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Dropdown links */
 .dropdown-menu a,
 .sub-dropdown-menu a {
   display: block;
-  padding: 12px 20px;
+  padding: 12px 0px;
   color: #222;
   font-size: 14px;
   text-decoration: none;
@@ -174,40 +178,35 @@ body {
   color: white;
 }
 
-
-
 .dropdown-menu a:not(:last-child),
 .sub-dropdown-menu a:not(:last-child) {
   border-bottom: 1px solid #f0f0f0;
 }
 
-/* Sub-dropdown placement */
+/* Parent of sub-dropdown */
 .sub-dropdown {
   position: relative;
 }
 
+/* Position sub-dropdown menu */
 .sub-dropdown-menu {
   top: 0;
   left: 100%;
-  margin-left: 4px;
+  margin-left: -2px; /* prevent accidental gap */
   border-radius: 12px;
+  min-width: 240px;
 }
 
-/* Show on hover for desktop */
+/* Show dropdowns on hover (desktop) */
 .nav-links li:hover > .dropdown-menu {
-  display: flex;
+  display: block;
 }
 
 .sub-dropdown:hover > .sub-dropdown-menu {
-  display: flex;
+  display: block;
 }
 
-/* Arrow icons styling
-.dropdown-arrow {
-  margin-left: 6px;
-  font-size: 12px;
-  color: #999;
-} */
+
 
 /* Mobile styles */
 @media (max-width: 768px) {
@@ -459,211 +458,163 @@ body {
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    .parallax-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: url('images/ABOUT\ US\ BANNER.png') no-repeat center center;
-      background-size: cover;
-      background-attachment: fixed;
-      z-index: -2;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    section {
-      position: relative;
-      z-index: 2;
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
     }
-    .banner-text {
-      height: 100vh;
+
+    /* Hero Section */
+    .hero {
+      background: url('ima') center/cover no-repeat;
+      height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
-      font-size: 3rem;
-      font-weight: bold;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      
+      padding: 20px;
     }
-    h2 span {
-      background: linear-gradient(90deg, #6a8dff, #ff71c0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
     }
-    .section-padding {
-      padding: 100px 20px;
+
+    /* Product Grid */
+    .product-section {
+      padding: 50px 20px;
+      max-width: 1300px;
+      margin: auto;
     }
-    .card {
+
+    .product-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #111;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
       background: white;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
     }
-    .card:hover {
+
+    .product-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
     }
-    .gradient-bg {
-      background: linear-gradient(to bottom, #f5f8ff, #e2ebf7);
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card h3 {
+      font-size: 1.1rem;
+      padding: 15px;
+      text-align: center;
+      font-weight: 600;
     }
   </style>
+</head>
+<body>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Explore Our Premium Products</h1>
+  </section>
 
-
-
-<!-- ABOUT US SECTION -->
-<!-- AOS CSS (Ensure this is in your <head>) -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
-<!-- ABOUT SCREEN SOURCE SECTION -->
-<section class="section-padding gradient-bg" style="padding: 120px 20px; background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); font-family: 'Arimo', sans-serif;">
-  <div style="max-width: 950px; margin: auto; text-align: center;" data-aos="fade-up">
-
-    <!-- Heading -->
-    <h2 style="font-size: 3rem; font-weight: 800; color: #0d2f53; margin-bottom: 20px;">
-      About <span style="color: #ff71c0;">ScreenSource</span>
-    </h2>
-    <h4 style="font-size: 1.4rem; font-weight: 600; color: #fe320a; margin-bottom: 40px;">
-      One Stop Solution for Printing Materials
-    </h4>
-
-    <!-- Description Paragraphs -->
-    <p style="font-size: 1.15rem; color: #333; line-height: 1.8; margin-bottom: 25px;">
-      Welcome to <strong>ScreenSource</strong>, one of the most innovative suppliers of screen printing materials in the industry. Located in <strong>Dhayari, Pune</strong>, we empower manufacturing and creative businesses across India with high-performance solutions that deliver precision, durability, and reliability.
-    </p>
-    <p style="font-size: 1.15rem; color: #333; line-height: 1.8; margin-bottom: 40px;">
-      Our team is passionate about <strong>customer satisfaction</strong>, <strong>technical support</strong>, and continuous <strong>innovation</strong> to meet the needs of today’s fast-paced screen printing industry.
-    </p>
-
-    <!-- Our Vision -->
-    <div style="margin-bottom: 40px;" data-aos="fade-up">
-      <h4 style="font-size: 1.3rem; color: #0d2f53; font-weight: 700; margin-bottom: 12px;">
-        🌟 Our Vision
-      </h4>
-      <p style="font-size: 1.1rem; color: #333; line-height: 1.7;">
-        To become India's go-to destination for premium screen printing solutions — built on quality, trust, and continuous innovation.
-      </p>
+  <!-- Products Section -->
+  <section class="product-section">
+    <h2>Our Product Range</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- Cards injected via JavaScript -->
     </div>
+  </section>
 
-    <!-- What We Offer -->
-    <div data-aos="fade-up">
-      <h4 style="font-size: 1.3rem; color: #0d2f53; font-weight: 700; margin-bottom: 15px;">
-        🛠️ What We Offer
-      </h4>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; font-size: 1.05rem; color: #333;">
-        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-          ✅ High-performance industrial films & emulsions
-        </div>
-        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-          🧪 Screen chemicals, squeegees & accessories
-        </div>
-        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-          🖼️ Screen exposing & stretching services
-        </div>
-        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-          🤝 Expert consultation & custom support
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    const products = [
+      { title: "Industrial Polyester Films", image: "images/Industrial_Polyester_Films_01.jpg", link:"Industrial_Polyester_Films.html"},
+      { title: "Sabic Polycarbonate Films", image: "images/sabic-polycarbonate.jpg", link: "" },
+      { title: "Vinyl for Industrial Printing", image: "images/vinyl-printing.webp", link: "#vinyl" },
+      { title: "Surface Protection Films", image: "images/surface-protection_01.jpg", link: "#surface" },
+      { title: "Release Papers", image: "images/release-papers.jpg", link: "#release" },
+      { title: "Velvet Films", image: "images/velvet-films.webp", link: "#velvet" },
+      { title: "MacDermid Autotype Autotex (Fine & Velvet)", image: "images/autotex.webp", link: "#autotex" },
+      { title: "MacDermid Autotype Autoflex EB", image: "images/autoflex-eb.jpg", link: "#autoflex" },
+      { title: "Screen Printing Inks (Seiko Ink)", image: "images/screen-inks.jpg", link: "#inks" },
+      { title: "Printing Chemicals", image: "images/printing-chemicals.jpg", link: "#chemicals" },
+      { title: "Pre-Press Emulsions & Chemicals", image: "images/emulsions.jpg", link: "#emulsions" },
+      { title: "Aluminium Screen Printing Frames", image: "images/aluminium-frames.jpg", link: "#frames" },
+      { title: "New Aluminium Frames", image: "images/new-frames.jpg", link: "#newframes" },
+      { title: "Polyester Screen Printing Mesh", image: "images/polyester-mesh.jpg", link: "#mesh" },
+      { title: "Universal Mesh Prep", image: "images/mesh-prep.jpg", link: "#meshprep" },
+      { title: "Squeegee Rubber", image: "images/squeegee-rubber.webp", link: "#squeegee" },
+      { title: "Squeegee Hardness Meter", image: "images/squeegee-meter.jpg", link: "#hardness" },
+      { title: "Frame Adhesive", image: "images/frame-adhesive.jpg", link: "#adhesive" },
+      { title: "Adhesive Tapes", image: "images/adhesive-tapes.jpg", link: "#tapes" },
+      { title: "Adhesive Transfer Tapes", image: "images/transfer-tapes.jpg", link: "#transfertapes" },
+      { title: "Tissue Tape (3M 91091)", image: "images/tissue-tape.jpg", link: "#tissuetape" },
+      { title: "Spacer Tapes (DSM7, Membrane)", image: "images/spacer-tapes.jpg", link: "#spacertape" },
+      { title: "Nitto 5015 Tape", image: "images/nitto-tape.jpg", link: "#nitto" },
+      { title: "Stretching Machines", image: "images/stretching-machines.jpg", link: "#stretching" },
+      { title: "Exposing Machines", image: "images/exposing-machines.jpg", link: "#exposing" },
+      { title: "Printing Machines", image: "images/printing-machines.jpg", link: "#printingmachines" },
+      { title: "Drying Machines", image: "images/drying-machines.jpg", link: "#drying" },
+      { title: "Screen Exposing Services", image: "images/screen-exposing.jpg", link: "#screenexpose" },
+      { title: "Screen Stretching Services", image: "images/screen-stretching.jpg", link: "#screenstretch" },
+      { title: "Tension Meter", image: "images/tension-meter.jpg", link: "#tension" },
+      { title: "Cross Hatch Tester", image: "images/cross-hatch.jpg", link: "#crosshatch" },
+      { title: "Pencil Hardness Tester", image: "images/pencil-tester.jpg", link: "#pencil" },
+      { title: "Lint-Free Wipes", image: "images/lint-free-wipes.jpg", link: "#lintfree" },
+      { title: "Sticky Mat", image: "images/sticky-mat..webp", link: "#stickymat" },
+      { title: "RAL & Pantone Formula Guide", image: "images/ral-pantone.jpg", link: "#ralpantone" }
+    ];
 
-<!-- AOS JS (Place before </body>) -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
-<!-- PARALLAX BACKGROUND -->
-<div class="parallax-bg"></div>
-
-<!-- HERO BANNER -->
-<section class="banner-text">
-  Empowering the Print Revolution
-</section>
-<!-- PRODUCTS SECTION -->
-<section class="section-padding gradient-bg">
-  <div style="max-width: 1200px; margin: auto;">
-    <h2 style="text-align: center; font-size: 2.8rem; font-weight: 800; color: #0d2f53; margin-bottom: 20px;" data-aos="fade-up">
-      Our <span>Products</span>
-    </h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 50px;" data-aos="fade-up" data-aos-delay="100">
-      Reliable materials for high-performance screen printing.
-    </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-      <div class="card" data-aos="fade-up" data-aos-delay="0">
-        <h3 style="color:#ffb200;">Functional Films</h3>
-        <p>MacDermid, Autotex, Autoflex, Autostat – for overlays, smart devices & printed electronics.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <h3 style="color:#0d2f53;">Capillary Films</h3>
-        <p>Capillex 25, 18, CX – ultra-fine stencil films for precision printing.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <h3 style="color:#6a8dff;">Emulsions</h3>
-        <p>PLUS LAVA, PLUS 9000 – high-performance emulsions for all screen types and ink systems.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <h3 style="color:#ff71c0;">Chemicals</h3>
-        <p>Prepress & reclaim chemicals – Autostrip, Autohaze, Wash K3, and more.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="400">
-        <h3 style="color:#0d2f53;">Vinyl & Graphics</h3>
-        <p>SunSui adhesive vinyls – waterproof signage and digital printing films.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="500">
-        <h3 style="color:#ff71c0;">Squeegees</h3>
-        <p>Fimor Serilor SR1 / HR3 – precision squeegees for long-life industrial printing.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES SECTION -->
-<section class="section-padding" style=" background: linear-gradient(to bottom, #e2ebf7), #f5f8ff; ">
-  <div style="max-width: 1200px; margin: auto;">
-    <h2 style="text-align: center; font-size: 2.8rem; font-weight: 800; color: #0d2f53; margin-bottom: 10px;" data-aos="fade-up">
-      Our <span>Services</span>
-    </h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 60px;" data-aos="fade-up" data-aos-delay="100">
-      Empowering screen printing with precision…
-    </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px;">
-      <div class="card" data-aos="zoom-in" data-aos-delay="0">
-        <h3 style="color: #ff71c0;">Screen Stretching</h3>
-        <ul><li>Better exposure quality</li><li>Consistent tension</li></ul>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="100">
-        <h3 style="color: #6a8dff;">Screen Exposing</h3>
-        <ul><li>Sharp detail reproduction</li><li>Print life extended</li></ul>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="200">
-        <h3 style="color: #0d2f53;">Lint-Free Wipes</h3>
-        <p>For cleanroom, screen, and equipment cleaning.</p>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="300">
-        <h3 style="color: #ffb200;">Anti-Static Rollers</h3>
-        <p>Minimize static for efficient production.</p>
-      </div>
-    </div>
-    <div style="margin-top: 100px;" data-aos="fade-up" data-aos-delay="200">
-   <h2 style="font-size: 2rem; color: #0d2f53; font-weight: 700; margin-bottom: 30px; text-align: center;">
-  Why Choose <span>ScreenSource?</span>
-</h2>
-
-      <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; list-style: none;">
-        <li>✅ Wide Range of Industrial Films</li>
-        <li>✅ Trusted Brands</li>
-        <li>✅ Custom Solutions</li>
-        <li>✅ One-Stop Supplier</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
+    const grid = document.getElementById("productGrid");
+    products.forEach(p => {
+      const card = document.createElement("a");
+      card.className = "product-card";
+      card.href = p.link || "#";
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.title}" />
+        <h3>${p.title}</h3>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
 
 
 
