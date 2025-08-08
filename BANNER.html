@@ -1,205 +1,440 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chemical Showcase</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arimo', sans-serif;
-      background: linear-gradient(to bottom, #e2ebf7, #f5f8ff);
-    }
+<section id="navbar-section">
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .chemical-showcase {
-      display: flex;
-      flex-direction: row;
-      min-height: 100vh;
-      overflow: hidden;
-    }
+body {
+    font-family: 'Montserrat', sans-serif;
+  background: #f9f9f9;
+}
 
-    .chemical-list {
-      width: 35%;
-      background: linear-gradient(to bottom, #e2ebf7, #f5f8ff);
-      overflow-y: auto;
-      padding-top: 60px;
-      border-right: 2px solid #dce4f8;
-    }
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 11px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1000;
+}
 
-    .chemical-item {
-      padding: 20px 25px;
-      border-bottom: 1px solid #dce4f8;
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.55); /* Reduced from 0.95 to 0.75 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .chemical-item:hover,
-    .chemical-item.active {
-      background: #6a8dff;
-      color: #fff;
-    }
 
-    .chemical-preview {
-      width: 65%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 30px;
-      position: relative;
-    }
+.logo img {
+  height: 50px;
+}
 
-    .chemical-details {
-      max-width: 700px;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      background: #fff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 0.4s ease-in-out;
-    }
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: #111;
+  cursor: pointer;
+  z-index: 1001;
+}
 
-    .chemical-details.active {
-      display: flex;
-    }
+.nav-links {
+  display: flex;
+  gap: 90px;
+  align-items: center;
+  list-style: none;
+}
 
-    .chemical-details img {
-      max-width: 100%;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
+.nav-links li {
+  position: relative;
+}
 
-    .chemical-details p {
-      color: #444;
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
+.nav-links > li > a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px;
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+  position: relative;
+  transition: all 0.3s ease;
+}
 
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .chemical-showcase {
-        flex-direction: column;
-      }
 
-      .chemical-list {
-        width: 100%;
-        border-right: none;
-        border-bottom: 2px solid #dce4f8;
-        display: flex;
-        overflow-x: auto;
-        padding: 10px 0;
-        gap: 8px;
-        flex-wrap: nowrap;
-      }
+.nav-links > li > a:hover {
+  color: #EC008C;
+}
 
-      .chemical-item {
-        flex: 0 0 auto;
-        font-size: 1rem;
-        padding: 12px 18px;
-        border-bottom: none;
-        border-radius: 6px;
-        background: #f0f4ff;
-        white-space: nowrap;
-      }
+.nav-links > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+  transition: width 0.3s ease;
+}
 
-      .chemical-item.active {
-        background: #6a8dff;
-        color: #fff;
-      }
+.nav-links > li > a:hover::after {
+  width: 100%;
+}
 
-      .chemical-preview {
-        width: 100%;
-        padding: 30px 20px;
-      }
+/* Dropdown container */
+.dropdown-menu,
+.sub-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: white;
+  padding: 10px 10px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 999;
+  border: 1px solid #eee;
+  list-style: none !important;
+}
 
-      .chemical-details {
-        padding: 25px 20px;
-      }
-
-      .chemical-details p {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<section class="chemical-showcase">
-  <div class="chemical-list">
-    <div class="chemical-item active" onmouseover="showChemical('autoprep')">Autoprep Gel</div>
-    <div class="chemical-item" onmouseover="showChemical('capillex25')">Capillex 25</div>
-    <div class="chemical-item" onmouseover="showChemical('capillex18')">Capillex 18</div>
-    <div class="chemical-item" onmouseover="showChemical('capillexcx')">Capillex CX</div>
-    <div class="chemical-item" onmouseover="showChemical('capillexcp')">Capillex CP</div>
-    <div class="chemical-item" onmouseover="showChemical('pluslava')">PLUS LAVA</div>
-    <div class="chemical-item" onmouseover="showChemical('plus9000')">PLUS 9000</div>
-    <div class="chemical-item" onmouseover="showChemical('plus8000')">PLUS 8000</div>
-    <div class="chemical-item" onmouseover="showChemical('plus6000')">PLUS 6000</div>
-    <div class="chemical-item" onmouseover="showChemical('plus1sr')">PLUS 1 SR</div>
-  </div>
-
-  <div class="chemical-preview">
-    <div id="autoprep" class="chemical-details active">
-      <img src="SOURCE/01.jpg" alt="Autoprep Gel">
-      <p>Ready-to-use micro-abrading gel for nylon/synthetic meshes. Optimizes stencil efficiency and printing capability. Ideal pre-treatment for new or caustic-cleaned mesh. Improves mesh-to-stencil adherence. Low viscosity, non-hazardous, biodegradable. Use with Universal Mesh Prep for best results.</p>
-    </div>
-    <div id="capillex25" class="chemical-details">
-      <img src="SOURCE/02.jpg" alt="Capillex 25">
-      <p>Perfect for medium-range mesh screen printing in electronics and industrial printing. Violet color, 25µ thickness. Mesh range: 77 - 120 threads/cm. Durable, easy to reclaim. Inks: Solvent, UV, Plastisol.</p>
-    </div>
-    <div id="capillex18" class="chemical-details">
-      <img src="SOURCE/03.jpg" alt="Capillex 18">
-      <p>High resolution and definition film for fine mesh applications in ceramics, electronics, and graphics. Green color, 18µ thickness. Mesh range: 120 - 150 threads/cm. Inks: Solvent, UV, Plastisol.</p>
-    </div>
-    <div id="capillexcx" class="chemical-details">
-      <img src="SOURCE/04.jpg" alt="Capillex CX">
-      <p>Controlled stencil profile for consistent ink deposit in industrial graphics applications. Grey/Green color, profile 4–5µ. Mesh range: 62 - 100 threads/cm. Inks: Solvent, UV, Plastisol.</p>
-    </div>
-    <div id="capillexcp" class="chemical-details">
-      <img src="SOURCE/05.jpg" alt="Capillex CP">
-      <p>Designed for ultra-fine halftone and line printing. Excellent dot reproduction. Blue/Green color, profile 2–3µ. Mesh range: 120 - 180 threads/cm. Inks: Solvent, UV, Plastisol.</p>
-    </div>
-    <div id="pluslava" class="chemical-details">
-      <img src="SOURCE/06.jpg" alt="PLUS LAVA">
-      <p>Triple-cure photopolymer emulsion with optional diazo. Designed for textile printing. Red emulsion, 45% solids. Mesh: 34 - 120 threads/cm. Use with water, UV, plastisol, discharge inks.</p>
-    </div>
-    <div id="plus9000" class="chemical-details">
-      <img src="SOURCE/07.jpg" alt="PLUS 9000">
-      <p>SBQ photopolymer emulsion for fast stencil building and exposure. Ideal for garments. Pink emulsion, 47% solids. Mesh: 15 - 77 threads/cm. Inks: Plastisol only.</p>
-    </div>
-    <div id="plus8000" class="chemical-details">
-      <img src="SOURCE/08.jpg" alt="PLUS 8000">
-      <p>Dual-cure emulsion with excellent durability and wide processing range. Blue emulsion, 38% solids. Mesh: 62 - 180 threads/cm. Inks: Solvent, water, UV, plastisol.</p>
-    </div>
-    <div id="plus6000" class="chemical-details">
-      <img src="SOURCE/09.jpg" alt="PLUS 6000">
-      <p>Economic diazo emulsion for textile applications with excellent print resolution. Violet emulsion, 44% solids. Mesh: 34 - 77 threads/cm. Inks: Water, Plastisol.</p>
-    </div>
-    <div id="plus1sr" class="chemical-details">
-      <img src="SOURCE/10.jpg" alt="PLUS 1 SR">
-      <p>Blue photopolymer emulsion for general-purpose printing with excellent resistance and coat quality. Medium-high solids, easy reclaim. Applications: Electronics, nameplates, garments, POS. Inks: Solvent, UV, Plastisol.</p>
-    </div>
-  </div>
-</section>
-
-<script>
-  function showChemical(id) {
-    document.querySelectorAll('.chemical-details').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.chemical-item').forEach(el => el.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    event.target.classList.add('active');
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-</script>
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-</body>
-</html>
+/* Dropdown links */
+.dropdown-menu a,
+.sub-dropdown-menu a {
+  display: block;
+  padding: 12px 0px;
+  color: #222;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.5s ease;
+  position: relative;
+  list-style: none !important;
+}
+
+.dropdown-menu a:hover,
+.sub-dropdown-menu a:hover {
+  background: linear-gradient(90deg, #00B5E2, #EC008C);
+  color: white;
+}
+
+.dropdown-menu a:not(:last-child),
+.sub-dropdown-menu a:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Parent of sub-dropdown */
+.sub-dropdown {
+  position: relative;
+}
+
+/* Position sub-dropdown menu */
+.sub-dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: -2px; /* prevent accidental gap */
+  border-radius: 12px;
+  min-width: 240px;
+}
+
+/* Show dropdowns on hover (desktop) */
+.nav-links li:hover > .dropdown-menu {
+  display: block;
+}
+
+.sub-dropdown:hover > .sub-dropdown-menu {
+  display: block;
+}
+
+
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+.nav-links {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  height: 100vh;
+  width: 280px; /* 🔄 Changed from 100px to 280px */
+  background: #111;
+  flex-direction: column;
+  padding: 80px 20px;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links > li > a {
+    color: white;
+    padding: 12px 0;
+  }
+
+  .dropdown-menu,
+  .sub-dropdown-menu {
+    position: static;
+    background: #222;
+    box-shadow: none;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+  }
+
+  .dropdown-menu a,
+  .sub-dropdown-menu a {
+    color: white;
+    padding-left: 25px;
+  }
+
+  .dropdown-menu.show,
+  .sub-dropdown-menu.show {
+    display: flex !important;
+  }
+
+  /* Prevent hover dropdowns on mobile */
+  .nav-links li:hover > .dropdown-menu,
+  .sub-dropdown:hover > .sub-dropdown-menu {
+    display: none;
+  }
+}
+
+/* Overlay for mobile menu */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+</style>
+
+
+  <div class="navbar" id="navbar">
+    <div class="logo">
+      <img src="images/LOGO_clear_improved.png" alt="Logo" />
+    </div>
+    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">HOME</a></li>
+      <li>
+        <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
+        <ul class="dropdown-menu">
+
+
+          
+  <li class="sub-dropdown">
+    <a href="#">Premium Product List <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">MAC dermid</a></li>
+      <li><a href="#">Orafol</a></li>
+      <li><a href="#">3M</a></li>
+      <li><a href="#">Sabic</a></li>
+      <li><a href="#">Machines</a></li>
+      <li><a href="#">Stretching </a></li>
+      <li><a href="#">Exposing </a></li>
+      <li><a href="#">Nittoku</a></li>
+      <li><a href="#">Print color</a></li>
+      <li><a href="#">Yessor</a></li>
+      <li><a href="#">Sansui</a></li>
+      <li><a href="#">NittoL</a></li>
+      <li><a href="#">Avery</a></li>
+      <li><a href="#">Jk lite</a></li>
+      <li><a href="#">Photokina</a></li>
+     
+    </ul>
+  </li>
+
+
+
+
+  <li class="sub-dropdown">
+    <a href="#">Products & Materials <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Industrial Polyester Films</a></li>
+      <li><a href="#">Sabic Polycarbonate Films</a></li>
+      <li><a href="#">Vinyl for Industrial Printing</a></li>
+      <li><a href="#">Surface Protection Films</a></li>
+      <li><a href="#">Release Papers</a></li>
+      <li><a href="#">Velvet Films</a></li>
+      <li><a href="#">MacDermid Autotype Autotex (Fine & Velvet)</a></li>
+      <li><a href="#">MacDermid Autotype Autoflex EB</a></li>
+      <li><a href="#">Screen Printing Inks (Seiko Ink)</a></li>
+      <li><a href="#">Printing Chemicals</a></li>
+      <li><a href="#">Pre-Press Emulsions & Chemicals</a></li>
+      <li><a href="#">VIEW ALL</a></li>
+     
+    </ul>
+  </li>
+           <li class="sub-dropdown">
+    <a href="#">Frames & Mesh <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Aluminium Screen Printing Frames</a></li>
+      <li><a href="#">New Aluminium Frames</a></li>
+      <li><a href="#">Polyester Screen Printing Mesh</a></li>
+      <li><a href="#">Universal Mesh Prep</a></li>
+    </ul>
+  </li>
+  <!-- 🧽 Accessories & Tools -->
+  <li class="sub-dropdown">
+    <a href="#">Accessories & Tools <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Squeegee Rubber</a></li>
+      <li><a href="#">Squeegee Hardness Meter</a></li>
+      <li><a href="#">Tension Meter</a></li>
+      <li><a href="#">Cross Hatch Tester</a></li>
+      <li><a href="#">Pencil Hardness Tester</a></li>
+      <li><a href="#">Lint-Free Wipes</a></li>
+      <li><a href="#">Sticky Mat</a></li>
+      <li><a href="#">RAL & Pantone Formula Guide</a></li>
+    </ul>
+  </li>
+
+  <!-- 🧷 Adhesives & Tapes -->
+  <li class="sub-dropdown">
+    <a href="#">Adhesives & Tapes <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Frame Adhesive</a></li>
+      <li><a href="#">Adhesive Tapes</a></li>
+      <li><a href="#">Adhesive Transfer Tapes</a></li>
+      <li><a href="#">Tissue Tape (3M 91091)</a></li>
+      <li><a href="#">Spacer Tapes (DSM7, Membrane)</a></li>
+      <li><a href="#">Nitto 5015 Tape</a></li>
+    </ul>
+  </li>
+
+  <!-- 🛠️ Machines & Equipment -->
+  <li class="sub-dropdown">
+    <a href="#">Machines & Equipment <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Stretching Machines</a></li>
+      <li><a href="#">Exposing Machines</a></li>
+      <li><a href="#">Printing Machines</a></li>
+      <li><a href="#">Drying Machines</a></li>
+    </ul>
+  </li>
+
+  <!-- 🛎️ Services -->
+  <li class="sub-dropdown">
+    <a href="#">Services <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Screen Exposing Services</a></li>
+      <li><a href="#">Screen Stretching Services</a></li>
+    </ul>
+  </li>
+
+  <!-- View All -->
+  <li><a href="#">View All Categories</a></li>
+</ul>
+      <li><a href="About_US.html">ABOUT US</a></li>
+      <li><a href="Contact.html">CONTACT US</a></li>
+    </ul>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      overlay.classList.toggle('show');
+    });
+
+    overlay.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      overlay.classList.remove('show');
+      closeAllMenus();
+    });
+
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const menu = toggle.nextElementSibling;
+          menu.classList.toggle('show');
+          closeOthers(menu, '.dropdown-menu');
+        }
+      });
+    });
+
+    document.querySelectorAll('.sub-dropdown > a').forEach(sub => {
+      sub.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const subMenu = sub.nextElementSibling;
+          subMenu.classList.toggle('show');
+          closeOthers(subMenu, '.sub-dropdown-menu');
+        }
+      });
+    });
+
+    function closeOthers(current, selector) {
+      document.querySelectorAll(selector).forEach(menu => {
+        if (menu !== current) menu.classList.remove('show');
+      });
+    }
+
+    function closeAllMenus() {
+      document.querySelectorAll('.dropdown-menu, .sub-dropdown-menu').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    }
+
+    document.querySelectorAll('.nav-links > li > a:not(.dropdown-toggle)').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+          overlay.classList.remove('show');
+          closeAllMenus();
+        }
+      });
+    });
+  </script>
+</section>

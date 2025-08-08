@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Screen Source - One Stop Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Include in <head> -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+body {
+ font-family: 'Myriad Pro', Arial, sans-serif;
+  background: #ffffff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+
+  
+  </style>
+</head>
+<body>
+
+
+    <!-- Header -->
+  <!-- NAVBAR SECTION START -->
+<section id="navbar-section">
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+  background: #f9f9f9;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 11px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.55); /* Reduced from 0.95 to 0.75 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.logo img {
+  height: 50px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: #111;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.nav-links {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links > li > a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 550;
+  font-size: 14px;
+  padding: 5px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+
+.nav-links > li > a:hover {
+  color: #EC008C;
+}
+
+.nav-links > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+  transition: width 0.3s ease;
+}
+
+.nav-links > li > a:hover::after {
+  width: 100%;
+}
+
+/* Dropdown container */
+.dropdown-menu,
+.sub-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: white;
+  padding: 10px 10px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 999;
+  border: 1px solid #eee;
+  list-style: none !important;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown links */
+.dropdown-menu a,
+.sub-dropdown-menu a {
+  display: block;
+  padding: 12px 0px;
+  color: #222;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  list-style: none !important;
+}
+
+.dropdown-menu a:hover,
+.sub-dropdown-menu a:hover {
+  background: linear-gradient(90deg, #00B5E2, #EC008C);
+  color: white;
+}
+
+.dropdown-menu a:not(:last-child),
+.sub-dropdown-menu a:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Parent of sub-dropdown */
+.sub-dropdown {
+  position: relative;
+}
+
+/* Position sub-dropdown menu */
+.sub-dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: -2px; /* prevent accidental gap */
+  border-radius: 12px;
+  min-width: 240px;
+}
+
+/* Show dropdowns on hover (desktop) */
+.nav-links li:hover > .dropdown-menu {
+  display: block;
+}
+
+.sub-dropdown:hover > .sub-dropdown-menu {
+  display: block;
+}
+
+
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+.nav-links {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  height: 100vh;
+  width: 280px; /* 🔄 Changed from 100px to 280px */
+  background: #111;
+  flex-direction: column;
+  padding: 80px 20px;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links > li > a {
+    color: white;
+    padding: 12px 0;
+  }
+
+  .dropdown-menu,
+  .sub-dropdown-menu {
+    position: static;
+    background: #222;
+    box-shadow: none;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+  }
+
+  .dropdown-menu a,
+  .sub-dropdown-menu a {
+    color: white;
+    padding-left: 25px;
+  }
+
+  .dropdown-menu.show,
+  .sub-dropdown-menu.show {
+    display: flex !important;
+  }
+
+  /* Prevent hover dropdowns on mobile */
+  .nav-links li:hover > .dropdown-menu,
+  .sub-dropdown:hover > .sub-dropdown-menu {
+    display: none;
+  }
+}
+
+/* Overlay for mobile menu */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+</style>
+
+
+  <div class="navbar" id="navbar">
+    <div class="logo">
+      <img src="images/LOGO_clear_improved.png" alt="Logo" />
+    </div>
+    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">HOME</a></li>
+      <li>
+        <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
+        <ul class="dropdown-menu">
+  <li class="sub-dropdown">
+    <a href="#">Products & Materials <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Industrial Polyester Films</a></li>
+      <li><a href="#">Sabic Polycarbonate Films</a></li>
+      <li><a href="#">Vinyl for Industrial Printing</a></li>
+      <li><a href="#">Surface Protection Films</a></li>
+      <li><a href="#">Release Papers</a></li>
+      <li><a href="#">Velvet Films</a></li>
+      <li><a href="#">MacDermid Autotype Autotex (Fine & Velvet)</a></li>
+      <li><a href="#">MacDermid Autotype Autoflex EB</a></li>
+      <li><a href="#">Screen Printing Inks (Seiko Ink)</a></li>
+      <li><a href="#">Printing Chemicals</a></li>
+      <li><a href="#">Pre-Press Emulsions & Chemicals</a></li>
+      <li><a href="#">VIEW ALL</a></li>
+     
+    </ul>
+  </li>
+           <li class="sub-dropdown">
+    <a href="#">Frames & Mesh <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Aluminium Screen Printing Frames</a></li>
+      <li><a href="#">New Aluminium Frames</a></li>
+      <li><a href="#">Polyester Screen Printing Mesh</a></li>
+      <li><a href="#">Universal Mesh Prep</a></li>
+    </ul>
+  </li>
+  <!-- 🧽 Accessories & Tools -->
+  <li class="sub-dropdown">
+    <a href="#">Accessories & Tools <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Squeegee Rubber</a></li>
+      <li><a href="#">Squeegee Hardness Meter</a></li>
+      <li><a href="#">Tension Meter</a></li>
+      <li><a href="#">Cross Hatch Tester</a></li>
+      <li><a href="#">Pencil Hardness Tester</a></li>
+      <li><a href="#">Lint-Free Wipes</a></li>
+      <li><a href="#">Sticky Mat</a></li>
+      <li><a href="#">RAL & Pantone Formula Guide</a></li>
+    </ul>
+  </li>
+
+  <!-- 🧷 Adhesives & Tapes -->
+  <li class="sub-dropdown">
+    <a href="#">Adhesives & Tapes <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Frame Adhesive</a></li>
+      <li><a href="#">Adhesive Tapes</a></li>
+      <li><a href="#">Adhesive Transfer Tapes</a></li>
+      <li><a href="#">Tissue Tape (3M 91091)</a></li>
+      <li><a href="#">Spacer Tapes (DSM7, Membrane)</a></li>
+      <li><a href="#">Nitto 5015 Tape</a></li>
+    </ul>
+  </li>
+
+  <!-- 🛠️ Machines & Equipment -->
+  <li class="sub-dropdown">
+    <a href="#">Machines & Equipment <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Stretching Machines</a></li>
+      <li><a href="#">Exposing Machines</a></li>
+      <li><a href="#">Printing Machines</a></li>
+      <li><a href="#">Drying Machines</a></li>
+    </ul>
+  </li>
+
+  <!-- 🛎️ Services -->
+  <li class="sub-dropdown">
+    <a href="#">Services <span class="dropdown-arrow">▸</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#">Screen Exposing Services</a></li>
+      <li><a href="#">Screen Stretching Services</a></li>
+    </ul>
+  </li>
+
+  <!-- View All -->
+  <li><a href="#">View All Categories</a></li>
+</ul>
+      <li><a href="About_US.html">ABOUT US</a></li>
+      <li><a href="Contact.html">CONTACT US</a></li>
+    </ul>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      overlay.classList.toggle('show');
+    });
+
+    overlay.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      overlay.classList.remove('show');
+      closeAllMenus();
+    });
+
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const menu = toggle.nextElementSibling;
+          menu.classList.toggle('show');
+          closeOthers(menu, '.dropdown-menu');
+        }
+      });
+    });
+
+    document.querySelectorAll('.sub-dropdown > a').forEach(sub => {
+      sub.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const subMenu = sub.nextElementSibling;
+          subMenu.classList.toggle('show');
+          closeOthers(subMenu, '.sub-dropdown-menu');
+        }
+      });
+    });
+
+    function closeOthers(current, selector) {
+      document.querySelectorAll(selector).forEach(menu => {
+        if (menu !== current) menu.classList.remove('show');
+      });
+    }
+
+    function closeAllMenus() {
+      document.querySelectorAll('.dropdown-menu, .sub-dropdown-menu').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    }
+
+    document.querySelectorAll('.nav-links > li > a:not(.dropdown-toggle)').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+          overlay.classList.remove('show');
+          closeAllMenus();
+        }
+      });
+    });
+  </script>
+</section>
+
+<!-- NAVBAR SECTION END -->
+
+
+
+<section class="hero-films">
+  <div class="hero-content">
+    <h1>Advanced Films & Materials</h1>
+    <p>
+      Explore high-performance hardcoated polyester and polycarbonate films for demanding industrial and consumer HMI applications.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .hero-films {
+    height: 50vh;
+    background: linear-gradient(135deg, #e9f0fa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    z-index: 2;
+  }
+
+  .hero-films h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-weight: 800;
+  }
+
+  .hero-films p {
+    font-size: 1.1rem;
+    color: #333;
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #fcd932, #f94c9c, #45c3f0);
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .hero-btn:hover {
+    filter: brightness(1.1);
+  }
+
+  @media (max-width: 600px) {
+    .hero-films {
+      height: auto;
+      padding: 80px 20px;
+    }
+
+    .hero-films h1 {
+      font-size: 2rem;
+    }
+
+    .hero-films p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+<section class="services-section">
+  <h2 class="services-title">MacDermid<span> Products</span></h2>
+
+  <div class="services-wrapper">
+    <!-- Left Button -->
+    <button class="nav-btn left">&#10094;</button>
+
+    <!-- Scrollable Cards Container -->
+    <div class="services-container">
+      <!-- Example Card 1 -->
+      <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Gloss and Antiglare Films</h3>
+          <p class="short-desc">Enable demanding industrial and consumer HMI applications with our flexible.</p>
+          <div class="more-details">
+            <p>Autoflex films combine flexibility with durability, offering excellent chemical and abrasion resistance. Available in gloss and antiglare finishes, they are ideal for demanding industrial and consumer HMI applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////22222/////////// -->
+           <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autotex® XE</h3>
+          <p class="short-desc">Textured hardcoated films designed for extended life in outdoor conditions.</p>
+          <div class="more-details">
+            <p>Autotex XE is a polyester film with specially designed hardcoat and primer layers. Unlike conventional films that can delaminate, become brittle, or flake under extreme conditions, the various layers in Autotex XE are formulated to resist ultraviolet light, moisture, and wide temperature variations.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////333333/////////// -->
+           <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autostat™ AHU</h3>
+          <p class="short-desc">Hazy heat-stabilized polyester film with optimized surface slip properties .</p>
+          <div class="more-details">
+            <p>Autostat AHU is a high-quality, haze-resistant, heat-stabilized polyester film with excellent surface slip properties for superior sheet handling. It is available in sheets and rolls with tight dimensional and squareness tolerances.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////44444/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autostat™ CUS</h3>
+          <p class="short-desc"> heat-stabilized polyester film with a slip  for excellent film handling characteristics.</p>
+          <div class="more-details">
+            <p>Autostat CUS is a high-quality, clear, heat-stabilized polyester film with a slip treatment on both sides for excellent film handling characteristics. It is available in sheets and rolls, with tight dimensional and squareness tolerances, and excellent lay-flat properties for accurate print registration. Applications include flexible circuitry, membrane switch circuitry, flexible flat cables, sensors, and RFID antennas.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////5555/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autoflex® EB Gloss & Antiglare</h3>
+          <p class="short-desc">Highly durable and flexible hardcoated polyester films with excellent optical properties.</p>
+          <div class="more-details">
+            <p>Autoflex EB is a hard-coated polyester film range designed to provide high abrasion, chemical, and solvent resistance, along with excellent optical clarity and flexibility. These films can be embossed and support extended switch life.  Available in gloss and antiglare finishes, Autoflex EB offers solvent and UV ink primer options for both screen and digital printing, including UV-curable inks.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////666/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autostat™ CT</h3>
+          <p class="short-desc">Clear, heat-stabilized polyester film with tight dimensional and squareness tolerances. Pre-primed on both sides.</p>
+          <div class="more-details">
+            <p>Autostat CT is a high-quality, clear, heat-stabilized polyester film, pre-primed on both sides, and available in sheets and rolls with tight dimensional and squareness tolerances. Applications include flexible circuitry, membrane switch circuitry, flexible flat cables, sensors, and RFID antennas.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?////////////////////////////77777777777/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autostat™ WP20</h3>
+          <p class="short-desc">Stabilized polyester film with low transparency for high contrast printing.</p>
+          <div class="more-details">
+            <p>Autostat WP20 is a heat-stabilized, white opaque polyester film featuring a primer coating on one surface. The primed side has a higher gloss level than the untreated surface. With very low transparency and high brightness, it serves as a versatile print medium, offering excellent mechanical strength and good dimensional stability.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////88888888/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autostat™ HT</h3>
+          <p class="short-desc">Hazy, heat-stabilized polyester film, with an ink primer coating on both sides.</p>
+          <div class="more-details">
+            <p>Autostat HT is a high-quality, hazy, heat-stabilized polyester film with an ink primer coating on both sides. It is available in sheets and rolls, with tight dimension and squareness tolerance, and excellent lay-flat properties for accurate print registration. Applications include flexible circuitry, membrane switch circuitry, flexible flat cables, sensors, and RFID antennas.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////99999999/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autostat™ WT</h3>
+          <p class="short-desc">Stabilized polyester film with an opaque white finish and double-sided adhesion treatment.</p>
+          <div class="more-details">
+            <p>Autostat WT is a high-quality, opaque white, heat-stabilized polyester film with an ink primer coating on both sides. It is available in sheets and rolls, with tight dimensional and squareness tolerances and excellent lay-flat properties for accurate print registration. Applications include flexible circuitry, membrane switch circuitry, flexible flat cables, sensors, and RFID antennas.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////1000000/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Windotex™</h3>
+          <p class="short-desc">Windotex produces clear and durable display windows when selectively printed on Autotex textured films.</p>
+          <div class="more-details">
+            <p>Windotex is specially designed for Autotex hard-coated films to produce display windows in selected areas of the textured surface.
+
+For Autotex film, which has a textured first surface, screen or digital printing is used to print the required graphic design on the second or print surface of the sheet. It's also possible to screen-print with Windotex onto selected areas of the first surface to form crystal-clear windows for electronic displays. Windotex Gloss and Windotex Antiglare can be mixed in different proportions to achieve different effects. The resulting window is wear-resistant, scratch-resistant, and chemical-resistant.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+<!-- ?/////////////////////////////111111111/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>XtraForm® 3D Gloss</h3>
+          <p class="short-desc">A deep formable hardcoated high gloss finish polycarbonate film for automotive interiors.</p>
+          <div class="more-details">
+            <p>XtraForm 3D is a formable polycarbonate film with a UV-curable hardcoat, designed for deep-draw 3D film insert molding (FIM) applications using the XtraForm process. The advanced coating technology delivers a consistently black appearance, even in deeply formed areas.
+
+XtraForm 3D enables smart surfaces that are feature-rich, visually striking, and highly durable.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+  <!-- ?/////////////////////////////1111122222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>XtraForm® AntiGlare</h3>
+          <p class="short-desc">A deep formable polycarbonate film hardcoated with a consistent antiglare finish.</p>
+          <div class="more-details">
+            <p>XtraForm Antiglare is a formable polycarbonate film with a UV-curable hardcoat. It is designed for deep-draw 3D film insert molding (FIM) applications using the XtraForm process. The antiglare coating disperses reflections, making displays clearer and safer in different lighting conditions.
+
+With XtraForm Antiglare, displays and smart surfaces can be feature-rich, visually stunning, and highly durable.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////1111133333333/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autotex® PC Fine & Touchpad</h3>
+          <p class="short-desc">A flexible hardcoated film with a smooth texture designed for laptop touchpads.</p>
+          <div class="more-details">
+            <p>Autotex PC consists of a high-quality polycarbonate film coated with a highly durable and chemically resistant textured hardcoat. The texture does not contain fillers, promoting outstanding clarity and consistency from batch to batch.
+
+This product is used for applications where the rigidity and clarity of thick-gauge polycarbonate are required, along with an abrasion- and chemically resistant surface. The hardcoat is finished with a consistently smooth texture (Fine or Touch), which is ideal for laptops and other touchpads.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>XtraForm® 2D Gloss & AntiGlare</h3>
+          <p class="short-desc">A polycarbonate film hardcoated with gloss and antiglare finishes. Suitable for flatter applications.</p>
+          <div class="more-details">
+            <p>XtraForm 2D is a hard-coated polycarbonate film designed to allow shallow forming while retaining its abrasion-resistant properties. This product has a chemically bonded, UV-cured hard surface coating in a gloss or antiglare finish.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Fototex™</h3>
+          <p class="short-desc">A UV curable texturing lacquer for printing texture finishes over selected areas of Autoflex films.</p>
+          <div class="more-details">
+            <p>Fototex is a UV-curable texturing lacquer designed for use with all Autoflex films or uncoated polycarbonate. This product offers a simple and cost-effective method for producing a range of durable surface textures. For example, when printed on automotive dials, it can be used to produce flat, matte, and non-reflective finishes.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>XtraForm® Texturing Liquids</h3>
+          <p class="short-desc">Formable and printable lacquers that provide contrasting surface finishes over selected areas.</p>
+          <div class="more-details">
+            <p>XtraForm Fine and XtraForm Supermatt are solvent-based, UV-curable, screen-printable texturing lacquers. They are designed to enable a range of matte textured finishes to be printed selectively onto XtraForm films using the XtraForm process.
+
+After drying, they can be formed to produce deep-draw 3D parts, which, when UV cured, will give a hard, textured finish. They can also be printed onto graphic inks for automotive dial applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autotex® Softouch</h3>
+          <p class="short-desc">A unique soft-to-touch hardcoated polyester film for HMI applications where a high-quality tactile experience is required.</p>
+          <div class="more-details">
+            <p>Autotex Softouch's distinctive, silky texture is incredibly tactile yet robust, and it still delivers exceptional resistance to a wide range of chemicals, solvents, surface wear, and abrasion.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Autotex® Fine, Velvet, & Touch</h3>
+          <p class="short-desc">Durable, high-clarity films for printing applications.</p>
+          <div class="more-details">
+            <p>These films offer excellent dimensional stability, superior surface properties, and are ideal for high-precision screen printing. Common in overlay applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Industrial Polyester Films</h3>
+          <p class="short-desc">Durable, high-clarity films for printing applications.</p>
+          <div class="more-details">
+            <p>These films offer excellent dimensional stability, superior surface properties, and are ideal for high-precision screen printing. Common in overlay applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Industrial Polyester Films</h3>
+          <p class="short-desc">Durable, high-clarity films for printing applications.</p>
+          <div class="more-details">
+            <p>These films offer excellent dimensional stability, superior surface properties, and are ideal for high-precision screen printing. Common in overlay applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Industrial Polyester Films</h3>
+          <p class="short-desc">Durable, high-clarity films for printing applications.</p>
+          <div class="more-details">
+            <p>These films offer excellent dimensional stability, superior surface properties, and are ideal for high-precision screen printing. Common in overlay applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Industrial Polyester Films</h3>
+          <p class="short-desc">Durable, high-clarity films for printing applications.</p>
+          <div class="more-details">
+            <p>These films offer excellent dimensional stability, superior surface properties, and are ideal for high-precision screen printing. Common in overlay applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Industrial Polyester Films</h3>
+          <p class="short-desc">Durable, high-clarity films for printing applications.</p>
+          <div class="more-details">
+            <p>These films offer excellent dimensional stability, superior surface properties, and are ideal for high-precision screen printing. Common in overlay applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      <!-- ?/////////////////////////////22222/////////// -->
+
+             <div class="service-card">
+        <div class="img-wrapper">
+          <img src="images/AOTOSTAT.jpg" alt="Industrial Polyester Films">
+        </div>
+        <div class="card-content">
+          <h3>Industrial Polyester Films</h3>
+          <p class="short-desc">Durable, high-clarity films for printing applications.</p>
+          <div class="more-details">
+            <p>These films offer excellent dimensional stability, superior surface properties, and are ideal for high-precision screen printing. Common in overlay applications.</p>
+          </div>
+          <button class="view-more">View More</button>
+        </div>
+      </div>
+      
+
+      <!-- Add remaining cards (2–24) here -->
+
+    </div>
+
+    <!-- Right Button -->
+    <button class="nav-btn right">&#10095;</button>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #e9f0fa, #ffffff);
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+  }
+
+  .services-title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #6a8dff, #ff71c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 50px;
+  }
+
+  .services-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .services-container {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    flex: 1;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .services-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    background: white;
+    border: none;
+    font-size: 2.2rem;
+    padding: 8px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .nav-btn:hover {
+    background: #ff71c0;
+    color: white;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 16px;
+    max-height: 420px;
+    min-width: 260px;
+    max-width: 280px;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.05), 0 12px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+.service-card.expanded {
+  max-height: 1000px; /* enough to show all content */
+}
+
+.more-details {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.service-card.expanded .more-details {
+  max-height: 300px;
+  opacity: 1;
+}
+  .service-card:hover {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+      linear-gradient(to right, #6a8dff, #ff71c0) border-box;
+  }
+
+  .img-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+  }
+
+  .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.3s ease;
+  }
+
+  .service-card:hover img {
+    scale: 1.05;
+  }
+
+  .card-content {
+    padding: 6px 20px 1px;
+    display: flex;
+    flex-direction: column;
+    /* height: 60%; */
+}
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    color: #444;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .short-desc {
+    margin-bottom: 10px;
+  }
+
+  .more-details {
+    display: none;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  .service-card.expanded .more-details {
+    display: block;
+  }
+
+  .view-more {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 8px 82px;
+    font-size: 0.9rem;
+    background: linear-gradient(to right, #6a8dff, #ff71c0);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+  }
+
+  .view-more:hover {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .services-title {
+      font-size: 2rem;
+    }
+
+    .nav-btn {
+      display: none;
+    }
+
+    .service-card {
+      min-width: 85%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-title {
+      font-size: 1.7rem;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+<script>
+  const container = document.querySelector('.services-container');
+  const leftBtn = document.querySelector('.nav-btn.left');
+  const rightBtn = document.querySelector('.nav-btn.right');
+
+  leftBtn.addEventListener('click', () => {
+    container.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+
+  rightBtn.addEventListener('click', () => {
+    container.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+
+  // Ensure only one card expands at a time
+document.querySelectorAll('.view-more').forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.service-card');
+    card.classList.toggle('expanded');
+
+    const details = card.querySelector('.more-details');
+    if (card.classList.contains('expanded')) {
+      details.style.maxHeight = details.scrollHeight + 'px';
+      details.style.opacity = 1;
+    } else {
+      details.style.maxHeight = '0';
+      details.style.opacity = 0;
+    }
+  });
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ?????????????????????????  FOOTER ????????????????????????????????// -->
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<footer style="background: linear-gradient(90deg, #002855, #00509d); color: white; padding: 70px 20px; font-family: 'Poppins', sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+
+    <!-- Company Info -->
+    <div style="flex: 1 1 260px;">
+      <h3 style="font-size: 26px; font-weight: 800; margin: 0 0 10px 0; letter-spacing: 0.5px;
+        background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;">
+        Screen Source
+      </h3>
+
+      <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
+        Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
+      </p>
+      <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-instagram"></i></a>
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1 1 160px;">
+      <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-link"></i> Quick Links</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
+        <li><a href="index.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Home</a></li>
+        <li><a href="About_US.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">About Us</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Products -->
+    <div style="flex: 1 1 240px;">
+      <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products & Materials</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Frames & Mesh</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Accessories & Tools </a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Adhesives & Tapes </a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Machines & Equipment</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services </a></li>
+        <li><a href="#" style="color: white; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">VIEW ALL</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div style="flex: 1 1 240px;">
+      <h4 style="margin-top: 0; margin-bottom: 15px; font-size: 17px; color: #ffb200;"><i class="fas fa-address-card"></i> Contact</h4>
+      <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Pune, Maharashtra</p>
+      <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>info@screensource.in</p>
+      <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-phone" style="margin-right: 8px;"></i>+91 98765 43210</p>
+    </div>
+
+  </div>
+
+  <hr style="margin: 40px auto 25px; border: 0; height: 1px; background: #ffffff33; width: 90%;">
+
+  <div style="text-align: center; font-size: 14px; opacity: 0.85;">
+    © 2025 <strong>Screen Source</strong>. All rights reserved.
+  </div>
+  <div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
+    Developed By <strong>DW INNOVATION PVT. LTD.</strong>
+  </div>
+</footer>
+
+
+
+
+<!-- Scroll to Top Button -->
+<button onclick="window.scrollTo({top:0, behavior:'smooth'})"
+  style="position:fixed; bottom:20px; right:20px; background:#FE320A; color:white; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer; font-size:18px; z-index:999;">
+  ↑
+</button>
+
+ <!-- ////////////////////    FOOTER END ////////////////////  -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+  <!-- JavaScript -->
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        loader.style.transition = "all 2s ease";
+        loader.style.transform = "translateY(-100%)";
+        loader.style.opacity = "0";
+        setTimeout(() => loader.style.display = "none", 2000);
+      }, 1900);
+    });
+
+    function toggleMenu(icon) {
+      icon.classList.toggle("cross");
+      const sideMenu = document.getElementById("sideMenu");
+      sideMenu.classList.toggle("show");
+      document.body.style.overflow = sideMenu.classList.contains("show") ? 'hidden' : 'auto';
+    }
+  </script>
+<!-- /////////////////////////////////    SIDE BAR ////////////////// -->
+<script>
+  function toggleMenu(icon) {
+    icon.classList.toggle("cross");
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("show");
+    document.body.style.overflow = sideMenu.classList.contains("show") ? 'hidden' : 'auto';
+
+    // Animate nav items using GSAP
+    const items = document.querySelectorAll('.nav-links li');
+    if (sideMenu.classList.contains("show")) {
+      gsap.fromTo(items, {
+        opacity: 0,
+        y: 20
+      }, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.2
+      });
+    }
+  }
+</script>
+
+<!-- //////////////////////////////////////// SIDE BAR END ///////////// -->
+<script>
+  function scrollToProducts() {
+    window.scrollTo({
+      top: document.querySelector('#about').offsetTop,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollToServices() {
+    window.scrollTo({
+      top: document.querySelector('#services').offsetTop,
+      behavior: 'smooth'
+    });
+  }
+</script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(".about-text", 
+    { opacity: 0, y: 50 }, 
+    { 
+      opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".about-text",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+
+  gsap.fromTo(".about-image", 
+    { opacity: 0, y: 50 }, 
+    { 
+      opacity: 1, y: 0, duration: 1.2, ease: "power3.out", delay: 0.2,
+      scrollTrigger: {
+        trigger: ".about-image",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+</script>
+<!-- //////////////////////////////////// SECTION --- 3333///////////////// -->
+<!-- Swiper Initialization -->
+<script>
+  const swiper = new Swiper(".mySwiper", {
+    slidesPerView: "auto",
+    spaceBetween: 30,
+    loop: true,
+    speed: 4000,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+    grabCursor: true,
+    freeMode: true,
+    freeModeMomentum: false,
+  });
+</script>
+
+
+<!-- Swiper Initialization -->
+<script>
+  new Swiper(".testimonial-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    grabCursor: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+</script>
+  <!-- Script -->
+<!-- jQuery and Slick JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  function scrollToProducts() {
+    const target = document.getElementById("products-section");
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop,
+        behavior: "smooth"
+      });
+    }
+  }
+
+  function scrollToServices() {
+    const target = document.getElementById("services-section");
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop,
+        behavior: "smooth"
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

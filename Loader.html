@@ -1,115 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Namrata Trading Co. - Loader</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+
+
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      overflow: hidden;
-      background: #f5f8ff;
-    }
-
-    /* Loader full-screen panel */
-    #loader {
+    .parallax-bg {
       position: fixed;
-      bottom: 0;
+      top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      background: #ffffff;
-      z-index: 9999;
+      background: url('images/HEROSECTION.png') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      z-index: -2;
+    }
+    section {
+      position: relative;
+      z-index: 2;
+    }
+    .banner-text {
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 20px;
-      animation: slideUp 1.5s ease-in-out forwards;
-      animation-delay: 2.8s;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      
     }
-
-    /* Image styling */
-    #loader img {
-      width: 180px;
-      max-width: 80%;
-      animation: fadeInScale 1.2s ease-in-out;
-      margin-bottom: 25px;
+    h2 span {
+      background: linear-gradient(90deg, #6a8dff, #ff71c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    /* Intro text below image */
-    #loader .intro-text {
-      max-width: 800px;
-      font-size: 1.05rem;
-      color: #333;
-      line-height: 1.7;
-      opacity: 0;
-      animation: fadeInText 1.5s ease-in-out forwards;
-      animation-delay: 1.2s;
-    }
-
-    /* Slide loader up */
-    @keyframes slideUp {
-      0% { transform: translateY(0%); }
-      100% { transform: translateY(-100%); }
-    }
-
-    /* Image fade in */
-    @keyframes fadeInScale {
-      0% { opacity: 0; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    /* Text fade in */
-    @keyframes fadeInText {
-      to { opacity: 1; }
-    }
-
-    /* Main content (revealed after loader) */
-    .main-content {
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 3.2s;
+    .section-padding {
       padding: 100px 20px;
-      text-align: center;
     }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    @media (max-width: 768px) {
-      #loader .intro-text {
-        font-size: 0.95rem;
-      }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+    .gradient-bg {
+      background: linear-gradient(to bottom, #f5f8ff, #e2ebf7);
     }
   </style>
-</head>
-<body>
 
-  <!-- Loader -->
-  <div id="loader">
-    <img src="/mnt/data/a1472336-46ae-4af4-b739-daba17fd0c27.png" alt="Namrata Trading Co. Logo" />
-    <div class="intro-text">
-      Welcome to Namrata Trading Company,<br />
-      Your trusted partner for high-quality waterproofing and flooring solutions. With years of expertise and a commitment to excellence, we specialize in transforming spaces with durable, innovative, and aesthetically pleasing results. From epoxy/polyurethane flooring that ensures safety and longevity in industrial and commercial spaces to advanced waterproofing techniques that protect your structures from water damage, we deliver solutions that stand the test of time. What sets us apart is our customer-first approach. We don't just provide services; we solve problems. Every project we take on is meticulously planned and executed, ensuring precision, durability, and long-term satisfaction. Whether you're looking for seamless antiskid flooring, chemical-resistant surfaces, or watertight protection for basements and terraces, our team of experts uses only the best materials and cutting-edge techniques to meet your unique needs.
+
+
+
+<!-- ABOUT US SECTION -->
+<!-- AOS CSS (Ensure this is in your <head>) -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- ABOUT SCREEN SOURCE SECTION -->
+<section class="section-padding gradient-bg" style="padding: 120px 20px; background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); font-family: 'Arimo', sans-serif;">
+  <div style="max-width: 950px; margin: auto; text-align: center;" data-aos="fade-up">
+
+    <!-- Heading -->
+    <h2 style="font-size: 3rem; font-weight: 800; color: #0d2f53; margin-bottom: 20px;">
+      About <span style="color: #ff71c0;">ScreenSource</span>
+    </h2>
+    <h4 style="font-size: 1.4rem; font-weight: 600; color: #fe320a; margin-bottom: 40px;">
+      One Stop Solution for Printing Materials
+    </h4>
+
+    <!-- Description Paragraphs -->
+    <p style="font-size: 1.15rem; color: #333; line-height: 1.8; margin-bottom: 25px;">
+      Welcome to <strong>ScreenSource</strong>, one of the most innovative suppliers of screen printing materials in the industry. Located in <strong>Dhayari, Pune</strong>, we empower manufacturing and creative businesses across India with high-performance solutions that deliver precision, durability, and reliability.
+    </p>
+    <p style="font-size: 1.15rem; color: #333; line-height: 1.8; margin-bottom: 40px;">
+      Our team is passionate about <strong>customer satisfaction</strong>, <strong>technical support</strong>, and continuous <strong>innovation</strong> to meet the needs of today’s fast-paced screen printing industry.
+    </p>
+
+    <!-- Our Vision -->
+    <div style="margin-bottom: 40px;" data-aos="fade-up">
+      <h4 style="font-size: 1.3rem; color: #0d2f53; font-weight: 700; margin-bottom: 12px;">
+        🌟 Our Vision
+      </h4>
+      <p style="font-size: 1.1rem; color: #333; line-height: 1.7;">
+        To become India's go-to destination for premium screen printing solutions — built on quality, trust, and continuous innovation.
+      </p>
+    </div>
+
+    <!-- What We Offer -->
+    <div data-aos="fade-up">
+      <h4 style="font-size: 1.3rem; color: #0d2f53; font-weight: 700; margin-bottom: 15px;">
+        🛠️ What We Offer
+      </h4>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; font-size: 1.05rem; color: #333;">
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          ✅ High-performance industrial films & emulsions
+        </div>
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          🧪 Screen chemicals, squeegees & accessories
+        </div>
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          🖼️ Screen exposing & stretching services
+        </div>
+        <div style="flex: 1 1 220px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+          🤝 Expert consultation & custom support
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Main Website Content -->
-  <div class="main-content">
-    <h1>Namrata Trading Company</h1>
-    <p>This is your main website content revealed after the loader disappears.</p>
-  </div>
+<!-- AOS JS (Place before </body>) -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
-</body>
-</html>
+<!-- PARALLAX BACKGROUND -->
+<div class="parallax-bg"></div>
+
+<!-- HERO BANNER -->
+<section class="banner-text">
+  Empowering the Print Revolution
+</section>
+
+<style>
+  .banner-text {
+    font-size: 3rem;
+    font-weight: 1200px;
+    color: white;
+    -webkit-text-stroke: 2px #000; /* Black stroke */
+    text-stroke: 2px #000; /* For browsers supporting it */
+    text-align: center;
+    padding: 20px;
+    background: transparent;
+  }
+</style>
+
+
+

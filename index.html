@@ -25,7 +25,7 @@
       box-sizing: border-box;
     }
 body {
-  font-family: 'Arimo', sans-serif;
+ font-family: 'Myriad Pro', Arial, sans-serif;
   background: #ffffff;
   color: #222;
   overflow-x: hidden;
@@ -77,19 +77,27 @@ body {
     text-align:center;
     opacity:0;
     padding:0 20px;
-    animation:fadeIn 2s ease-in-out 0.5s forwards;
+    animation:fadeIn 2s ease-in-out 0.1s forwards;
   ">
     <img src="images/final logo.png" alt="Screen Source Logo" style="max-width:380px; margin-bottom:10px;" />
-    <p style="
-      font-size: 40px;
-      font-weight: 100;
-      color: #222;
-      letter-spacing: 0.7px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-      margin-top: 10px;
-    ">
-      One Stop Solution for Printing Material
-    </p>
+<p style="
+  font-size: 45px;
+  font-weight: 700;
+  color: #fcd932;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  margin-left: 40px; /* adjust as needed */
+  text-align: left;
+  text-shadow: 
+    2px 2px 4px rgba(0,0,0,0.9),
+    0 0 10px rgba(252, 217, 50, 0.6),
+    0 0 20px rgba(252, 217, 50, 0.4);
+  font-family: 'Poppins', sans-serif;
+">
+  One Stop Solution for Printing Material
+</p>
+
+
   </div>
 
   <!-- Optional Sound Effect -->
@@ -178,11 +186,11 @@ body {
 
       setTimeout(() => {
         const loader = document.getElementById("loader");
-        loader.style.transition = "all 2s ease";
+        loader.style.transition = "all 1s ease";
         loader.style.transform = "translateY(-100%)";
         loader.style.opacity = "0";
-        setTimeout(() => loader.style.display = "none", 2000);
-      }, 2500);
+        setTimeout(() => loader.style.display = "none", 4000);
+      }, 5500);
     });
   </script>
 </section>
@@ -193,17 +201,19 @@ body {
   <!-- NAVBAR SECTION START -->
 <section id="navbar-section">
 <style>
-  * {
+/* Base Reset */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Myriad Pro', Arial, sans-serif;
   background: #f9f9f9;
 }
 
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -218,15 +228,17 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.55); /* Reduced from 0.95 to 0.75 */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-
+/* Logo */
 .logo img {
   height: 50px;
 }
 
+/* Menu Toggle (Mobile) */
 .menu-toggle {
   display: none;
   font-size: 24px;
@@ -235,9 +247,10 @@ body {
   z-index: 1001;
 }
 
+/* Nav Links */
 .nav-links {
   display: flex;
-  gap: 50px;
+  gap: 90px;
   align-items: center;
   list-style: none;
 }
@@ -249,26 +262,34 @@ body {
 .nav-links > li > a {
   color: #111;
   text-decoration: none;
-  font-weight: 550;
-  font-size: 14px;
-  padding: 5px;
-  position: relative;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px 8px;
   transition: all 0.3s ease;
 }
-
 
 .nav-links > li > a:hover {
   color: #EC008C;
 }
+.nav-links,
+.nav-links li,
+.dropdown-menu,
+.sub-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 
 .nav-links > li > a::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+  background: linear-gradient(to right,  #EC008C);
+  border-radius: 4px;
   transition: width 0.3s ease;
 }
 
@@ -276,30 +297,30 @@ body {
   width: 100%;
 }
 
-/* Dropdown container */
+/* Dropdown Styles */
 .dropdown-menu,
 .sub-dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 240px;
-  background: white;
-  padding: 10px 10px;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  flex-direction: column;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 10px 0;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.3s ease-in-out;
   z-index: 999;
-  border: 1px solid #eee;
-  list-style: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: visible; /* ✅ Prevents clipping of sub-menus */
 }
 
-/* Fade animation */
+/* Dropdown Fade Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -307,46 +328,48 @@ body {
   }
 }
 
-/* Dropdown links */
+/* Dropdown Links */
 .dropdown-menu a,
 .sub-dropdown-menu a {
-  display: block;
-  padding: 12px 0px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 15px;
   color: #222;
   font-size: 14px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  list-style: none !important;
+  transition: all 0.4s ease;
 }
 
 .dropdown-menu a:hover,
 .sub-dropdown-menu a:hover {
-  background: linear-gradient(90deg, #00B5E2, #EC008C);
+background: linear-gradient(90deg, #EC008C, #FFC1E3);
+
   color: white;
+  padding-left: 20px;
 }
 
 .dropdown-menu a:not(:last-child),
 .sub-dropdown-menu a:not(:last-child) {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Parent of sub-dropdown */
+/* Sub-dropdown Positioning */
 .sub-dropdown {
   position: relative;
 }
 
-/* Position sub-dropdown menu */
 .sub-dropdown-menu {
   top: 0;
   left: 100%;
-  margin-left: -2px; /* prevent accidental gap */
+  margin-left: 0; /* ✅ Removed negative margin to avoid gap issues */
   border-radius: 12px;
-  min-width: 240px;
+  background: rgba(255, 255, 255, 0.95);
+  min-width: 250px;
 }
 
-/* Show dropdowns on hover (desktop) */
+/* Show dropdowns on hover (Desktop) */
 .nav-links li:hover > .dropdown-menu {
   display: block;
 }
@@ -355,9 +378,19 @@ body {
   display: block;
 }
 
+/* Add arrow indicators
+.nav-links li > a::after {
+  content: "";
+}
 
+.dropdown-menu > .sub-dropdown > a::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 14px;
+  color: #999;
+} */
 
-/* Mobile styles */
+/* Mobile Styles */
 @media (max-width: 768px) {
   .navbar {
     padding: 20px;
@@ -367,19 +400,20 @@ body {
   .menu-toggle {
     display: block;
   }
-.nav-links {
-  position: fixed;
-  top: 0;
-  left: -280px;
-  height: 100vh;
-  width: 280px; /* 🔄 Changed from 100px to 280px */
-  background: #111;
-  flex-direction: column;
-  padding: 80px 20px;
-  transition: left 0.3s ease;
-  overflow-y: auto;
-  z-index: 999;
-}
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    height: 100vh;
+    width: 280px;
+    background: #111;
+    flex-direction: column;
+    padding: 80px 20px;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    z-index: 999;
+  }
 
   .nav-links.active {
     left: 0;
@@ -415,14 +449,13 @@ body {
     display: flex !important;
   }
 
-  /* Prevent hover dropdowns on mobile */
   .nav-links li:hover > .dropdown-menu,
   .sub-dropdown:hover > .sub-dropdown-menu {
     display: none;
   }
 }
 
-/* Overlay for mobile menu */
+/* Overlay for Mobile Menu */
 .overlay {
   position: fixed;
   top: 0;
@@ -439,100 +472,41 @@ body {
 }
 
 </style>
-
-
-  <div class="navbar" id="navbar">
-    <div class="logo">
-      <img src="images/LOGO_clear_improved.png" alt="Logo" />
-    </div>
-    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">HOME</a></li>
-      <li>
-        <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
-        <ul class="dropdown-menu">
-  <li class="sub-dropdown">
-    <a href="#">Products & Materials <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Industrial Polyester Films</a></li>
-      <li><a href="#">Sabic Polycarbonate Films</a></li>
-      <li><a href="#">Vinyl for Industrial Printing</a></li>
-      <li><a href="#">Surface Protection Films</a></li>
-      <li><a href="#">Release Papers</a></li>
-      <li><a href="#">Velvet Films</a></li>
-      <li><a href="#">MacDermid Autotype Autotex (Fine & Velvet)</a></li>
-      <li><a href="#">MacDermid Autotype Autoflex EB</a></li>
-      <li><a href="#">Screen Printing Inks (Seiko Ink)</a></li>
-      <li><a href="#">Printing Chemicals</a></li>
-      <li><a href="#">Pre-Press Emulsions & Chemicals</a></li>
-      <li><a href="#">VIEW ALL</a></li>
-     
-    </ul>
-  </li>
-           <li class="sub-dropdown">
-    <a href="#">Frames & Mesh <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Aluminium Screen Printing Frames</a></li>
-      <li><a href="#">New Aluminium Frames</a></li>
-      <li><a href="#">Polyester Screen Printing Mesh</a></li>
-      <li><a href="#">Universal Mesh Prep</a></li>
-    </ul>
-  </li>
-  <!-- 🧽 Accessories & Tools -->
-  <li class="sub-dropdown">
-    <a href="#">Accessories & Tools <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Squeegee Rubber</a></li>
-      <li><a href="#">Squeegee Hardness Meter</a></li>
-      <li><a href="#">Tension Meter</a></li>
-      <li><a href="#">Cross Hatch Tester</a></li>
-      <li><a href="#">Pencil Hardness Tester</a></li>
-      <li><a href="#">Lint-Free Wipes</a></li>
-      <li><a href="#">Sticky Mat</a></li>
-      <li><a href="#">RAL & Pantone Formula Guide</a></li>
-    </ul>
-  </li>
-
-  <!-- 🧷 Adhesives & Tapes -->
-  <li class="sub-dropdown">
-    <a href="#">Adhesives & Tapes <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Frame Adhesive</a></li>
-      <li><a href="#">Adhesive Tapes</a></li>
-      <li><a href="#">Adhesive Transfer Tapes</a></li>
-      <li><a href="#">Tissue Tape (3M 91091)</a></li>
-      <li><a href="#">Spacer Tapes (DSM7, Membrane)</a></li>
-      <li><a href="#">Nitto 5015 Tape</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛠️ Machines & Equipment -->
-  <li class="sub-dropdown">
-    <a href="#">Machines & Equipment <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Stretching Machines</a></li>
-      <li><a href="#">Exposing Machines</a></li>
-      <li><a href="#">Printing Machines</a></li>
-      <li><a href="#">Drying Machines</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛎️ Services -->
-  <li class="sub-dropdown">
-    <a href="#">Services <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Screen Exposing Services</a></li>
-      <li><a href="#">Screen Stretching Services</a></li>
-    </ul>
-  </li>
-
-  <!-- View All -->
-  <li><a href="#">View All Categories</a></li>
-</ul>
-      <li><a href="About_US.html">ABOUT US</a></li>
-      <li><a href="Contact.html">CONTACT US</a></li>
-    </ul>
+<div class="navbar" id="navbar">
+  <div class="logo">
+    <img src="images/LOGO_clear_improved.png" alt="Logo" />
   </div>
+
+  <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">HOME</a></li>
+
+    <li>
+      <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="MAC_DERMIDE.html">MAC dermid</a></li>
+        <li><a href="#">Orafol</a></li>
+        <li><a href="#">3M</a></li>
+        <li><a href="#">Sabic</a></li>
+        <li><a href="#">Machines</a></li>
+        <li><a href="#">Stretching</a></li>
+        <li><a href="#">Exposing</a></li>
+        <li><a href="#">Nittoku</a></li>
+        <li><a href="#">Print color</a></li>
+        <li><a href="#">Yessor</a></li>
+        <li><a href="#">Sansui</a></li>
+        <li><a href="#">NittoL</a></li>
+        <li><a href="#">Avery</a></li>
+        <li><a href="#">Jk lite</a></li>
+        <li><a href="#">Photokina</a></li>
+      </ul>
+    </li>
+
+    <li><a href="About_US.html">ABOUT US</a></li>
+    <li><a href="Contact.html">CONTACT US</a></li>
+  </ul>
+</div>
 
   <div class="overlay" id="overlay"></div>
 
@@ -615,7 +589,7 @@ body {
   height: 100vh;
   background: url('images/FINAL_HERO_IMAGE\ .png') no-repeat center center/cover;
   text-align: center;
-  font-family: 'Arimo', sans-serif;
+ font-family: 'Myriad Pro', Arial, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -642,73 +616,91 @@ body {
     padding: 20px;
     width: 100%;
   ">
+<!-- Include Google Fonts in <head> -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800;900&display=swap" rel="stylesheet">
 
+<!-- Hero Heading -->
 <h1 style="
-  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
   font-weight: 800;
-  color: #fff8d6;
+  color: #fcd932;
   margin-bottom: 20px;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-text-stroke: 1px #000;
+  text-stroke: 1px #000;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(252, 217, 50, 0.1),
+    0 0 20px rgba(252, 217, 50, 0.1);
 ">
   Premium Screen Printing Materials & Services
 </h1>
 
+
+<!-- Hero Paragraph -->
 <p style="
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  color: #fff8d6;
-  max-width: 700px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: #ff71c0;
+  font-weight: 900;
+  max-width: 900px;
   margin: 0 auto 40px;
   line-height: 1.6;
   text-align: center;
-  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 0.5px #000;
+  text-stroke: 0.5px #000;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(255, 113, 192, 0.1),
+    0 0 20px rgba(255, 113, 192, 0.1);
 ">
-  Explore our extensive range of high-performance films, emulsions, squeegees, and technical services tailored for industrial and commercial screen printing excellence.
+  Discover top-quality materials and services for professional screen printing.
 </p>
 
 
-    <div style="
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    ">
-      <button onclick="scrollToProducts()" style="
-        padding: 14px 28px;
-        font-size: 1rem;
-        background: #6a8dff;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        View Products
-      </button>
+<div style="
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+">
+  <button onclick="scrollToProducts()" style="
+    padding: 18px 36px;
+    font-size: 1.1rem;
+    background: #6a8dff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  " onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+    View Products
+  </button>
 
-      <button onclick="scrollToServices()" style="
-        padding: 14px 28px;
-        font-size: 1rem;
-        background: #ff71c0;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        Our Services
-      </button>
-    </div>
-  </div>
+  <button onclick="scrollToContact()" style="
+    padding: 18px 36px;
+    font-size: 1.1rem;
+    background: #ff71c0;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  " onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+    Contact Us
+  </button>
+</div>
+
 </section>
 
 
 <!-- About Section --><!-- About Section -->
 
- <section id="about" style="padding: 100px 20px; background: linear-gradient(to bottom,#e2ebf7, #f5f8ff );  font-family: 'Arimo', sans-serif; margin-top: 100vh;">
+ <section id="about" style="padding: 100px 20px; background: linear-gradient(to bottom,#e2ebf7, #f5f8ff ); font-family: 'Myriad Pro', Arial, sans-serif; margin-top: 100vh;">
   <div class="about-wrapper" style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
     
     <!-- Text Content -->
@@ -740,21 +732,38 @@ body {
 <!-- //////////////////////////////// OUR CLIENT////////////////////////////// -->
 <!-- Include GSAP CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<section style="padding: 60px 20px; background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); font-family: 'Poppins', sans-serif;">
+
+<section style="padding: 60px 20px;  background: linear-gradient(to bottom,#f5f8ff ,#e2ebf7 ); font-family: 'Poppins', sans-serif; position: relative; overflow: hidden;">
+  <!-- Animated light effect -->
+  <div style="position: absolute; top: 0; left: -50%; width: 200%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%); animation: moveLight 10s linear infinite;"></div>
+
   <div style="max-width: 1300px; margin: auto; display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap; flex-direction: row;" id="clientsWrapper">
 
     <!-- Heading -->
     <div style="flex: 1 1 200px; min-width: 200px;">
-      <h2 style="font-size: 2.5rem; font-weight: 700; color: #222; line-height: 1.2; position: relative; padding-left: 20px;">
-        <span style="position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #fe320a;"></span>
-        OUR <br> CLIENTS
-      </h2>
+<h2 style="
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  position: relative;
+  padding-left: 20px;
+  background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0, #444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+">
+  <span style="position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: linear-gradient(180deg, #fe320a, #ff7b5c); border-radius: 10px;"></span>
+  OUR CLIENTS
+</h2>
+
     </div>
 
     <!-- Slider -->
     <div style="flex: 3 1 600px; overflow: hidden; position: relative;">
       <div class="clients-slider">
-        <!-- 12 Logos (duplicated for infinite loop) -->
+        <!-- Logos -->
         <img src="images/COMPANY_LOGO_01.png" alt="Client 1">
         <img src="images/COMPANY_LOGO_02.png" alt="Client 2">
         <img src="images/COMPANY_LOGO_03.png" alt="Client 3">
@@ -766,51 +775,38 @@ body {
         <img src="images/COMPANY_LOGO_09.jpg" alt="Client 9">
         <img src="images/COMPANY_LOGO_10.jpg" alt="Client 10">
         <img src="images/COMPANY_LOGO_11.jpeg" alt="Client 11">
-        <img src="images/COMPANY_LOGO_12.jpg" alt="Client 12">
-        <!-- Repeat -->
-        <img src="images/COMPANY_LOGO_01.png" alt="Client 1">
-        <img src="images/COMPANY_LOGO_02.png" alt="Client 2">
-        <img src="images/COMPANY_LOGO_03.png" alt="Client 3">
-        <img src="images/COMPANY_LOGO_04.jpg" alt="Client 4">
-        <img src="images/COMPANY_LOGO_05.jpg" alt="Client 5">
-        <img src="images/COMPANY_LOGO_06.png" alt="Client 6">
-        <img src="images/COMPANY_LOGO_07.jpg" alt="Client 7">
-        <img src="images/COMPANY_LOGO_08.png" alt="Client 8">
-        <img src="images/COMPANY_LOGO_09.jpg" alt="Client 9">
-        <img src="images/COMPANY_LOGO_10.jpg" alt="Client 10">
-        <img src="images/COMPANY_LOGO_11.jpeg" alt="Client 11">
-        <img src="images/COMPANY_LOGO_12.jpg" alt="Client 12">
+        <img src="images/COMPANY_LOGO_12.png" alt="Client 12">
       </div>
     </div>
   </div>
 
   <style>
+    @keyframes moveLight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(50%); }
+    }
+
     .clients-slider {
       display: flex;
       gap: 40px;
-      animation: scrollSlider 18s linear infinite;
       align-items: center;
-      padding: 10px 0;
+      white-space: nowrap;
     }
 
     .clients-slider img {
-      max-height: 60px;
+      max-height: 70px;
       object-fit: contain;
-      transition: transform 0.3s ease;
-      border-radius: 10px;
+      background: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
     }
 
     .clients-slider img:hover {
-      transform: scale(1.1);
-    }
-
-    @keyframes scrollSlider {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      transform: scale(1.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      filter: brightness(1.1);
     }
 
     @media (max-width: 768px) {
@@ -824,8 +820,8 @@ body {
       }
 
       .clients-slider img {
-        max-height: 40px;
-        border-radius: 6px;
+        max-height: 50px;
+        padding: 8px 16px;
       }
 
       h2 {
@@ -841,8 +837,26 @@ body {
   </style>
 </section>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.querySelector(".clients-slider");
+    const logosHTML = slider.innerHTML;
 
+    slider.innerHTML += logosHTML;
 
+    let totalWidth = 0;
+    slider.querySelectorAll("img").forEach(img => {
+        totalWidth += img.offsetWidth + parseInt(getComputedStyle(slider).gap);
+    });
+
+    gsap.to(slider, {
+        x: -totalWidth / 2,
+        duration: 20,
+        ease: "linear",
+        repeat: -1
+    });
+});
+</script>
 
 <!-- //////////////////////////////// OUR CLIENT////////////////////////////// -->
 
@@ -851,18 +865,21 @@ body {
 
 <section class="services-section">
   <h2>Screen Printing Services</h2>
-  <button class="scroll-btn left" onclick="scrollSlider(-1)">&#10094;</button>
-  <button class="scroll-btn right" onclick="scrollSlider(1)">&#10095;</button>
 
-  <div class="services-container" id="servicesSlider">
-    <!-- Cards inserted by JS -->
+  <div class="slider-wrapper">
+    <button class="scroll-btn left" onclick="scrollSlider(-1)">&#10094;</button>
+
+    <div class="services-container" id="servicesSlider">
+      <!-- Cards inserted by JS -->
+    </div>
+
+    <button class="scroll-btn right" onclick="scrollSlider(1)">&#10095;</button>
   </div>
 
   <style>
     .services-section {
       padding: 60px 20px;
       background: linear-gradient(to bottom, #e2ebf7, #f5f8ff);
-      position: relative;
       font-family: 'Poppins', sans-serif;
     }
 
@@ -875,26 +892,26 @@ body {
       -webkit-text-fill-color: transparent;
     }
 
+    .slider-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
     .scroll-btn {
-      position: absolute;
-      top: 60%;
-      transform: translateY(-50%);
       font-size: 2rem;
       background: white;
       border: none;
       cursor: pointer;
-      z-index: 2;
       padding: 10px 15px;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+      transition: background 0.3s;
     }
 
-    .scroll-btn.left {
-      left: 10px;
-    }
-
-    .scroll-btn.right {
-      right: 10px;
+    .scroll-btn:hover {
+      background: #f0f0f0;
     }
 
     .services-container {
@@ -903,24 +920,31 @@ body {
       scroll-behavior: smooth;
       gap: 20px;
       padding: 10px;
+      flex: 1;
     }
 
     .services-container::-webkit-scrollbar {
       display: none;
     }
 
+    .card-wrapper {
+      min-width: 290px;
+      max-width: 320px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
     .card {
-      min-width: 280px;
-      max-width: 300px;
+      height: 380px;
       background: white;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       border: 3px solid;
       border-image: linear-gradient(45deg, #fcd932, #f94c9c, #45c3f0, #444) 1;
-      position: relative;
       transition: transform 0.3s ease;
-      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
@@ -935,6 +959,7 @@ body {
 
     .card-content {
       padding: 15px;
+      flex-grow: 1;
     }
 
     .card h3 {
@@ -948,25 +973,26 @@ body {
       color: #666;
     }
 
-    .hover-button {
+    .view-button {
       position: absolute;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(to right, #fcd932, #f94c9c, #45c3f0, #444);
-      border: none;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(to right, #f94c9c, #45c3f0);
       color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
+      padding: 12px;
+
       font-weight: bold;
       cursor: pointer;
+      text-decoration: none;
       opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition: opacity 0.3s ease, bottom 0.3s ease;
     }
 
-    .card:hover .hover-button {
+    .card-wrapper:hover .view-button {
       opacity: 1;
-      transform: translateX(-50%) translateY(-5px);
+      bottom: 0;
     }
 
     @media (max-width: 600px) {
@@ -976,7 +1002,7 @@ body {
     }
   </style>
 
-<script>
+  <script>
   const services = [
     { title: "Industrial Polyester Films", image: "images/Industrial Polyester Films_01.jpg", link:"Industrial_Polyester_Films.html"},
     { title: "Sabic Polycarbonate Films", image: "images/sabic-polycarbonate.jpg", link: "Sabic_Polycarbonate.html" },
@@ -987,7 +1013,7 @@ body {
     { title: "MacDermid Autotype Autotex (Fine & Velvet)", image: "images/autotex.webp", link: "MacDermid_Autotype_Autoflex_EB.html" },
     { title: "MacDermid Autotype Autoflex EB", image: "images/autoflex-eb.jpg", link: "MacDermid_Autotype_Autotex_EB.html" },
     { title: "Screen Printing Inks (Seiko Ink)", image: "images/screen-inks.jpg", link: "Screen_Printing_Inks (Seiko Ink).html" },
-    { title: "Printing Chemicals", image: "images/printing-chemicals.jpg", link: "Printing_Chemicals.html" },
+    { title: "Printing Chemicals", image: "images/PRINTING_CHEMICALS.webp", link: "Printing_Chemicals.html" },
     { title: "Pre-Press Emulsions & Chemicals", image: "images/emulsions.jpg", link: "#emulsions" },
     { title: "Aluminium Screen Printing Frames", image: "images/aluminium-frames.jpg", link: "#frames" },
     { title: "New Aluminium Frames", image: "images/new-frames.jpg", link: "#newframes" },
@@ -1015,31 +1041,39 @@ body {
     { title: "RAL & Pantone Formula Guide", image: "images/ral-pantone.jpg", link: "#ralpantone" }
   ];
 
-  const slider = document.getElementById('servicesSlider');
+    const slider = document.getElementById('servicesSlider');
 
-  services.forEach(service => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <img src="${service.image}" alt="${service.title}" />
-      <div class="card-content">
-        <h3>${service.title}</h3>
-        <p>Professional quality for all your screen printing needs.</p>
-      </div>
-      <a href="${service.link}" class="hover-button">View</a>
-    `;
-    slider.appendChild(card);
-  });
+    services.forEach(service => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'card-wrapper';
 
-  function scrollSlider(direction) {
-    const scrollAmount = 320;
-    slider.scrollLeft += direction * scrollAmount;
-  }
-</script>
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${service.image}" alt="${service.title}" />
+        <div class="card-content">
+          <h3>${service.title}</h3>
+          <p>Professional quality for all your screen printing needs.</p>
+        </div>
+      `;
 
+      const viewBtn = document.createElement('a');
+      viewBtn.href = service.link;
+      viewBtn.className = 'view-button';
+      viewBtn.textContent = 'View';
+
+      wrapper.appendChild(card);
+      wrapper.appendChild(viewBtn);
+
+      slider.appendChild(wrapper);
+    });
+
+    function scrollSlider(direction) {
+      const scrollAmount = 340;
+      slider.scrollLeft += direction * scrollAmount;
+    }
+  </script>
 </section>
-
-
 
 
 
@@ -1060,29 +1094,29 @@ body {
         <!-- Slide 1 -->
         <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
           <p style="font-size:1rem; line-height:1.8;">“The quality and durability of their industrial films exceeded our expectations. Truly professional and timely service!”</p>
-          <h4 style="margin-top:20px; font-size:1.2rem; color:#6a8dff;">Amit Sharma</h4>
-          <span style="font-size:0.9rem; color:#555;">Production Manager, BrightTech</span>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#6a8dff;">Sandeep Kshirsagar</h4>
+          <span style="font-size:0.9rem; color:#555;">Pune, Maharashtra</span>
         </div>
 
         <!-- Slide 2 -->
         <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
           <p style="font-size:1rem; line-height:1.8;">“Excellent customer support and reliable products. Their film range is unmatched in terms of performance.”</p>
-          <h4 style="margin-top:20px; font-size:1.2rem; color:#ff71c0;">Sneha Verma</h4>
-          <span style="font-size:0.9rem; color:#555;">Procurement Head, InnoPlast</span>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#ff71c0;">Joseph Antony</h4>
+          <span style="font-size:0.9rem; color:#555;">Tiruppur, Tamil Nadu</span>
         </div>
 
         <!-- Slide 3 -->
         <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
           <p style="font-size:1rem; line-height:1.8;">“They delivered customized solutions quickly. The Autotex and Autostat films performed flawlessly.”</p>
-          <h4 style="margin-top:20px; font-size:1.2rem; color:#6a8dff;">Ravi Mehta</h4>
-          <span style="font-size:0.9rem; color:#555;">Director, PrintEdge</span>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#6a8dff;">Swapnil Bhadarge</h4>
+          <span style="font-size:0.9rem; color:#555;">Shirur, Maharashtra</span>
         </div>
 
         <!-- Slide 4 -->
         <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
           <p style="font-size:1rem; line-height:1.8;">“ScreenSource guided us perfectly on the best film choice for our application. Extremely satisfied!”</p>
-          <h4 style="margin-top:20px; font-size:1.2rem; color:#ff71c0;">Nikita Rao</h4>
-          <span style="font-size:0.9rem; color:#555;">Founder, Printomate</span>
+          <h4 style="margin-top:20px; font-size:1.2rem; color:#ff71c0;">Nitin Sharma</h4>
+          <span style="font-size:0.9rem; color:#555;">Shahada, Maharashtra</span>
         </div>
 
       </div>
@@ -1101,25 +1135,25 @@ body {
 <footer style="background: linear-gradient(90deg, #002855, #00509d); color: white; padding: 70px 20px; font-family: 'Poppins', sans-serif;">
   <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
 
-<!-- Company Info -->
-<div style="flex: 1 1 260px;">
-<h3 style="font-size: 26px; font-weight: 800; margin: 0 0 10px 0; letter-spacing: 0.5px;
-      background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;">
-  Screen Source
-</h3>
+    <!-- Company Info -->
+    <div style="flex: 1 1 260px;">
+      <h3 style="font-size: 26px; font-weight: 800; margin: 0 0 10px 0; letter-spacing: 0.5px;
+        background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;">
+        Screen Source
+      </h3>
 
-  <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
-    Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
-  </p>
-  <div style="display: flex; gap: 15px; align-items: center;">
-    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-instagram"></i></a>
-    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-linkedin-in"></i></a>
-    <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-whatsapp"></i></a>
-  </div>
-</div>
+      <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
+        Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
+      </p>
+      <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-instagram"></i></a>
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
 
     <!-- Quick Links -->
     <div style="flex: 1 1 160px;">
@@ -1128,58 +1162,43 @@ body {
         <li><a href="index.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Home</a></li>
         <li><a href="About_US.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">About Us</a></li>
         <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services</a></li>
         <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Contact</a></li>
       </ul>
     </div>
 
     <!-- Products -->
-<!-- Products -->
-<div style="flex: 1 1 220px;">
-  <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
-  <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.9;">
-    <li>• MacDermid Enthone Films</li>
-    <li>• Autotex, Autoflex, Autostat</li>
-    <li>• XtraForm 3D, Capillex Films</li>
-    <li>• Autoprep Gel, Emulsions (Plus Lava, 9000, etc.)</li>
-    <li>• Post-press: Autostrip, Screen Wash K3</li>
-    <li>• Fimor Serilor Squeegees (SR1, HR3)</li>
-    <li>• SunSui Vinyl, Anti-static rollers</li>
-    <li>• Lint-free wipes & accessories</li>
-  </ul>
-</div>
+    <div style="flex: 1 1 240px;">
+      <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products & Materials</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Frames & Mesh</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Accessories & Tools </a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Adhesives & Tapes </a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Machines & Equipment</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services </a></li>
+        <li><a href="#" style="color: white; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">VIEW ALL</a></li>
+      </ul>
+    </div>
 
-<!-- Services & Contact -->
-<div style="flex: 1 1 240px;">
-  <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-cogs"></i> Services</h4>
-  <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.9;">
-    <li>• Screen Stretching (guitar tensioning)</li>
-    <li>• Screen Exposing (HD stencils)</li>
-    <li>• Stencil preparation guidance</li>
-    <li>• Mesh compatibility consulting</li>
-    <li>• Custom film cutting & supply</li>
-    <li>• Prepress troubleshooting support</li>
-  </ul>
-
-  <h4 style="margin-top: 25px; margin-bottom: 15px; font-size: 17px; color: #ffb200;"><i class="fas fa-address-card"></i> Contact</h4>
-  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Pune, Maharashtra</p>
-  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>info@screensource.in</p>
-  <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-phone" style="margin-right: 8px;"></i>+91 98765 43210</p>
-</div>
+    <!-- Contact -->
+    <div style="flex: 1 1 240px;">
+      <h4 style="margin-top: 0; margin-bottom: 15px; font-size: 17px; color: #ffb200;"><i class="fas fa-address-card"></i> Contact</h4>
+      <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Pune, Maharashtra</p>
+      <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>info@screensource.in</p>
+      <p style="font-size: 15px; margin: 5px 0;"><i class="fas fa-phone" style="margin-right: 8px;"></i>+91 98765 43210</p>
+    </div>
 
   </div>
 
   <hr style="margin: 40px auto 25px; border: 0; height: 1px; background: #ffffff33; width: 90%;">
 
-<div style="text-align: center; font-size: 14px; opacity: 0.85;">
-  © 2025 <strong>Screen Source</strong>. All rights reserved.
-</div>
-<div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
-  Developed By <strong>DW INNOVATION PVT. LTD.</strong>
-</div>
+  <div style="text-align: center; font-size: 14px; opacity: 0.85;">
+    © 2025 <strong>Screen Source</strong>. All rights reserved.
+  </div>
+  <div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
+    Developed By <strong>DW INNOVATION PVT. LTD.</strong>
+  </div>
 </footer>
-
-
 
 <!-- Scroll to Top Button -->
 <button onclick="window.scrollTo({top:0, behavior:'smooth'})"
