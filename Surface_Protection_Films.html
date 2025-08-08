@@ -26,7 +26,7 @@
     }
 body {
  font-family: 'Myriad Pro', Arial, sans-serif;
-  background: #ffffff;
+background: linear-gradient(135deg, #000000, #434343);
   color: #222;
   overflow-x: hidden;
 }
@@ -53,6 +53,8 @@ body {
   background: #f9f9f9;
 }
 
+
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -67,15 +69,17 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.55); /* Reduced from 0.95 to 0.75 */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-
+/* Logo */
 .logo img {
   height: 50px;
 }
 
+/* Menu Toggle (Mobile) */
 .menu-toggle {
   display: none;
   font-size: 24px;
@@ -84,9 +88,10 @@ body {
   z-index: 1001;
 }
 
+/* Nav Links */
 .nav-links {
   display: flex;
-  gap: 50px;
+  gap: 90px;
   align-items: center;
   list-style: none;
 }
@@ -96,28 +101,36 @@ body {
 }
 
 .nav-links > li > a {
-  color: #111;
+  color: white ;
   text-decoration: none;
-  font-weight: 550;
-  font-size: 14px;
-  padding: 5px;
-  position: relative;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px 8px;
   transition: all 0.3s ease;
 }
-
 
 .nav-links > li > a:hover {
   color: #EC008C;
 }
+.nav-links,
+.nav-links li,
+.dropdown-menu,
+.sub-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 
 .nav-links > li > a::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   width: 0%;
   height: 3px;
   background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+  border-radius: 4px;
   transition: width 0.3s ease;
 }
 
@@ -125,30 +138,30 @@ body {
   width: 100%;
 }
 
-/* Dropdown container */
+/* Dropdown Styles */
 .dropdown-menu,
 .sub-dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 240px;
-  background: white;
-  padding: 10px 10px;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  flex-direction: column;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 10px 0;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.3s ease-in-out;
   z-index: 999;
-  border: 1px solid #eee;
-  list-style: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: visible; /* ✅ Prevents clipping of sub-menus */
 }
 
-/* Fade animation */
+/* Dropdown Fade Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -156,46 +169,48 @@ body {
   }
 }
 
-/* Dropdown links */
+/* Dropdown Links */
 .dropdown-menu a,
 .sub-dropdown-menu a {
-  display: block;
-  padding: 12px 0px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 15px;
   color: #222;
   font-size: 14px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  list-style: none !important;
+  transition: all 0.4s ease;
 }
 
 .dropdown-menu a:hover,
 .sub-dropdown-menu a:hover {
-  background: linear-gradient(90deg, #00B5E2, #EC008C);
+background: linear-gradient(90deg, #EC008C, #FFC1E3);
+
   color: white;
+  padding-left: 20px;
 }
 
 .dropdown-menu a:not(:last-child),
 .sub-dropdown-menu a:not(:last-child) {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Parent of sub-dropdown */
+/* Sub-dropdown Positioning */
 .sub-dropdown {
   position: relative;
 }
 
-/* Position sub-dropdown menu */
 .sub-dropdown-menu {
   top: 0;
   left: 100%;
-  margin-left: -2px; /* prevent accidental gap */
+  margin-left: 0; /* ✅ Removed negative margin to avoid gap issues */
   border-radius: 12px;
-  min-width: 240px;
+  background: rgba(255, 255, 255, 0.95);
+  min-width: 250px;
 }
 
-/* Show dropdowns on hover (desktop) */
+/* Show dropdowns on hover (Desktop) */
 .nav-links li:hover > .dropdown-menu {
   display: block;
 }
@@ -204,9 +219,19 @@ body {
   display: block;
 }
 
+/* Add arrow indicators
+.nav-links li > a::after {
+  content: "";
+}
 
+.dropdown-menu > .sub-dropdown > a::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 14px;
+  color: #999;
+} */
 
-/* Mobile styles */
+/* Mobile Styles */
 @media (max-width: 768px) {
   .navbar {
     padding: 20px;
@@ -216,19 +241,20 @@ body {
   .menu-toggle {
     display: block;
   }
-.nav-links {
-  position: fixed;
-  top: 0;
-  left: -280px;
-  height: 100vh;
-  width: 280px; /* 🔄 Changed from 100px to 280px */
-  background: #111;
-  flex-direction: column;
-  padding: 80px 20px;
-  transition: left 0.3s ease;
-  overflow-y: auto;
-  z-index: 999;
-}
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    height: 100vh;
+    width: 280px;
+    background: #111;
+    flex-direction: column;
+    padding: 80px 20px;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    z-index: 999;
+  }
 
   .nav-links.active {
     left: 0;
@@ -264,14 +290,13 @@ body {
     display: flex !important;
   }
 
-  /* Prevent hover dropdowns on mobile */
   .nav-links li:hover > .dropdown-menu,
   .sub-dropdown:hover > .sub-dropdown-menu {
     display: none;
   }
 }
 
-/* Overlay for mobile menu */
+/* Overlay for Mobile Menu */
 .overlay {
   position: fixed;
   top: 0;
@@ -288,100 +313,39 @@ body {
 }
 
 </style>
-
-
-  <div class="navbar" id="navbar">
-    <div class="logo">
-      <img src="images/LOGO_clear_improved.png" alt="Logo" />
-    </div>
-    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">HOME</a></li>
-      <li>
-        <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
-        <ul class="dropdown-menu">
-  <li class="sub-dropdown">
-    <a href="#">Products & Materials <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Industrial Polyester Films</a></li>
-      <li><a href="#">Sabic Polycarbonate Films</a></li>
-      <li><a href="#">Vinyl for Industrial Printing</a></li>
-      <li><a href="#">Surface Protection Films</a></li>
-      <li><a href="#">Release Papers</a></li>
-      <li><a href="#">Velvet Films</a></li>
-      <li><a href="#">MacDermid Autotype Autotex (Fine & Velvet)</a></li>
-      <li><a href="#">MacDermid Autotype Autoflex EB</a></li>
-      <li><a href="#">Screen Printing Inks (Seiko Ink)</a></li>
-      <li><a href="#">Printing Chemicals</a></li>
-      <li><a href="#">Pre-Press Emulsions & Chemicals</a></li>
-      <li><a href="#">VIEW ALL</a></li>
-     
-    </ul>
-  </li>
-           <li class="sub-dropdown">
-    <a href="#">Frames & Mesh <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Aluminium Screen Printing Frames</a></li>
-      <li><a href="#">New Aluminium Frames</a></li>
-      <li><a href="#">Polyester Screen Printing Mesh</a></li>
-      <li><a href="#">Universal Mesh Prep</a></li>
-    </ul>
-  </li>
-  <!-- 🧽 Accessories & Tools -->
-  <li class="sub-dropdown">
-    <a href="#">Accessories & Tools <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Squeegee Rubber</a></li>
-      <li><a href="#">Squeegee Hardness Meter</a></li>
-      <li><a href="#">Tension Meter</a></li>
-      <li><a href="#">Cross Hatch Tester</a></li>
-      <li><a href="#">Pencil Hardness Tester</a></li>
-      <li><a href="#">Lint-Free Wipes</a></li>
-      <li><a href="#">Sticky Mat</a></li>
-      <li><a href="#">RAL & Pantone Formula Guide</a></li>
-    </ul>
-  </li>
-
-  <!-- 🧷 Adhesives & Tapes -->
-  <li class="sub-dropdown">
-    <a href="#">Adhesives & Tapes <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Frame Adhesive</a></li>
-      <li><a href="#">Adhesive Tapes</a></li>
-      <li><a href="#">Adhesive Transfer Tapes</a></li>
-      <li><a href="#">Tissue Tape (3M 91091)</a></li>
-      <li><a href="#">Spacer Tapes (DSM7, Membrane)</a></li>
-      <li><a href="#">Nitto 5015 Tape</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛠️ Machines & Equipment -->
-  <li class="sub-dropdown">
-    <a href="#">Machines & Equipment <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Stretching Machines</a></li>
-      <li><a href="#">Exposing Machines</a></li>
-      <li><a href="#">Printing Machines</a></li>
-      <li><a href="#">Drying Machines</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛎️ Services -->
-  <li class="sub-dropdown">
-    <a href="#">Services <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Screen Exposing Services</a></li>
-      <li><a href="#">Screen Stretching Services</a></li>
-    </ul>
-  </li>
-
-  <!-- View All -->
-  <li><a href="#">View All Categories</a></li>
-</ul>
-      <li><a href="About_US.html">ABOUT US</a></li>
-      <li><a href="Contact.html">CONTACT US</a></li>
-    </ul>
+<div class="navbar" id="navbar">
+  <div class="logo">
+    <img src="images/LOGO_clear_improved.png" alt="Logo" />
   </div>
+
+  <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">HOME</a></li>
+
+    <li>
+      <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="MAC_DERMIDE.html">MAC dermid</a></li>
+        <li><a href="Orafol.html">Orafol</a></li>
+        <li><a href="3M.html">3M</a></li>
+        <li><a href="Sabic.html">Sabic</a></li>
+        <li><a href="Stretching.html">Stretching</a></li>
+        <li><a href="Exposing.html">Exposing</a></li>
+        <li><a href="Nittoku.html">Nittoku</a></li>
+        <li><a href="Print_color.html">Print color</a></li>
+        <li><a href="Yessor.html">Yessor</a></li>
+        <li><a href="Sansui.html">Sansui</a></li>
+        <li><a href="NittoL.html">NittoL</a></li>
+        <li><a href="Avery.html">Avery</a></li>
+      </ul>
+    </li>
+
+
+    <li><a href="About_US.html">ABOUT US</a></li>
+    <li><a href="Contact.html">CONTACT US</a></li>
+  </ul>
+</div>
 
   <div class="overlay" id="overlay"></div>
 
@@ -454,29 +418,27 @@ body {
 
 <!-- NAVBAR SECTION END -->
 
-<!-- Hero Section -->
-<!-- Hero Section -->
+
+
 <section class="hero-films">
   <div class="hero-content">
-    <h1>Surface Protection Films</h1>
-    <p>Protect surfaces during manufacturing, transportation, and installation with high-quality protection films engineered for industrial use.</p>
+<h1>Screen Exposing</h1>
+<p>
+  High-precision screen exposing services and equipment for accurate, consistent stencil creation — ideal for industrial and artistic screen printing workflows.
+</p>
+
+
   </div>
 </section>
 
-<!-- Product Section -->
-<section class="product-section">
-  <div class="product-scroll-wrapper">
-    <div class="product-container" id="protectionFilms">
-      <!-- Cards will be injected here -->
-    </div>
-  </div>
-</section>
-
-<!-- Styles (shared with previous pages) -->
 <style>
   .hero-films {
     height: 50vh;
-    background: linear-gradient(135deg, #e9f0fa, #cfdbee);
+background: linear-gradient(#000000 0%, #1a1a1a 50%, #434343 100%);
+
+
+
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -497,76 +459,36 @@ body {
     background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
+    margin-top:150px;
     font-weight: 800;
   }
 
-  .hero-films p {
-    font-size: 1.1rem;
-    color: #333;
-    max-width: 700px;
-    margin: 0 auto 30px;
-  }
+.hero-films p {
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
+  -webkit-background-clip: text;   /* For Chrome & Safari */
+  -webkit-text-fill-color: transparent;
+  background-clip: text;           /* For other browsers */
+  color: transparent;              /* Fallback */
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
 
-  .product-section {
-    padding: 60px 20px;
-    background: linear-gradient(to bottom, #f5f8ff, #e9f0fa);
-    font-family: 'Poppins', sans-serif;
-  }
 
-  .product-scroll-wrapper {
-    position: relative;
-  }
-
-  .product-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-  }
-
-  .product-card {
-    width: 280px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 2px solid #ddd;
-    transition: transform 0.3s ease;
-  }
-
-  .product-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .product-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-
-  .product-card p {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-
-  .product-card a {
-    background: linear-gradient(to right, #fcd932, #f94c9c, #45c3f0);
-    color: white;
-    padding: 8px 18px;
-    text-align: center;
-    border-radius: 25px;
-    text-decoration: none;
+  .hero-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 1rem;
     font-weight: bold;
-    font-size: 0.9rem;
+    color: white;
+    background: linear-gradient(to right, #fcd932, #f94c9c, #45c3f0);
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
     transition: background 0.3s ease;
   }
 
-  .product-card a:hover {
+  .hero-btn:hover {
     filter: brightness(1.1);
   }
 
@@ -576,51 +498,198 @@ body {
       padding: 80px 20px;
     }
 
-    .product-container {
-      flex-direction: column;
-      align-items: center;
+    .hero-films h1 {
+      font-size: 2rem;
+    }
+
+    .hero-films p {
+      font-size: 1rem;
     }
   }
 </style>
 
-<!-- JavaScript -->
-<script>
-  const protectionFilms = [
-    {
-      title: "PE Surface Protection Film",
-      desc: "Protective polyethylene film ideal for metal, glass, and plastic surfaces during processing.",
-      link: "#"
-    },
-    {
-      title: "UV Resistant Film",
-      desc: "Durable film offering UV protection for outdoor applications and long-term exposure.",
-      link: "#"
-    },
-    {
-      title: "Anti-Scratch Protective Film",
-      desc: "Specially designed to prevent scratches during shipping or installation of sensitive surfaces.",
-      link: "#"
-    },
-    {
-      title: "Temporary Surface Guard Film",
-      desc: "Low-tack removable film used for short-term surface coverage during manufacturing.",
-      link: "#"
+
+
+<section style="padding:60px 20px;background:linear-gradient(#434343,#1a1a1a,#000);font-family:'Poppins',sans-serif;">
+  <h2 style="text-align:center;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;
+             background:linear-gradient(90deg,#6a8dff,#ff71c0);
+             -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+             margin-bottom:30px;">
+    Product Gallery
+  </h2>
+
+  <div style="position:relative;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px;">
+    <button id="leftBtn" style="background:white;border:none;font-size:1.8rem;padding:6px 14px;border-radius:50%;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:10;transition:all 0.3s ease;">&#10094;</button>
+
+    <div id="sliderContainer" style="display:flex;gap:16px;overflow-x:hidden;scroll-behavior:smooth;padding:20px 0;flex:1;">
+      <!-- Example card (repeat for all images) -->
+      <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+      <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image2.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
+        <div style="width:100%;height:200px;overflow:hidden;">
+          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+      <!-- Repeat for all images -->
+    </div>
+
+    <button id="rightBtn" style="background:white;border:none;font-size:1.8rem;padding:6px 14px;border-radius:50%;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:10;transition:all 0.3s ease;">&#10095;</button>
+  </div>
+
+  <div id="dots" style="text-align:center;margin-top:15px;"></div>
+
+  <style>
+    /* Ensure only one image visible on small screens */
+    @media (max-width: 768px) {
+      #sliderContainer .card {
+        min-width: 100% !important;
+        max-width: 100% !important;
+      }
     }
-  ];
+  </style>
 
-  const container = document.getElementById('protectionFilms');
+  <script>
+    const container = document.getElementById('sliderContainer');
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+    const dotsContainer = document.getElementById('dots');
+    const cards = container.querySelectorAll('.card');
 
-  protectionFilms.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <h3>${product.title}</h3>
-      <p>${product.desc}</p>
-      <a href="${product.link}">Learn more</a>
-    `;
-    container.appendChild(card);
-  });
-</script>
+    let currentIndex = 0;
+    let cardWidth = cards[0].offsetWidth + 16;
+    const totalCards = cards.length;
+
+    // Create dots
+    for (let i = 0; i < totalCards; i++) {
+      const dot = document.createElement('span');
+      dot.style.cssText = "display:inline-block;width:10px;height:10px;background:#ccc;border-radius:50%;margin:0 4px;cursor:pointer;transition:background 0.3s ease;";
+      if (i === 0) dot.style.background = "#ff71c0";
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+    const dots = dotsContainer.querySelectorAll('span');
+
+    function updateDots(index) {
+      dots.forEach(dot => dot.style.background = "#ccc");
+      dots[index].style.background = "#ff71c0";
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      container.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+      updateDots(currentIndex);
+    }
+
+    leftBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+      goToSlide(currentIndex);
+    });
+
+    rightBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalCards;
+      goToSlide(currentIndex);
+    });
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalCards;
+      goToSlide(currentIndex);
+    }, 3000);
+
+    window.addEventListener('resize', () => {
+      cardWidth = cards[0].offsetWidth + 16;
+      goToSlide(currentIndex);
+    });
+
+    // Touch swipe
+    let startX = 0;
+    container.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    container.addEventListener('touchend', e => {
+      let endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) rightBtn.click();
+      if (endX - startX > 50) leftBtn.click();
+    });
+  </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -666,17 +735,24 @@ body {
       </ul>
     </div>
 
+
     <!-- Products -->
     <div style="flex: 1 1 240px;">
       <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
       <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products & Materials</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Frames & Mesh</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Accessories & Tools </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Adhesives & Tapes </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Machines & Equipment</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services </a></li>
-        <li><a href="#" style="color: white; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">VIEW ALL</a></li>
+        <li><a href="MAC_DERMIDE.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">MAC dermid</a></li>
+        <li><a href="Orafol.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Orafol</a></li>
+        <li><a href="3M.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">3M</a></li>
+        <li><a href="Sabic.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sabic </a></li>
+        <li><a href="Stretching.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Stretching</a></li>
+        <li><a href="Exposing.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Exposing </a></li>
+        <li><a href="Nittoku.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nittoku</a></li>
+        <li><a href="Print_color.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Print color</a></li>
+        <li><a href="Yessor.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Yessor</a></li>
+        <li><a href="Sansui.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sansui </a></li>
+        <li><a href="NittoL.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nitto</a></li>
+        <li><a href="Avery.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Avery </a></li>
+
       </ul>
     </div>
 

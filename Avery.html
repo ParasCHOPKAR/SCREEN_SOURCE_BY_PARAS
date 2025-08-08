@@ -26,7 +26,7 @@
     }
 body {
  font-family: 'Myriad Pro', Arial, sans-serif;
-  background: #ffffff;
+background: linear-gradient(135deg, #000000, #434343);
   color: #222;
   overflow-x: hidden;
 }
@@ -53,6 +53,8 @@ body {
   background: #f9f9f9;
 }
 
+
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -67,15 +69,17 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.55); /* Reduced from 0.95 to 0.75 */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-
+/* Logo */
 .logo img {
   height: 50px;
 }
 
+/* Menu Toggle (Mobile) */
 .menu-toggle {
   display: none;
   font-size: 24px;
@@ -84,9 +88,10 @@ body {
   z-index: 1001;
 }
 
+/* Nav Links */
 .nav-links {
   display: flex;
-  gap: 50px;
+  gap: 90px;
   align-items: center;
   list-style: none;
 }
@@ -96,28 +101,36 @@ body {
 }
 
 .nav-links > li > a {
-  color: #111;
+  color: white ;
   text-decoration: none;
-  font-weight: 550;
-  font-size: 14px;
-  padding: 5px;
-  position: relative;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px 8px;
   transition: all 0.3s ease;
 }
-
 
 .nav-links > li > a:hover {
   color: #EC008C;
 }
+.nav-links,
+.nav-links li,
+.dropdown-menu,
+.sub-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 
 .nav-links > li > a::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   width: 0%;
   height: 3px;
   background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+  border-radius: 4px;
   transition: width 0.3s ease;
 }
 
@@ -125,30 +138,30 @@ body {
   width: 100%;
 }
 
-/* Dropdown container */
+/* Dropdown Styles */
 .dropdown-menu,
 .sub-dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 240px;
-  background: white;
-  padding: 10px 10px;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  flex-direction: column;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 10px 0;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.3s ease-in-out;
   z-index: 999;
-  border: 1px solid #eee;
-  list-style: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: visible; /* ✅ Prevents clipping of sub-menus */
 }
 
-/* Fade animation */
+/* Dropdown Fade Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -156,46 +169,48 @@ body {
   }
 }
 
-/* Dropdown links */
+/* Dropdown Links */
 .dropdown-menu a,
 .sub-dropdown-menu a {
-  display: block;
-  padding: 12px 0px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 15px;
   color: #222;
   font-size: 14px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  list-style: none !important;
+  transition: all 0.4s ease;
 }
 
 .dropdown-menu a:hover,
 .sub-dropdown-menu a:hover {
-  background: linear-gradient(90deg, #00B5E2, #EC008C);
+background: linear-gradient(90deg, #EC008C, #FFC1E3);
+
   color: white;
+  padding-left: 20px;
 }
 
 .dropdown-menu a:not(:last-child),
 .sub-dropdown-menu a:not(:last-child) {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Parent of sub-dropdown */
+/* Sub-dropdown Positioning */
 .sub-dropdown {
   position: relative;
 }
 
-/* Position sub-dropdown menu */
 .sub-dropdown-menu {
   top: 0;
   left: 100%;
-  margin-left: -2px; /* prevent accidental gap */
+  margin-left: 0; /* ✅ Removed negative margin to avoid gap issues */
   border-radius: 12px;
-  min-width: 240px;
+  background: rgba(255, 255, 255, 0.95);
+  min-width: 250px;
 }
 
-/* Show dropdowns on hover (desktop) */
+/* Show dropdowns on hover (Desktop) */
 .nav-links li:hover > .dropdown-menu {
   display: block;
 }
@@ -204,9 +219,19 @@ body {
   display: block;
 }
 
+/* Add arrow indicators
+.nav-links li > a::after {
+  content: "";
+}
 
+.dropdown-menu > .sub-dropdown > a::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 14px;
+  color: #999;
+} */
 
-/* Mobile styles */
+/* Mobile Styles */
 @media (max-width: 768px) {
   .navbar {
     padding: 20px;
@@ -216,19 +241,20 @@ body {
   .menu-toggle {
     display: block;
   }
-.nav-links {
-  position: fixed;
-  top: 0;
-  left: -280px;
-  height: 100vh;
-  width: 280px; /* 🔄 Changed from 100px to 280px */
-  background: #111;
-  flex-direction: column;
-  padding: 80px 20px;
-  transition: left 0.3s ease;
-  overflow-y: auto;
-  z-index: 999;
-}
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    height: 100vh;
+    width: 280px;
+    background: #111;
+    flex-direction: column;
+    padding: 80px 20px;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    z-index: 999;
+  }
 
   .nav-links.active {
     left: 0;
@@ -264,14 +290,13 @@ body {
     display: flex !important;
   }
 
-  /* Prevent hover dropdowns on mobile */
   .nav-links li:hover > .dropdown-menu,
   .sub-dropdown:hover > .sub-dropdown-menu {
     display: none;
   }
 }
 
-/* Overlay for mobile menu */
+/* Overlay for Mobile Menu */
 .overlay {
   position: fixed;
   top: 0;
@@ -288,100 +313,38 @@ body {
 }
 
 </style>
-
-
-  <div class="navbar" id="navbar">
-    <div class="logo">
-      <img src="images/LOGO_clear_improved.png" alt="Logo" />
-    </div>
-    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">HOME</a></li>
-      <li>
-        <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
-        <ul class="dropdown-menu">
-  <li class="sub-dropdown">
-    <a href="#">Products & Materials <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Industrial Polyester Films</a></li>
-      <li><a href="#">Sabic Polycarbonate Films</a></li>
-      <li><a href="#">Vinyl for Industrial Printing</a></li>
-      <li><a href="#">Surface Protection Films</a></li>
-      <li><a href="#">Release Papers</a></li>
-      <li><a href="#">Velvet Films</a></li>
-      <li><a href="#">MacDermid Autotype Autotex (Fine & Velvet)</a></li>
-      <li><a href="#">MacDermid Autotype Autoflex EB</a></li>
-      <li><a href="#">Screen Printing Inks (Seiko Ink)</a></li>
-      <li><a href="#">Printing Chemicals</a></li>
-      <li><a href="#">Pre-Press Emulsions & Chemicals</a></li>
-      <li><a href="#">VIEW ALL</a></li>
-     
-    </ul>
-  </li>
-           <li class="sub-dropdown">
-    <a href="#">Frames & Mesh <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Aluminium Screen Printing Frames</a></li>
-      <li><a href="#">New Aluminium Frames</a></li>
-      <li><a href="#">Polyester Screen Printing Mesh</a></li>
-      <li><a href="#">Universal Mesh Prep</a></li>
-    </ul>
-  </li>
-  <!-- 🧽 Accessories & Tools -->
-  <li class="sub-dropdown">
-    <a href="#">Accessories & Tools <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Squeegee Rubber</a></li>
-      <li><a href="#">Squeegee Hardness Meter</a></li>
-      <li><a href="#">Tension Meter</a></li>
-      <li><a href="#">Cross Hatch Tester</a></li>
-      <li><a href="#">Pencil Hardness Tester</a></li>
-      <li><a href="#">Lint-Free Wipes</a></li>
-      <li><a href="#">Sticky Mat</a></li>
-      <li><a href="#">RAL & Pantone Formula Guide</a></li>
-    </ul>
-  </li>
-
-  <!-- 🧷 Adhesives & Tapes -->
-  <li class="sub-dropdown">
-    <a href="#">Adhesives & Tapes <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Frame Adhesive</a></li>
-      <li><a href="#">Adhesive Tapes</a></li>
-      <li><a href="#">Adhesive Transfer Tapes</a></li>
-      <li><a href="#">Tissue Tape (3M 91091)</a></li>
-      <li><a href="#">Spacer Tapes (DSM7, Membrane)</a></li>
-      <li><a href="#">Nitto 5015 Tape</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛠️ Machines & Equipment -->
-  <li class="sub-dropdown">
-    <a href="#">Machines & Equipment <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Stretching Machines</a></li>
-      <li><a href="#">Exposing Machines</a></li>
-      <li><a href="#">Printing Machines</a></li>
-      <li><a href="#">Drying Machines</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛎️ Services -->
-  <li class="sub-dropdown">
-    <a href="#">Services <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Screen Exposing Services</a></li>
-      <li><a href="#">Screen Stretching Services</a></li>
-    </ul>
-  </li>
-
-  <!-- View All -->
-  <li><a href="#">View All Categories</a></li>
-</ul>
-      <li><a href="About_US.html">ABOUT US</a></li>
-      <li><a href="Contact.html">CONTACT US</a></li>
-    </ul>
+<div class="navbar" id="navbar">
+  <div class="logo">
+    <img src="images/LOGO_clear_improved.png" alt="Logo" />
   </div>
+
+  <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">HOME</a></li>
+
+    <li>
+      <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="MAC_DERMIDE.html">MAC dermid</a></li>
+        <li><a href="Orafol.html">Orafol</a></li>
+        <li><a href="3M.html">3M</a></li>
+        <li><a href="Sabic.html">Sabic</a></li>
+        <li><a href="Stretching.html">Stretching</a></li>
+        <li><a href="Exposing.html">Exposing</a></li>
+        <li><a href="Nittoku.html">Nittoku</a></li>
+        <li><a href="Print_color.html">Print color</a></li>
+        <li><a href="Yessor.html">Yessor</a></li>
+        <li><a href="Sansui.html">Sansui</a></li>
+        <li><a href="NittoL.html">NittoL</a></li>
+        <li><a href="Avery.html">Avery</a></li>
+      </ul>
+    </li>
+
+    <li><a href="About_US.html">ABOUT US</a></li>
+    <li><a href="Contact.html">CONTACT US</a></li>
+  </ul>
+</div>
 
   <div class="overlay" id="overlay"></div>
 
@@ -454,173 +417,261 @@ body {
 
 <!-- NAVBAR SECTION END -->
 
-<!-- Hero Section -->
-<!-- Hero Section -->
-<section class="hero-films">
-  <div class="hero-content">
-    <h1>MacDermid Autotype Autoflex EB</h1>
-    <p>Explore premium hard-coated polyester films designed for membrane switch and industrial graphics, offering superior durability and print quality.</p>
-  </div>
-</section>
+<section style="padding:150px 20px;  background: linear-gradient(#1a1a1a);;font-family:'Poppins',sans-serif;">
 
-<!-- Product Section -->
-<section class="product-section">
-  <div class="product-scroll-wrapper">
-    <div class="product-container" id="autoflexProducts">
-      <!-- Cards will be injected by JS -->
-    </div>
-  </div>
-</section>
-
-<!-- Styles -->
-<style>
-  .hero-films {
-    height: 50vh;
-    background: linear-gradient(135deg, #f0f4ff, #d2e3fa);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-content {
-    max-width: 800px;
-    z-index: 2;
-  }
-
-  .hero-films h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+  <!-- New Heading (Centered) -->
+  <h1 class="fade-in" style="
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
     background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 800;
     margin-bottom: 20px;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    text-align: center;
+  ">
+Avery Dennison Tapes
+
+  </h1>
+
+  <h2 style="text-align:center;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;
+             background:linear-gradient(90deg,#6a8dff,#ff71c0);
+             -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+             margin-bottom:30px;">
+    Product Gallery
+  </h2>
+
+  <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <!-- Card 1 -->
+    <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;">
+      <div style="width:100%;height:200px;overflow:hidden;">
+        <img src="images/Avery_011.jpg" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;">
+      <div style="width:100%;height:200px;overflow:hidden;">
+        <img src="images/avery-dennison-vinyl-sheets.jpg" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;">
+      <div style="width:100%;height:200px;overflow:hidden;">
+        <img src="images/Avery_700_31135.jpg" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Mobile: stack images full width */
+    @media (max-width: 768px) {
+      .card {
+        min-width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    /* Fade in animation keyframes */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</section>
+
+
+<section class="hero-stretching">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1 class="fade-in">Avery Yessor Product Range
+ </h1>
+
+    <p class="fade-in delay-1">
+      Avery Dennison is a global leader in pressure-sensitive adhesive tapes and graphic vinyl films, renowned for its innovative and high-performance solutions. Their extensive product lines are engineered for a diverse range of applications, from intricate industrial bonding to large-scale vehicle wraps and architectural signage.
+    </p>
+
+    <h2 class="fade-in delay-2 yellow-heading">Avery Dennison Tapes</h2>
+    <p class="fade-in delay-2">
+      Avery Dennison's tapes are built on a foundation of advanced adhesive science, offering reliable and durable bonding solutions for a multitude of industrial challenges.
+    </p>
+    <ul class="fade-in delay-2">
+      <li><strong>Pressure-Sensitive Adhesive Tapes:</strong> A core part of their offering, designed for superior performance in appliances, automotive, and electronics.</li>
+      <li><strong>Mounting and Bonding:</strong> Securing small parts, brand emblems, decorative trim, gaskets, and display screens.</li>
+      <li><strong>NVH Damping:</strong> Specialized materials to absorb noise, vibration, and harshness for quieter, comfortable products.</li>
+      <li><strong>Durable Labeling and Lamination:</strong> Protects labels from extreme temperatures, UV exposure, and chemicals for lasting legibility.</li>
+    </ul>
+
+    <h2 class="fade-in delay-2 yellow-heading">Key Tape Features</h2>
+    <ul class="fade-in delay-2">
+      <li><strong>Multi-Substrate Bonding:</strong> Bonds a wide variety of surfaces, including low-surface-energy materials.</li>
+      <li><strong>Environmental Resistance:</strong> Withstands temperature extremes, moisture, and chemical exposure.</li>
+      <li><strong>Custom Solutions:</strong> Collaborates with customers to develop unique tape solutions for specific challenges.</li>
+    </ul>
+
+    <h2 class="fade-in delay-2 yellow-heading">Avery Dennison Vinyls</h2>
+    <p class="fade-in delay-2">
+      Avery Dennison leads in vinyl films for signage, vehicle graphics, and architectural applications, known for vibrant colors, durability, and easy application.
+    </p>
+    <ul class="fade-in delay-2">
+      <li><strong>Vehicle Wrapping Films:</strong> Supreme Wrapping Film™ with "Easy Apply RS™" technology for bubble-free, repositionable installation.</li>
+      <li><strong>Signage and Graphics Films:</strong> Digital print films, cut vinyl films (opaque, translucent, reflective), and specialty films like fluorescent and metallized finishes.</li>
+      <li><strong>Key Vinyl Features:</strong> Long-term outdoor durability, UV resistance, dimensional stability, and versatile application technologies.</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero-stretching {
+    position: relative;
+    min-height: 85vh;
+    background: linear-gradient(#1a1a1a, #000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 250px 30px;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+  }
+
+  .hero-stretching .overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(252,217,50,0.15), transparent 60%),
+                radial-gradient(circle at bottom left, rgba(69,195,240,0.15), transparent 60%);
+    z-index: 1;
+  }
+
+  .hero-stretching .hero-content {
+    max-width: 900px;
+    z-index: 2;
+    color: #fff;
+    padding: 0 10px;
+      margin-top: -261px;
+  }
+
+  .hero-stretching h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 100;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    animation: fadeInUp 1s ease-out forwards;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .yellow-heading {
+    color: #ffcc33;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .hero-stretching p {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    line-height: 1.8;
+    margin-bottom: 18px;
+    color: #f0f0f0;
+  }
+
+  .hero-stretching strong {
+    background: linear-gradient(90deg, #ffcc33, #ff66cc, #33ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: 800;
   }
 
-  .hero-films p {
-    font-size: 1.1rem;
-    color: #333;
-    max-width: 700px;
-    margin: 0 auto 30px;
+  .hero-stretching ul {
+    padding-left: 20px;
+    list-style: none;
   }
 
-  .product-section {
-    padding: 60px 20px;
-    background: linear-gradient(to bottom, #f5f8ff, #e9f0fa);
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .product-scroll-wrapper {
-    position: relative;
-  }
-
-  .product-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-  }
-
-  .product-card {
-    width: 280px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 2px solid #ddd;
-    transition: transform 0.3s ease;
-  }
-
-  .product-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .product-card h3 {
-    font-size: 1.1rem;
+  .hero-stretching ul li {
     margin-bottom: 10px;
-    color: #333;
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.6;
   }
 
-  .product-card p {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
+  .hero-stretching ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #ffcc33;
+    font-size: 1.2rem;
   }
 
-  .product-card a {
-    background: linear-gradient(to right, #fcd932, #f94c9c, #45c3f0);
-    color: white;
-    padding: 8px 18px;
-    text-align: center;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: background 0.3s ease;
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  .delay-1 { animation-delay: 0.4s; }
+  .delay-2 { animation-delay: 0.8s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .product-card a:hover {
-    filter: brightness(1.1);
+  @media (max-width: 1024px) {
+    .hero-stretching {
+      padding: 80px 20px;
+    }
   }
 
   @media (max-width: 600px) {
-    .hero-films {
-      height: auto;
-      padding: 80px 20px;
+    .hero-stretching {
+      padding: 150px 15px;
+      text-align: center;
     }
-
-    .product-container {
-      flex-direction: column;
-      align-items: center;
+    .hero-stretching ul {
+      padding-left: 0;
+    }
+    .hero-stretching ul li {
+      padding-left: 0;
+    }
+    .hero-stretching ul li::before {
+      display: none;
     }
   }
 </style>
 
-<!-- JavaScript -->
-<script>
-  const autoflexProducts = [
-    {
-      title: "Autoflex EB Gloss",
-      desc: "High-gloss finish film with excellent formability and UV ink compatibility.",
-      link: "#"
-    },
-    {
-      title: "Autoflex EB Anti-Glare",
-      desc: "Matte surface film offering enhanced readability and print durability.",
-      link: "#"
-    },
-    {
-      title: "Autoflex EB Hard-Coated",
-      desc: "Enhanced surface hardness for membrane switch and tough environments.",
-      link: "#"
-    },
-    {
-      title: "Autoflex EB Print Optimized",
-      desc: "Surface treated for optimum ink adhesion and sharp print results.",
-      link: "#"
-    }
-  ];
 
-  const container = document.getElementById('autoflexProducts');
 
-  autoflexProducts.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <h3>${product.title}</h3>
-      <p>${product.desc}</p>
-      <a href="${product.link}">Learn more</a>
-    `;
-    container.appendChild(card);
-  });
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ?????????????????????????  FOOTER ????????????????????????????????// -->
@@ -661,17 +712,24 @@ body {
       </ul>
     </div>
 
+
     <!-- Products -->
     <div style="flex: 1 1 240px;">
       <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
       <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products & Materials</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Frames & Mesh</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Accessories & Tools </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Adhesives & Tapes </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Machines & Equipment</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services </a></li>
-        <li><a href="#" style="color: white; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">VIEW ALL</a></li>
+        <li><a href="MAC_DERMIDE.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">MAC dermid</a></li>
+        <li><a href="Orafol.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Orafol</a></li>
+        <li><a href="3M.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">3M</a></li>
+        <li><a href="Sabic.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sabic </a></li>
+        <li><a href="Stretching.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Stretching</a></li>
+        <li><a href="Exposing.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Exposing </a></li>
+        <li><a href="Nittoku.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nittoku</a></li>
+        <li><a href="Print_color.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Print color</a></li>
+        <li><a href="Yessor.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Yessor</a></li>
+        <li><a href="Sansui.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sansui </a></li>
+        <li><a href="NittoL.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nitto</a></li>
+        <li><a href="Avery.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Avery </a></li>
+
       </ul>
     </div>
 

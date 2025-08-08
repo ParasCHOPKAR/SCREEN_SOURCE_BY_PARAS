@@ -41,9 +41,11 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.7);
+background: rgba(0, 0, 0, 0.7);
+
+
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
 /* Logo */
@@ -73,7 +75,7 @@ body {
 }
 
 .nav-links > li > a {
-  color: #111;
+  color:white;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
@@ -101,7 +103,7 @@ body {
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(to right,  #EC008C);
+  background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -285,128 +287,39 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 }
 
 </style>
-
-
-  <div class="navbar" id="navbar">
-    <div class="logo">
-      <img src="images/LOGO_clear_improved.png" alt="Logo" />
-    </div>
-    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">HOME</a></li>
-      <li>
-        <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
-        <ul class="dropdown-menu">
-
-
-          
-  <li class="sub-dropdown">
-    <a href="#">Premium Product List <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">MAC dermid</a></li>
-      <li><a href="#">Orafol</a></li>
-      <li><a href="#">3M</a></li>
-      <li><a href="#">Sabic</a></li>
-      <li><a href="#">Machines</a></li>
-      <li><a href="#">Stretching </a></li>
-      <li><a href="#">Exposing </a></li>
-      <li><a href="#">Nittoku</a></li>
-      <li><a href="#">Print color</a></li>
-      <li><a href="#">Yessor</a></li>
-      <li><a href="#">Sansui</a></li>
-      <li><a href="#">NittoL</a></li>
-      <li><a href="#">Avery</a></li>
-      <li><a href="#">Jk lite</a></li>
-      <li><a href="#">Photokina</a></li>
-     
-    </ul>
-  </li>
-
-
-
-
-  <li class="sub-dropdown">
-    <a href="#">Products & Materials <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Industrial Polyester Films</a></li>
-      <li><a href="#">Sabic Polycarbonate Films</a></li>
-      <li><a href="#">Vinyl for Industrial Printing</a></li>
-      <li><a href="#">Surface Protection Films</a></li>
-      <li><a href="#">Release Papers</a></li>
-      <li><a href="#">Velvet Films</a></li>
-      <li><a href="#">MacDermid Autotype Autotex (Fine & Velvet)</a></li>
-      <li><a href="#">MacDermid Autotype Autoflex EB</a></li>
-      <li><a href="#">Screen Printing Inks (Seiko Ink)</a></li>
-      <li><a href="#">Printing Chemicals</a></li>
-      <li><a href="#">Pre-Press Emulsions & Chemicals</a></li>
-      <li><a href="#">VIEW ALL</a></li>
-     
-    </ul>
-  </li>
-           <li class="sub-dropdown">
-    <a href="#">Frames & Mesh <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Aluminium Screen Printing Frames</a></li>
-      <li><a href="#">New Aluminium Frames</a></li>
-      <li><a href="#">Polyester Screen Printing Mesh</a></li>
-      <li><a href="#">Universal Mesh Prep</a></li>
-    </ul>
-  </li>
-  <!-- 🧽 Accessories & Tools -->
-  <li class="sub-dropdown">
-    <a href="#">Accessories & Tools <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Squeegee Rubber</a></li>
-      <li><a href="#">Squeegee Hardness Meter</a></li>
-      <li><a href="#">Tension Meter</a></li>
-      <li><a href="#">Cross Hatch Tester</a></li>
-      <li><a href="#">Pencil Hardness Tester</a></li>
-      <li><a href="#">Lint-Free Wipes</a></li>
-      <li><a href="#">Sticky Mat</a></li>
-      <li><a href="#">RAL & Pantone Formula Guide</a></li>
-    </ul>
-  </li>
-
-  <!-- 🧷 Adhesives & Tapes -->
-  <li class="sub-dropdown">
-    <a href="#">Adhesives & Tapes <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Frame Adhesive</a></li>
-      <li><a href="#">Adhesive Tapes</a></li>
-      <li><a href="#">Adhesive Transfer Tapes</a></li>
-      <li><a href="#">Tissue Tape (3M 91091)</a></li>
-      <li><a href="#">Spacer Tapes (DSM7, Membrane)</a></li>
-      <li><a href="#">Nitto 5015 Tape</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛠️ Machines & Equipment -->
-  <li class="sub-dropdown">
-    <a href="#">Machines & Equipment <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Stretching Machines</a></li>
-      <li><a href="#">Exposing Machines</a></li>
-      <li><a href="#">Printing Machines</a></li>
-      <li><a href="#">Drying Machines</a></li>
-    </ul>
-  </li>
-
-  <!-- 🛎️ Services -->
-  <li class="sub-dropdown">
-    <a href="#">Services <span class="dropdown-arrow">▸</span></a>
-    <ul class="sub-dropdown-menu">
-      <li><a href="#">Screen Exposing Services</a></li>
-      <li><a href="#">Screen Stretching Services</a></li>
-    </ul>
-  </li>
-
-  <!-- View All -->
-  <li><a href="#">View All Categories</a></li>
-</ul>
-      <li><a href="About_US.html">ABOUT US</a></li>
-      <li><a href="Contact.html">CONTACT US</a></li>
-    </ul>
+<div class="navbar" id="navbar">
+  <div class="logo">
+    <img src="images/LOGO_clear_improved.png" alt="Logo" />
   </div>
+
+  <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">HOME</a></li>
+
+    <li>
+      <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="MAC_DERMIDE.html">MAC dermid</a></li>
+        <li><a href="Orafol.html">Orafol</a></li>
+        <li><a href="3M.html">3M</a></li>
+        <li><a href="Sabic.html">Sabic</a></li>
+        <li><a href="Stretching.html">Stretching</a></li>
+        <li><a href="Exposing.html">Exposing</a></li>
+        <li><a href="Nittoku.html">Nittoku</a></li>
+        <li><a href="Print_color.html">Print color</a></li>
+        <li><a href="Yessor.html">Yessor</a></li>
+        <li><a href="Sansui.html">Sansui</a></li>
+        <li><a href="NittoL.html">NittoL</a></li>
+        <li><a href="Avery.html">Avery</a></li>
+      </ul>
+    </li>
+
+
+    <li><a href="About_US.html">ABOUT US</a></li>
+    <li><a href="Contact.html">CONTACT US</a></li>
+  </ul>
+</div>
 
   <div class="overlay" id="overlay"></div>
 
@@ -747,6 +660,51 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     once: true
   });
 </script>
+<!-- TECHNICAL EXPERTISE & SERVICES -->
+<section id="technical-services" style="padding:80px 20px; background: linear-gradient(to top, var(--light-bg), #e2ebf7); font-family:'Poppins', sans-serif;">
+  <div style="max-width:1100px; margin:auto;">
+    
+    <h3 style="font-size:2rem; font-weight:800; color:#0d2f53; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
+      🛠 Technical Expertise & Integrated Services
+    </h3>
+
+    <p style="font-size:1.1rem; line-height:1.8; color:#333; margin-bottom:15px; text-align:justify;">
+      Our team brings a wealth of technical expertise to the table. We don't just sell products; we offer tailored solutions to meet your specific needs. Whether you are working in graphic art, textiles, or other specialized fields, we can help you choose the right materials and techniques to ensure your project's success.
+    </p>
+
+    <p style="font-size:1.1rem; line-height:1.8; color:#333; margin-bottom:15px; text-align:justify;">
+      To support your production process, we offer specialized pre-press, press, and post-press services. This integrated approach guarantees that your projects run smoothly and efficiently, helping you maintain consistent quality and reduce costly errors.
+    </p>
+
+    <p style="font-size:1.1rem; line-height:1.8; color:#333; margin-bottom:15px; text-align:justify;">
+      At <strong style="color:#fe320a;">ScreenSource</strong>, your satisfaction and success are our top priorities. We look forward to partnering with you and helping you achieve all your screen printing goals.
+    </p>
+  </div>
+</section>
+
+<!-- INLINE JS ANIMATION -->
+<script>
+  // Simple fade & slide animation on scroll
+  document.addEventListener("DOMContentLoaded", function () {
+    const section = document.getElementById("technical-services");
+    section.style.opacity = 0;
+    section.style.transform = "translateY(50px)";
+    section.style.transition = "all 0.8s ease-out";
+
+    const revealOnScroll = () => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        section.style.opacity = 1;
+        section.style.transform = "translateY(0)";
+        window.removeEventListener("scroll", revealOnScroll);
+      }
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  });
+</script>
+
 
 <!-- ?????????????????????????  FOOTER ????????????????????????????????// -->
 
@@ -786,17 +744,24 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
       </ul>
     </div>
 
+
     <!-- Products -->
     <div style="flex: 1 1 240px;">
       <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
       <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products & Materials</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Frames & Mesh</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Accessories & Tools </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Adhesives & Tapes </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Machines & Equipment</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services </a></li>
-        <li><a href="#" style="color: white; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">VIEW ALL</a></li>
+        <li><a href="MAC_DERMIDE.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">MAC dermid</a></li>
+        <li><a href="Orafol.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Orafol</a></li>
+        <li><a href="3M.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">3M</a></li>
+        <li><a href="Sabic.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sabic </a></li>
+        <li><a href="Stretching.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Stretching</a></li>
+        <li><a href="Exposing.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Exposing </a></li>
+        <li><a href="Nittoku.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nittoku</a></li>
+        <li><a href="Print_color.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Print color</a></li>
+        <li><a href="Yessor.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Yessor</a></li>
+        <li><a href="Sansui.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sansui </a></li>
+        <li><a href="NittoL.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nitto</a></li>
+        <li><a href="Avery.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Avery </a></li>
+
       </ul>
     </div>
 

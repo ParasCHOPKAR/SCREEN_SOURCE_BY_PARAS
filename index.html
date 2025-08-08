@@ -50,13 +50,7 @@ body {
   <!-- Animated Diagonal Box -->
   <div class="diagonal-box" style="
     position:absolute; width:200%; height:90%;
-    background: linear-gradient(
-      135deg,
-      #fcd932 0%,    /* Yellow */
-      #f94c9c 33%,   /* Pink */
-      #45c3f0 66%,   /* Blue */
-      #444444 100%   /* Black */
-    );    
+    background: linear-gradient(135deg, #fcd932 0%, #f94c9c 33%, #45c3f0 66%, #444444 100%);
     top:-100%; left:-60%;
     transform:rotate(-30deg);
     z-index:2;
@@ -72,32 +66,22 @@ body {
   </div>
 
   <!-- Loader Content -->
-  <div class="loader-content" style="
-    position:relative; z-index:3;
-    text-align:center;
-    opacity:0;
-    padding:0 20px;
-    animation:fadeIn 2s ease-in-out 0.1s forwards;
-  ">
-    <img src="images/final logo.png" alt="Screen Source Logo" style="max-width:380px; margin-bottom:10px;" />
-<p style="
-  font-size: 45px;
-  font-weight: 700;
-  color: #fcd932;
-  letter-spacing: 1px;
-  margin-top: 10px;
-  margin-left: 40px; /* adjust as needed */
-  text-align: left;
-  text-shadow: 
-    2px 2px 4px rgba(0,0,0,0.9),
-    0 0 10px rgba(252, 217, 50, 0.6),
-    0 0 20px rgba(252, 217, 50, 0.4);
-  font-family: 'Poppins', sans-serif;
-">
-  One Stop Solution for Printing Material
-</p>
-
-
+  <div class="loader-content" style="position:relative; z-index:3; text-align:center; opacity:0; padding:0 20px; animation:fadeIn 2s ease-in-out 0.1s forwards;">
+    <img src="images/final logo.png" alt="Screen Source Logo" class="loader-logo" style="max-width:380px; margin-bottom:10px;" />
+    <p class="loader-text" style="
+      font-size: 45px;
+      font-weight: 700;
+      color: #fcd932;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      margin-left: 40px;
+      text-align: left;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.9),
+                   0 0 10px rgba(252, 217, 50, 0.6),
+                   0 0 20px rgba(252, 217, 50, 0.4);
+    ">
+      One Stop Solution for Printing Material
+    </p>
   </div>
 
   <!-- Optional Sound Effect -->
@@ -110,30 +94,17 @@ body {
       70% { top: 20%; }
       100% { top: 15%; }
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes barExpand {
-      0% {
-        opacity: 0;
-        transform: rotate(45deg) scaleY(0.3);
-      }
-      100% {
-        opacity: 1;
-        transform: rotate(45deg) scaleY(1.2);
-      }
+      0% { opacity: 0; transform: rotate(45deg) scaleY(0.3); }
+      100% { opacity: 1; transform: rotate(45deg) scaleY(1.2); }
     }
-
     @keyframes glowPulse {
-      0%, 100% {
-        box-shadow: 0 0 0 transparent;
-      }
-      50% {
-        box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-      }
+      0%, 100% { box-shadow: 0 0 0 transparent; }
+      50% { box-shadow: 0 0 12px rgba(0, 0, 0, 0.15); }
     }
 
     .bars-container {
@@ -144,7 +115,6 @@ body {
       pointer-events: none;
       z-index: 5;
     }
-
     .bar {
       position: absolute;
       width: 90px;
@@ -155,25 +125,43 @@ body {
       animation-delay: var(--bar-delay);
       border-radius: 50px;
     }
-
     .yellow { background: #fcd932; }
     .pink   { background: #f94c9c; }
     .blue   { background: #45c3f0; }
     .black  { background: #444444; }
-
     .top-bar { top: -300px; }
     .bottom-bar { bottom: -300px; }
 
+    /* Mobile & Tablet Responsive */
+    @media (max-width: 1024px) {
+      .diagonal-box { height: 120%; }
+    }
     @media (max-width: 768px) {
       .bar {
-        width: 10px;
-        height: 200px;
+        width: 40px;
+        height: 220px;
       }
-      .loader-content img {
-        max-width: 240px;
+      .loader-logo {
+        max-width: 220px !important;
       }
-      .loader-content p {
-        font-size: 16px;
+      .loader-text {
+        font-size: 18px !important;
+        margin-left: 0 !important;
+        text-align: center !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .bar {
+        width: 30px;
+        height: 180px;
+      }
+      .diagonal-box { height: 140%; left: -80%; }
+      .loader-logo {
+        max-width: 180px !important;
+      }
+      .loader-text {
+        font-size: 16px !important;
+        margin-top: 5px !important;
       }
     }
   </style>
@@ -183,17 +171,17 @@ body {
     window.addEventListener("load", () => {
       const sound = document.getElementById("loaderSound");
       if (sound) sound.play().catch(() => {});
-
       setTimeout(() => {
         const loader = document.getElementById("loader");
         loader.style.transition = "all 1s ease";
         loader.style.transform = "translateY(-100%)";
         loader.style.opacity = "0";
-        setTimeout(() => loader.style.display = "none", 4000);
+        setTimeout(() => loader.style.display = "none", 1000);
       }, 5500);
     });
   </script>
 </section>
+
 
  <!-- LOADER SECTION END --> 
 
@@ -288,7 +276,7 @@ body {
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(to right,  #EC008C);
+   background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -486,22 +474,20 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
       <a href="product.html" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
       <ul class="dropdown-menu">
         <li><a href="MAC_DERMIDE.html">MAC dermid</a></li>
-        <li><a href="#">Orafol</a></li>
-        <li><a href="#">3M</a></li>
-        <li><a href="#">Sabic</a></li>
-        <li><a href="#">Machines</a></li>
-        <li><a href="#">Stretching</a></li>
-        <li><a href="#">Exposing</a></li>
-        <li><a href="#">Nittoku</a></li>
-        <li><a href="#">Print color</a></li>
-        <li><a href="#">Yessor</a></li>
-        <li><a href="#">Sansui</a></li>
-        <li><a href="#">NittoL</a></li>
-        <li><a href="#">Avery</a></li>
-        <li><a href="#">Jk lite</a></li>
-        <li><a href="#">Photokina</a></li>
+        <li><a href="Orafol.html">Orafol</a></li>
+        <li><a href="3M.html">3M</a></li>
+        <li><a href="Sabic.html">Sabic</a></li>
+        <li><a href="Stretching.html">Stretching</a></li>
+        <li><a href="Exposing.html">Exposing</a></li>
+        <li><a href="Nittoku.html">Nittoku</a></li>
+        <li><a href="Print_color.html">Print color</a></li>
+        <li><a href="Yessor.html">Yessor</a></li>
+        <li><a href="Sansui.html">Sansui</a></li>
+        <li><a href="NittoL.html">Nitto</a></li>
+        <li><a href="Avery.html">Avery</a></li>
       </ul>
     </li>
+
 
     <li><a href="About_US.html">ABOUT US</a></li>
     <li><a href="Contact.html">CONTACT US</a></li>
@@ -587,9 +573,11 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   left: 0;
   width: 100%;
   height: 100vh;
-  background: url('images/FINAL_HERO_IMAGE\ .png') no-repeat center center/cover;
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.9)),
+    url('images/PRO_01.webp') no-repeat center center/cover;
   text-align: center;
- font-family: 'Myriad Pro', Arial, sans-serif;
+  font-family: 'Myriad Pro', Arial, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -619,44 +607,98 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 <!-- Include Google Fonts in <head> -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Hero Heading -->
-<h1 style="
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  font-weight: 800;
-  color: #fcd932;
-  margin-bottom: 20px;
-  text-align: center;
-  -webkit-text-stroke: 1px #000;
-  text-stroke: 1px #000;
-  text-shadow: 
-    2px 2px 4px rgba(0, 0, 0, 0.9),
-    0 0 10px rgba(252, 217, 50, 0.1),
-    0 0 20px rgba(252, 217, 50, 0.1);
-">
-  Premium Screen Printing Materials & Services
-</h1>
+
+<!-- Include Google Fonts in your <head> -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+<!-- Include Google Fonts in your <head> -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Fade and slide up */
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glow pulse */
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow:
+          2px 2px 6px rgba(0, 0, 0, 0.85),
+          0 0 10px rgba(255, 113, 192, 0.25);
+        color: #fff;
+      }
+      50% {
+        text-shadow:
+          2px 2px 10px rgba(0, 0, 0, 1),
+          0 0 20px rgba(255, 113, 192, 0.6);
+        color: white;
+      }
+    }
+
+    /* Typing effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    /* Blinking caret */
+    @keyframes blinkCaret {
+      0%, 100% { border-color: transparent }
+      50% { border-color: #ff71c0 }
+    }
+
+    .animated-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      max-width: 1500px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      text-align: center;
+      color: #fff;
+      animation: fadeSlideUp 0.8s ease forwards;
+      white-space: nowrap;       /* Prevent line breaks */
+      overflow: hidden;          /* Hide overflowing text */
+      border-right: 3px solid #ff71c0; /* Caret */
+      width: 0;                  /* Start width for typing */
+      animation:
+        fadeSlideUp 0.8s ease forwards,
+        typing 4s steps(80, end) forwards,
+        blinkCaret 0.75s step-end infinite;
+      animation-delay: 0s, 0.8s, 0.8s;
+    }
+
+    /* Start glow pulse after typing is done */
+    .animated-text.glow {
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+  </style>
+
+  <p class="animated-text" id="animatedText">
+    Welcome to Screensource, your premier supplier of high-quality screen printing raw materials in Pune, India. We are your one-stop shop, dedicated to providing everything you need for exceptional prints — from start to finish.
+  </p>
+
+  <script>
+    // After typing finishes, add glow animation
+    const text = document.getElementById('animatedText');
+    // Typing duration is 4s + 0.8s delay (fadeSlideUp)
+    setTimeout(() => {
+      text.style.animation = 'glowPulse 3s ease-in-out infinite';
+      text.style.borderRight = 'none'; // Remove caret after typing
+      text.style.whiteSpace = 'normal'; // Allow wrapping
+      text.style.overflow = 'visible'; // Show full text
+      text.style.width = 'auto';        // Reset width
+    }, 4800);
+  </script>
 
 
-<!-- Hero Paragraph -->
-<p style="
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  color: #ff71c0;
-  font-weight: 900;
-  max-width: 900px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
-  text-align: center;
-  -webkit-text-stroke: 0.5px #000;
-  text-stroke: 0.5px #000;
-  text-shadow: 
-    2px 2px 4px rgba(0, 0, 0, 0.9),
-    0 0 10px rgba(255, 113, 192, 0.1),
-    0 0 20px rgba(255, 113, 192, 0.1);
-">
-  Discover top-quality materials and services for professional screen printing.
-</p>
 
 
 <div style="
@@ -666,66 +708,199 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   justify-content: center;
   gap: 20px;
 ">
-  <button onclick="scrollToProducts()" style="
-    padding: 18px 36px;
-    font-size: 1.1rem;
-    background: #6a8dff;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-  " onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
-    View Products
-  </button>
 
-  <button onclick="scrollToContact()" style="
-    padding: 18px 36px;
-    font-size: 1.1rem;
-    background: #ff71c0;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-  " onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
-    Contact Us
-  </button>
 </div>
 
 </section>
 
 
 <!-- About Section --><!-- About Section -->
+<!-- Add this in your <head> for fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
- <section id="about" style="padding: 100px 20px; background: linear-gradient(to bottom,#e2ebf7, #f5f8ff ); font-family: 'Myriad Pro', Arial, sans-serif; margin-top: 100vh;">
-  <div class="about-wrapper" style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
-    
+<style>
+  #about {
+    padding: 100px 20px;
+    background: linear-gradient(to bottom, #e2ebf7, #f5f8ff);
+    font-family: 'Poppins', Arial, sans-serif;
+    margin-top: 100vh;
+  }
+
+  .about-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .about-text {
+    flex: 1;
+    min-width: 300px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .about-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #0d2f53;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Highlight behind 'Product Range' */
+  .about-text h2 span {
+    position: relative;
+    color: #6a8dff;
+  }
+  .about-text h2 span::before {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: #d0dcff;
+    border-radius: 4px;
+    z-index: -1;
+    transform-origin: left;
+    animation: highlightFade 2.5s ease forwards;
+  }
+  @keyframes highlightFade {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+  }
+
+  .about-text p {
+    font-size: 1.15rem;
+    color: #444;
+    line-height: 1.85;
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+
+  .about-text ul {
+    list-style: none;
+    padding-left: 0;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .about-text ul li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    font-weight: 500;
+  }
+
+  /* Custom bullet icon */
+  .about-text ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #6a8dff;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  /* Image styles */
+  .about-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+  .about-image.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .about-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 25px;
+    box-shadow: 0 20px 45px rgba(106, 141, 255, 0.25);
+    transition: transform 0.4s ease;
+  }
+  .about-image img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-wrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .about-text, .about-image {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .about-text h2 {
+      font-size: 2rem;
+    }
+    .about-text p, .about-text ul li {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<section id="about">
+  <div class="about-wrapper">
+
     <!-- Text Content -->
-    <div class="about-text" style="flex: 1; min-width: 300px; opacity: 0; transform: translateY(50px);">
-      <h2 style="font-size: 2.4rem; color: #0d2f53; margin-bottom: 20px; font-weight: 800;">
-        Your Trusted Partner in <span style="color: #6a8dff;">Screen Printing</span> Solutions
-      </h2>
-      <p style="font-size: 1.1rem; color: #333; line-height: 1.8;">
-        With years of expertise, we deliver industry-grade screen printing supplies — from high-precision emulsions and durable squeegees to mesh fabrics and reclaiming services. Whether you're a startup or an established brand, our support scales with your vision.
-      </p>
-      <ul style="margin-top: 25px; color: #333; font-size: 1rem; line-height: 1.8;">
-        <li>✅ <strong>Top-tier emulsions & stencils</strong></li>
-        <li>✅ <strong>Durable & ergonomic squeegees</strong></li> 
-        <li>✅ <strong>Custom film output solutions</strong></li>
-        <li>✅ <strong>Expert technical support</strong></li>
+    <div class="about-text">
+      <h2>Our Comprehensive <span>Product Range</span></h2>
+      <p>We offer a complete range of essential screen printing products, including:</p>
+      <ul>
+        <li>Inks: A wide variety of high-performance inks for any application.</li>
+        <li>Adhesives: Reliable adhesives for secure screen and film mounting.</li>
+        <li>Frames: Durable frames to provide a stable foundation for your work.</li>
+        <li>Meshes: High-quality meshes for achieving sharp, precise detail.</li>
+        <li>Films: A full range of films for creating perfect stencils.</li>
       </ul>
     </div>
 
     <!-- Image -->
-    <div class="about-image" style="flex: 1; min-width: 300px; text-align: center; opacity: 0; transform: translateY(50px);">
-      <img src="images/SECTION_02.png" alt="Screen Printing Materials" style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);" />
+    <div class="about-image">
+      <img src="images/SECTION_02.png" alt="Screen Printing Materials" />
     </div>
 
   </div>
 </section>
+
+<script>
+  // Simple scroll fade in animation
+  function revealOnScroll() {
+    const text = document.querySelector('.about-text');
+    const image = document.querySelector('.about-image');
+    const windowBottom = window.innerHeight;
+
+    if (text.getBoundingClientRect().top < windowBottom - 100) {
+      text.classList.add('visible');
+    }
+    if (image.getBoundingClientRect().top < windowBottom - 100) {
+      image.classList.add('visible');
+    }
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+
 
 
 
@@ -864,7 +1039,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- ///////////////////////// OUR SERVICES /////////////////////  -->
 
 <section class="services-section">
-  <h2>Screen Printing Services</h2>
+  <h2>Screen Printing Products</h2>
 
   <div class="slider-wrapper">
     <button class="scroll-btn left" onclick="scrollSlider(-1)">&#10094;</button>
@@ -877,12 +1052,12 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 
   <style>
+    /* Your existing styles remain unchanged */
     .services-section {
       padding: 60px 20px;
       background: linear-gradient(to bottom, #e2ebf7, #f5f8ff);
       font-family: 'Poppins', sans-serif;
     }
-
     .services-section h2 {
       text-align: center;
       font-size: 2.5rem;
@@ -891,13 +1066,11 @@ document.addEventListener("DOMContentLoaded", () => {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .slider-wrapper {
       display: flex;
       align-items: center;
       gap: 15px;
     }
-
     .scroll-btn {
       font-size: 2rem;
       background: white;
@@ -909,11 +1082,9 @@ document.addEventListener("DOMContentLoaded", () => {
       flex-shrink: 0;
       transition: background 0.3s;
     }
-
     .scroll-btn:hover {
       background: #f0f0f0;
     }
-
     .services-container {
       display: flex;
       overflow-x: auto;
@@ -922,18 +1093,15 @@ document.addEventListener("DOMContentLoaded", () => {
       padding: 10px;
       flex: 1;
     }
-
     .services-container::-webkit-scrollbar {
       display: none;
     }
-
     .card-wrapper {
       min-width: 290px;
       max-width: 320px;
       flex-shrink: 0;
       position: relative;
     }
-
     .card {
       height: 380px;
       background: white;
@@ -946,33 +1114,27 @@ document.addEventListener("DOMContentLoaded", () => {
       display: flex;
       flex-direction: column;
     }
-
     .card:hover {
       transform: translateY(-5px);
     }
-
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
-
     .card-content {
       padding: 15px;
       flex-grow: 1;
     }
-
     .card h3 {
       font-size: 1.2rem;
       margin-bottom: 10px;
       color: #333;
     }
-
     .card p {
       font-size: 0.9rem;
       color: #666;
     }
-
     .view-button {
       position: absolute;
       bottom: -10px;
@@ -982,19 +1144,16 @@ document.addEventListener("DOMContentLoaded", () => {
       background: linear-gradient(to right, #f94c9c, #45c3f0);
       color: white;
       padding: 12px;
-
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
       opacity: 0;
       transition: opacity 0.3s ease, bottom 0.3s ease;
     }
-
     .card-wrapper:hover .view-button {
       opacity: 1;
       bottom: 0;
     }
-
     @media (max-width: 600px) {
       .scroll-btn {
         display: none;
@@ -1003,43 +1162,80 @@ document.addEventListener("DOMContentLoaded", () => {
   </style>
 
   <script>
-  const services = [
-    { title: "Industrial Polyester Films", image: "images/Industrial Polyester Films_01.jpg", link:"Industrial_Polyester_Films.html"},
-    { title: "Sabic Polycarbonate Films", image: "images/sabic-polycarbonate.jpg", link: "Sabic_Polycarbonate.html" },
-    { title: "Vinyl for Industrial Printing", image: "images/vinyl-printing.webp", link: "Vinyl_for_Industrial_Printing.html" },
-    { title: "Surface Protection Films", image: "images/surface-protection.jpg", link: "Surface_Protection_Films.html" },
-    { title: "Release Papers", image: "images/release-papers.jpg", link: "Release_Papers.html" },
-    { title: "Velvet Films", image: "images/velvet-films.webp", link: "Velvet_Films.html" },
-    { title: "MacDermid Autotype Autotex (Fine & Velvet)", image: "images/autotex.webp", link: "MacDermid_Autotype_Autoflex_EB.html" },
-    { title: "MacDermid Autotype Autoflex EB", image: "images/autoflex-eb.jpg", link: "MacDermid_Autotype_Autotex_EB.html" },
-    { title: "Screen Printing Inks (Seiko Ink)", image: "images/screen-inks.jpg", link: "Screen_Printing_Inks (Seiko Ink).html" },
-    { title: "Printing Chemicals", image: "images/PRINTING_CHEMICALS.webp", link: "Printing_Chemicals.html" },
-    { title: "Pre-Press Emulsions & Chemicals", image: "images/emulsions.jpg", link: "#emulsions" },
-    { title: "Aluminium Screen Printing Frames", image: "images/aluminium-frames.jpg", link: "#frames" },
-    { title: "New Aluminium Frames", image: "images/new-frames.jpg", link: "#newframes" },
-    { title: "Polyester Screen Printing Mesh", image: "images/polyester-mesh.jpg", link: "#mesh" },
-    { title: "Universal Mesh Prep", image: "images/mesh-prep.jpg", link: "#meshprep" },
-    { title: "Squeegee Rubber", image: "images/squeegee-rubber.webp", link: "#squeegee" },
-    { title: "Squeegee Hardness Meter", image: "images/squeegee-meter.jpg", link: "#hardness" },
-    { title: "Frame Adhesive", image: "images/frame-adhesive.jpg", link: "#adhesive" },
-    { title: "Adhesive Tapes", image: "images/adhesive-tapes.jpg", link: "#tapes" },
-    { title: "Adhesive Transfer Tapes", image: "images/transfer-tapes.jpg", link: "#transfertapes" },
-    { title: "Tissue Tape (3M 91091)", image: "images/tissue-tape.jpg", link: "#tissuetape" },
-    { title: "Spacer Tapes (DSM7, Membrane)", image: "images/spacer-tapes.jpg", link: "#spacertape" },
-    { title: "Nitto 5015 Tape", image: "images/nitto-tape.jpg", link: "#nitto" },
-    { title: "Stretching Machines", image: "images/stretching-machines.jpg", link: "#stretching" },
-    { title: "Exposing Machines", image: "images/exposing-machines.jpg", link: "#exposing" },
-    { title: "Printing Machines", image: "images/printing-machines.jpg", link: "#printingmachines" },
-    { title: "Drying Machines", image: "images/drying-machines.jpg", link: "#drying" },
-    { title: "Screen Exposing Services", image: "images/screen-exposing.jpg", link: "#screenexpose" },
-    { title: "Screen Stretching Services", image: "images/screen-stretching.jpg", link: "#screenstretch" },
-    { title: "Tension Meter", image: "images/tension-meter.jpg", link: "#tension" },
-    { title: "Cross Hatch Tester", image: "images/cross-hatch.jpg", link: "#crosshatch" },
-    { title: "Pencil Hardness Tester", image: "images/pencil-tester.jpg", link: "#pencil" },
-    { title: "Lint-Free Wipes", image: "images/lint-free-wipes.jpg", link: "#lintfree" },
-    { title: "Sticky Mat", image: "images/sticky-mat..webp", link: "#stickymat" },
-    { title: "RAL & Pantone Formula Guide", image: "images/ral-pantone.jpg", link: "#ralpantone" }
-  ];
+    const services = [
+      {
+        title: "MacDermid Alpha",
+        image: "images/MACD_01.jpg",
+        link: "MAC_DERMIDE.html",
+        description: "High-performance polyester films tailored for industrial screen printing applications."
+      },
+      {
+        title: "Orafol (Adhesive Tapes ) ",
+        image: "images/Orafol-1375.webp",
+        link: "Orafol.html",
+        description: "Durable polycarbonate films offering excellent clarity and chemical resistance."
+      },
+      {
+        title: "3M",
+        image: "images/3M_03.jpg",
+        link: "3M.html",
+        description: "Versatile vinyl films designed for durable and vibrant industrial prints."
+      },
+      {
+        title: "Sabic Polycaronate films",
+        image: "images/SABIC_02.jpg",
+        link: "Sabic.html",
+        description: "Protective films that guard surfaces from scratches and damage during manufacturing."
+      },
+      {
+        title: "Screen Stretching Machine ",
+        image: "images/screen-stretching.jpg",
+        link: "Stretching.html",
+        description: "Quality release papers that ensure easy and reliable transfer in printing processes."
+      },
+      {
+        title: "Screen Exposing machines ",
+        image: "images/ALL_Machines_02.jpg",
+        link: "Exposing.html",
+        description: "Specialized velvet films providing a unique texture and finish to prints."
+      },
+      {
+        title: "Nittoku Mesh",
+        image: "images/Nittoku_mesh (2).jpg",
+        link: "Nittoku.html",
+        description: "Fine and velvet textured films offering exceptional print fidelity and feel."
+      },
+      {
+        title: "Printcolor",
+        image: "images/PRINT_COLOR.jpg",
+        link: "Print_color.html",
+        description: "Flexible films optimized for high-speed screen printing and durability."
+      },
+      {
+        title: "Yessor Wipes ",
+        image: "images/Yessor.jpg",
+        link: "Yessor.html",
+        description: "High-quality inks formulated for vibrant colors and consistent coverage."
+      },
+      {
+        title: "Sunsui ",
+        image: "images/sunsui.jpg",
+        link: "Sansui.html",
+        description: "Essential chemicals to support and enhance your screen printing process."
+      },
+      {
+        title: "Nitto",
+        image: "images/nitto_808.png",
+        link: "NittoL.html",
+        description: "Reliable emulsions and chemicals for precise stencil preparation."
+      },
+      {
+        title: "Avery ",
+        image: "images/Avery_011.jpg",
+        link: "Avery.html",
+        description: "Durable and lightweight aluminium frames for stable and long-lasting screens."
+      }
+    ];
 
     const slider = document.getElementById('servicesSlider');
 
@@ -1053,7 +1249,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${service.image}" alt="${service.title}" />
         <div class="card-content">
           <h3>${service.title}</h3>
-          <p>Professional quality for all your screen printing needs.</p>
+          <p>${service.description}</p>
         </div>
       `;
 
@@ -1077,11 +1273,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+<section id="authorized-distributors" style="background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); color: #222; font-family: 'Poppins', sans-serif; padding: 80px 20px;">
+  <div style="max-width: 1100px; margin: auto;">
+
+    <!-- Colorful Gradient Heading -->
+    <h2 style="font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3rem; text-align: center; margin-bottom: 50px; line-height: 1.2;">
+      <span style="background: linear-gradient(90deg, #ff71c0, #f94c9c); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Screen</span>
+      <span style="background: linear-gradient(90deg, #a87fcf, #6a8dff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"> Printing </span>
+      <span style="background: linear-gradient(90deg, #45c3f0, #2f9de9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Products</span>
+    </h2>
+
+    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 45px 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); transition: transform 0.3s ease;">
+      
+      <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; color: #333;">
+        As authorized distributors, we proudly offer products from two industry-leading brands:
+      </p>
+
+      <ul style="list-style: none; padding-left: 0; font-size: 1.15rem; line-height: 1.7; color: #444;">
+        <li style="margin-bottom: 28px; position: relative; padding-left: 40px; font-weight: 600;">
+          <span style="position: absolute; left: 0; top: 3px; font-size: 1.6rem; color: #6a8dff;">✓</span>
+          <strong>MacDermid Alpha (Screen Chemicals and Polyester Films):</strong> We provide a comprehensive range of screen chemicals and polyester films from MacDermid Alpha, ensuring you have access to top-tier materials for your pre-press needs.
+        </li>
+        <li style="position: relative; padding-left: 40px; font-weight: 600;">
+          <span style="position: absolute; left: 0; top: 3px; font-size: 1.6rem; color: #ff71c0;">✓</span>
+          <strong>Orafol (Adhesive Tapes and Vinyls):</strong> We supply a full portfolio of Orafol's high-performance adhesive tapes and vinyls, ideal for a wide range of graphic and industrial applications.
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</section>
 
 
 <!-- Testimonial Slider Section -->
 <!-- Testimonial Slider Section -->
-<section id="testimonials" style="background: linear-gradient(to bottom,#f5f8ff,#e2ebf7); color:#333; font-family:'Poppins', sans-serif; padding:100px 20px; position:relative;">
+<section id="testimonials" style="background: linear-gradient(to bottom,#e2ebf7,#f5f8ff); color:#333; font-family:'Poppins', sans-serif; padding:100px 20px; position:relative;">
   <div style="max-width:1300px; margin:auto;">
     <h2 style="text-align:center; font-size:3rem; background:linear-gradient(90deg,#6a8dff,#ff71c0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:60px;">
       What Our Clients Say
@@ -1170,13 +1396,19 @@ document.addEventListener("DOMContentLoaded", () => {
     <div style="flex: 1 1 240px;">
       <h4 style="margin-bottom: 20px; font-size: 17px; color: #ffb200;"><i class="fas fa-box-open"></i> Products</h4>
       <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 2;">
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Products & Materials</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Frames & Mesh</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Accessories & Tools </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Adhesives & Tapes </a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Machines & Equipment</a></li>
-        <li><a href="#" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Services </a></li>
-        <li><a href="#" style="color: white; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">VIEW ALL</a></li>
+        <li><a href="MAC_DERMIDE.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">MAC dermid</a></li>
+        <li><a href="Orafol.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Orafol</a></li>
+        <li><a href="3M.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">3M</a></li>
+        <li><a href="Sabic.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sabic </a></li>
+        <li><a href="Stretching.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Stretching</a></li>
+        <li><a href="Exposing.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Exposing </a></li>
+        <li><a href="Nittoku.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nittoku</a></li>
+        <li><a href="Print_color.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Print color</a></li>
+        <li><a href="Yessor.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Yessor</a></li>
+        <li><a href="Sansui.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Sansui </a></li>
+        <li><a href="NittoL.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Nitto</a></li>
+        <li><a href="Avery.html" style="color: white; text-decoration: none;" onmouseover="this.style.color='#ffb200'" onmouseout="this.style.color='white'">Avery </a></li>
+
       </ul>
     </div>
 
