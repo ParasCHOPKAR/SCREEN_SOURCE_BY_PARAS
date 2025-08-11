@@ -136,20 +136,13 @@ body {
     @media (max-width: 1024px) {
       .diagonal-box { height: 120%; }
     }
-    @media (max-width: 768px) {
-      .bar {
-        width: 40px;
-        height: 220px;
-      }
-      .loader-logo {
-        max-width: 220px !important;
-      }
-      .loader-text {
-        font-size: 18px !important;
-        margin-left: 0 !important;
-        text-align: center !important;
-      }
-    }
+/* Hide loader for mobile */
+@media (max-width: 768px) {
+  #loader {
+    display: none !important;
+  }
+}
+
     @media (max-width: 480px) {
       .bar {
         width: 30px;
