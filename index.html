@@ -740,13 +740,8 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   .about-text {
     flex: 1;
     min-width: 300px;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .about-text.visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Always visible */
+    transform: none; /* No movement */
   }
 
   .about-text h2 {
@@ -774,12 +769,6 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     background: #d0dcff;
     border-radius: 4px;
     z-index: -1;
-    transform-origin: left;
-    animation: highlightFade 2.5s ease forwards;
-  }
-  @keyframes highlightFade {
-    from { transform: scaleX(0); opacity: 0; }
-    to { transform: scaleX(1); opacity: 1; }
   }
 
   .about-text p {
@@ -821,23 +810,14 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     flex: 1;
     min-width: 300px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
-  }
-  .about-image.visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Always visible */
+    transform: none;
   }
   .about-image img {
     width: 100%;
     max-width: 500px;
     border-radius: 25px;
     box-shadow: 0 20px 45px rgba(106, 141, 255, 0.25);
-    transition: transform 0.4s ease;
-  }
-  .about-image img:hover {
-    transform: scale(1.05);
   }
 
   /* Responsive */
@@ -845,10 +825,6 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     .about-wrapper {
       flex-direction: column;
       gap: 30px;
-    }
-    .about-text, .about-image {
-      opacity: 1 !important;
-      transform: none !important;
     }
     .about-text h2 {
       font-size: 2rem;
@@ -858,6 +834,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     }
   }
 </style>
+
 
 <section id="about">
   <div class="about-wrapper" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 60px 20px; font-family: 'Poppins', sans-serif;">
@@ -882,7 +859,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     <!-- Image -->
     <div class="about-image" style="flex: 1; display: flex; justify-content: center;">
       <img 
-        src="images/HOME_ABOUT_IMAGE.png" 
+        src="images/HOME_ABOUT_IMAGE.webp" 
         alt="Screen Printing Materials" 
         loading="eager" 
         style="max-width: 100%; height: auto; display: block;"
@@ -893,7 +870,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 </section>
 
 
-<script>
+<!-- <script>
   // Simple scroll fade in animation
   function revealOnScroll() {
     const text = document.querySelector('.about-text');
@@ -910,7 +887,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
-</script>
+</script> -->
 
 
 <section style="padding: 60px 20px;  background: linear-gradient(to bottom, #e2ebf7, #f5f8ff); font-family: 'Poppins', sans-serif; text-align: center; position: relative; overflow: hidden;">
@@ -1407,13 +1384,13 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         title: "Screen Stretching Machine ",
         image: "images/screen-stretching.jpg",
-        link: "Stretching.html",
+        link: "Machines.html",
         description: "Quality release papers that ensure easy and reliable transfer in printing processes."
       },
       {
         title: "Screen Exposing machines ",
         image: "images/ALL_Machines_02.JPG",
-        link: "Exposing.html",
+        link: "Machines.html",
         description: "Specialized velvet films providing a unique texture and finish to prints."
       },
       {
