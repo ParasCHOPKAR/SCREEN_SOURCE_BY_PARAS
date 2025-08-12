@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Screen Source - One Stop Solution</title>
+  <title>Screensource - One Stop Solution</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
@@ -67,7 +67,7 @@ body {
 
   <!-- Loader Content -->
   <div class="loader-content" style="position:relative; z-index:3; text-align:center; opacity:0; padding:0 20px; animation:fadeIn 2s ease-in-out 0.1s forwards;">
-    <img src="images/final logo.png" alt="Screen Source Logo" class="loader-logo" style="max-width:380px; margin-bottom:10px;" />
+    <img src="images/final logo.png" alt="Screensource Logo" class="loader-logo" style="max-width:380px; margin-bottom:10px;" />
     <p class="loader-text" style="
       font-size: 45px;
       font-weight: 700;
@@ -248,7 +248,6 @@ body {
   padding: 5px 8px;
   transition: all 0.3s ease;
 }
-
 .nav-links > li > a:hover {
   color: #EC008C;
 }
@@ -459,32 +458,42 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   </div>
 
   <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+<ul class="nav-links" id="navLinks">
+  <li><a href="index.html">HOME</a></li>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">HOME</a></li>
+  <li>
+    <a href="" class="dropdown-toggle">BRANDS <span class="dropdown-arrow">▾</span></a>
+    <ul class="dropdown-menu">
+      <li><a href="MAC_DERMIDE.html">MacDermid Alpha</a></li>
+      <li><a href="Orafol.html">Orafol</a></li>
+      <li><a href="3M.html">3M</a></li>
+      <li><a href="Sabic.html">Sabic</a></li>
+      <li><a href="Nittoku.html">Nittoku</a></li>
+      <li><a href="Print_color.html">Print color</a></li>
+      <li><a href="Yessor.html">Yessor</a></li>
+      <li><a href="Sansui.html">Sansui</a></li>
+      <li><a href="NittoL.html">Nitto</a></li>
+      <li><a href="Avery.html">Avery</a></li>
+    </ul>
+  </li>
 
-    <li>
-      <a href="" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
-      <ul class="dropdown-menu">
-                <li><a href="MAC_DERMIDE.html">MacDermid Alpha </a></li>
-        <li><a href="Orafol.html">Orafol</a></li>
-        <li><a href="3M.html">3M</a></li>
-        <li><a href="Sabic.html">Sabic</a></li>
-        <li><a href="Stretching.html">Stretching</a></li>
-        <li><a href="Exposing.html">Exposing</a></li>
-        <li><a href="Nittoku.html">Nittoku</a></li>
-        <li><a href="Print_color.html">Print color</a></li>
-        <li><a href="Yessor.html">Yessor</a></li>
-        <li><a href="Sansui.html">Sansui</a></li>
-        <li><a href="NittoL.html">Nitto</a></li>
-        <li><a href="Avery.html">Avery</a></li>
-      </ul>
-    </li>
+  <!-- ✅ New SERVICES Menu -->
+  <li>
+    <a href="" class="dropdown-toggle">SERVICES <span class="dropdown-arrow">▾</span></a>
+<ul class="dropdown-menu">
+  <li><a href="Stretching.html">Stretching Services</a></li>
+  <li><a href="Exposing.html">Exposing Services</a></li>
+  <li><a href="Machines.html">Stretching Machines</a></li>
+  <li><a href="Machines.html">Exposing Machines</a></li>
+</ul>
+  </li>
 
+  <li><a href="About_US.html">ABOUT US</a></li>
+  <!-- ✅ End SERVICES Menu -->
 
-    <li><a href="About_US.html">ABOUT US</a></li>
-    <li><a href="Contact.html">CONTACT US</a></li>
-  </ul>
+  <li><a href="Contact.html">CONTACT US</a></li>
+</ul>
+
 </div>
 
   <div class="overlay" id="overlay"></div>
@@ -714,7 +723,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 <style>
   #about {
     padding: 100px 20px;
-    background: linear-gradient(to bottom, #e2ebf7, #f5f8ff);
+    background: linear-gradient(to bottom, #f5f8ff, #e2ebf7);
     font-family: 'Poppins', Arial, sans-serif;
     margin-top: 100vh;
   }
@@ -849,6 +858,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     }
   }
 </style>
+
 <section id="about">
   <div class="about-wrapper" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 60px 20px; font-family: 'Poppins', sans-serif;">
 
@@ -872,7 +882,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     <!-- Image -->
     <div class="about-image" style="flex: 1; display: flex; justify-content: center;">
       <img 
-        src="images/SECTION_02.png" 
+        src="images/HOME_ABOUT_IMAGE.png" 
         alt="Screen Printing Materials" 
         loading="eager" 
         style="max-width: 100%; height: auto; display: block;"
@@ -903,6 +913,207 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 </script>
 
 
+<section style="padding: 60px 20px;  background: linear-gradient(to bottom, #e2ebf7, #f5f8ff); font-family: 'Poppins', sans-serif; text-align: center; position: relative; overflow: hidden;">
+
+  <!-- Heading -->
+  <h2 style="
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 1px;
+  ">
+    Authorized Distributors
+    <span style="
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 5px;
+      background: linear-gradient(90deg, #f94c9c, #45c3f0);
+      border-radius: 3px;
+      animation: glowLine 2s infinite alternate;
+    "></span>
+  </h2>
+
+  <!-- Intro -->
+  <p style="max-width: 750px; margin: 25px auto 50px; color: #555; font-size: 1.05rem; line-height: 1.7;">
+    We proudly partner with industry leaders to bring you products that stand for quality, innovation, and reliability.
+  </p>
+
+  <!-- Two Column Layout -->
+  <div class="distributor-wrapper">
+
+    <!-- Divider Line -->
+    <div class="divider"></div>
+
+    <!-- Left Side - MacDermid Alpha -->
+    <div class="distributor left">
+      <div class="logo-title">
+        <div class="logo-container">
+          <img src="images/----------------222222-removebg-preview.png" alt="MacDermid Alpha">
+        </div>
+        <h3>MacDermid Alpha</h3>
+      </div>
+      <p>
+        Screen Chemicals and Polyester Films — a comprehensive range for your pre-press needs, delivering top-tier quality and reliability.
+      </p>
+    </div>
+
+    <!-- Right Side - Orafol -->
+    <div class="distributor right">
+      <div class="logo-title">
+        <div class="logo-container">
+          <img src="images/COMPANY_LOGO_08.png" alt="Orafol">
+        </div>
+        <h3>Orafol</h3>
+      </div>
+      <p>
+        Adhesive Tapes and Vinyls — high-performance solutions ideal for both graphic and industrial applications.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+@keyframes glowLine {
+  0% { box-shadow: 0 0 10px rgba(249,76,156,0.6); }
+  100% { box-shadow: 0 0 20px rgba(69,195,240,0.8); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Layout Styling */
+.distributor-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* ensures both columns align top-to-bottom */
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* Divider Line */
+.divider {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(180deg, #f94c9c, #45c3f0);
+  animation: glowLine 2s infinite alternate;
+  border-radius: 2px;
+}
+
+/* Distributor Column */
+.distributor {
+  flex: 1;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centers content vertically */
+  gap: 20px;
+}
+
+.distributor.left { 
+  text-align: right; 
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+.distributor.right { 
+  text-align: left; 
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+/* Logo + Title Row */
+.logo-title {
+  display: flex;
+  align-items: center; /* ensures logo + title align vertically */
+  gap: 15px;
+}
+
+.distributor.left .logo-title {
+  flex-direction: row-reverse;
+}
+
+.logo-container {
+  background: linear-gradient(135deg, #ffffff, #f2faff);
+  border-radius: 12px;
+  padding: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-container img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.distributor h3 {
+  font-size: 1.4rem;
+  background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  margin: 0;
+}
+
+.distributor p {
+  color: #555;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  margin-top: 12px;
+  max-width: 95%;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .distributor-wrapper {
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+  }
+  .divider {
+    display: none;
+  }
+  .distributor.left, .distributor.right {
+    text-align: center;
+    padding: 0;
+  }
+  .distributor.left .logo-title,
+  .distributor.right .logo-title {
+    flex-direction: column;
+  }
+  .distributor p {
+    margin: 0 auto;
+  }
+}
+
+</style>
 
 
 
@@ -918,22 +1129,14 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 
     <!-- Heading -->
     <div style="flex: 1 1 200px; min-width: 200px;">
-<h2 style="
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-  position: relative;
-  padding-left: 20px;
-  background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0, #444);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  white-space: nowrap;
-">
-  <span style="position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: linear-gradient(180deg, #fe320a, #ff7b5c); border-radius: 10px;"></span>
-  OUR CLIENTS
+<h2 style="font-size: clamp(1.2rem, 2.5vw, 2.2rem); font-weight: 700; line-height: 1.2; position: relative; padding-left: 14px; background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0, #444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 100%;">
+  <span style="position: absolute; left: 0; top: 0; width: 9px; height: 100%; background: linear-gradient(180deg, #fe320a, #ff7b5c); border-radius: 10px;"></span>
+  Our Suppliers
 </h2>
+
+
+
+
 
     </div>
 
@@ -1189,6 +1392,18 @@ document.addEventListener("DOMContentLoaded", () => {
         link: "Sabic.html",
         description: "Protective films that guard surfaces from scratches and damage during manufacturing."
       },
+       {
+        title: "Screen Stretching Services ",
+        image: "images/ALL_Machines_05.JPG",
+        link: "Stretching.html",
+        description: "Premium quality release papers designed for smooth, reliable transfer during printing processes."
+      },
+      {
+        title: "Screen Exposing Services ",
+        image: "images/ALL_Machines_04.JPG",
+        link: "Exposing.html",
+        description: "Expertly crafted velvet films that deliver distinctive texture and exceptional finish to your printed materials."
+      },
       {
         title: "Screen Stretching Machine ",
         image: "images/screen-stretching.jpg",
@@ -1275,36 +1490,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-<section id="authorized-distributors" style="background: linear-gradient(to bottom, #f5f8ff, #e2ebf7); color: #222; font-family: 'Poppins', sans-serif; padding: 80px 20px;">
-  <div style="max-width: 1100px; margin: auto;">
 
-    <!-- Colorful Gradient Heading -->
-    <h2 style="font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3rem; text-align: center; margin-bottom: 50px; line-height: 1.2;">
-      <span style="background: linear-gradient(90deg, #ff71c0, #f94c9c); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Screen</span>
-      <span style="background: linear-gradient(90deg, #a87fcf, #6a8dff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"> Printing </span>
-      <span style="background: linear-gradient(90deg, #45c3f0, #2f9de9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Products</span>
-    </h2>
-
-    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 45px 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); transition: transform 0.3s ease;">
-      
-      <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; color: #333;">
-        As authorized distributors, we proudly offer products from two industry-leading brands:
-      </p>
-
-      <ul style="list-style: none; padding-left: 0; font-size: 1.15rem; line-height: 1.7; color: #444;">
-        <li style="margin-bottom: 28px; position: relative; padding-left: 40px; font-weight: 600;">
-          <span style="position: absolute; left: 0; top: 3px; font-size: 1.6rem; color: #6a8dff;">✓</span>
-          <strong>MacDermid Alpha (Screen Chemicals and Polyester Films):</strong> We provide a comprehensive range of screen chemicals and polyester films from MacDermid Alpha, ensuring you have access to top-tier materials for your pre-press needs.
-        </li>
-        <li style="position: relative; padding-left: 40px; font-weight: 600;">
-          <span style="position: absolute; left: 0; top: 3px; font-size: 1.6rem; color: #ff71c0;">✓</span>
-          <strong>Orafol (Adhesive Tapes and Vinyls):</strong> We supply a full portfolio of Orafol's high-performance adhesive tapes and vinyls, ideal for a wide range of graphic and industrial applications.
-        </li>
-      </ul>
-      
-    </div>
-  </div>
-</section>
 
 
 <!-- Testimonial Slider Section -->
@@ -1342,7 +1528,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <!-- Slide 4 -->
         <div class="swiper-slide" style="background: rgba(255,255,255,0.8); border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
-          <p style="font-size:1rem; line-height:1.8;">“ScreenSource guided us perfectly on the best film choice for our application. Extremely satisfied!”</p>
+          <p style="font-size:1rem; line-height:1.8;">“Screensource guided us perfectly on the best film choice for our application. Extremely satisfied!”</p>
           <h4 style="margin-top:20px; font-size:1.2rem; color:#ff71c0;">Nitin Sharma</h4>
           <span style="font-size:0.9rem; color:#555;">Shahada, Maharashtra</span>
         </div>
@@ -1369,11 +1555,11 @@ document.addEventListener("DOMContentLoaded", () => {
         background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;">
-        Screen Source
+        Screensource
       </h3>
 
       <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
-        Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
+        Screensource provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
       </p>
       <!-- <div style="display: flex; gap: 15px; align-items: center;">
         <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
@@ -1440,7 +1626,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <hr style="margin: 40px auto 25px; border: 0; height: 1px; background: #ffffff33; width: 90%;">
 
   <div style="text-align: center; font-size: 14px; opacity: 0.85;">
-    © 2025 <strong>Screen Source</strong>. All rights reserved.
+    © 2025 <strong>Screensource</strong>. All rights reserved.
   </div>
   <div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
     Developed By <strong>DW INNOVATION PVT. LTD.</strong>

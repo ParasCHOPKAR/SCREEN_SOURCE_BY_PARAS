@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Screen Source - One Stop Solution</title>
+  <title>Screensource - One Stop Solution</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
@@ -42,17 +42,17 @@ background: linear-gradient(135deg, #000000, #434343);
   <!-- NAVBAR SECTION START -->
 <section id="navbar-section">
 <style>
-  * {
+/* Base Reset */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Myriad Pro', Arial, sans-serif;
   background: #f9f9f9;
 }
-
 
 /* Navbar */
 .navbar {
@@ -68,12 +68,13 @@ body {
   z-index: 1000;
 }
 
+
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.3);
+background: rgba(0, 0, 0, 0.7);
+
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
-
 /* Logo */
 .logo img {
   height: 50px;
@@ -101,14 +102,13 @@ body {
 }
 
 .nav-links > li > a {
-  color: white ;
+  color: white;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
   padding: 5px 8px;
   transition: all 0.3s ease;
 }
-
 .nav-links > li > a:hover {
   color: #EC008C;
 }
@@ -129,7 +129,7 @@ body {
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+   background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -319,32 +319,43 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   </div>
 
   <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+<ul class="nav-links" id="navLinks">
+  <li><a href="index.html">HOME</a></li>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">HOME</a></li>
+  <li>
+    <a href="" class="dropdown-toggle">BRANDS <span class="dropdown-arrow">▾</span></a>
+    <ul class="dropdown-menu">
+      <li><a href="MAC_DERMIDE.html">MacDermid Alpha</a></li>
+      <li><a href="Orafol.html">Orafol</a></li>
+      <li><a href="3M.html">3M</a></li>
+      <li><a href="Sabic.html">Sabic</a></li>
+      <li><a href="Nittoku.html">Nittoku</a></li>
+      <li><a href="Print_color.html">Print color</a></li>
+      <li><a href="Yessor.html">Yessor</a></li>
+      <li><a href="Sansui.html">Sansui</a></li>
+      <li><a href="NittoL.html">Nitto</a></li>
+      <li><a href="Avery.html">Avery</a></li>
+    </ul>
+  </li>
 
-    <li>
-      <a href="" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
-      <ul class="dropdown-menu">
-                <li><a href="MAC_DERMIDE.html">MacDermid Alpha </a></li>
-        <li><a href="Orafol.html">Orafol</a></li>
-        <li><a href="3M.html">3M</a></li>
-        <li><a href="Sabic.html">Sabic</a></li>
-        <li><a href="Stretching.html">Stretching</a></li>
-        <li><a href="Exposing.html">Exposing</a></li>
-        <li><a href="Nittoku.html">Nittoku</a></li>
-        <li><a href="Print_color.html">Print color</a></li>
-        <li><a href="Yessor.html">Yessor</a></li>
-        <li><a href="Sansui.html">Sansui</a></li>
-        <li><a href="NittoL.html">NittoL</a></li>
-        <li><a href="Avery.html">Avery</a></li>
-      </ul>
-    </li>
+  <!-- ✅ New SERVICES Menu -->
+  <li>
+    <a href="" class="dropdown-toggle">SERVICES <span class="dropdown-arrow">▾</span></a>
+<ul class="dropdown-menu">
+  <li><a href="Stretching.html">Stretching Services</a></li>
+  <li><a href="Exposing.html">Exposing Services</a></li>
+  <li><a href="Machines.html">Stretching Machines</a></li>
+  <li><a href="Machines.html">Exposing Machines</a></li>
+</ul>
 
+  </li>
 
-    <li><a href="About_US.html">ABOUT US</a></li>
-    <li><a href="Contact.html">CONTACT US</a></li>
-  </ul>
+  <li><a href="About_US.html">ABOUT US</a></li>
+  <!-- ✅ End SERVICES Menu -->
+
+  <li><a href="Contact.html">CONTACT US</a></li>
+</ul>
+
 </div>
 
   <div class="overlay" id="overlay"></div>
@@ -416,106 +427,18 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   </script>
 </section>
 
+
 <!-- NAVBAR SECTION END -->
 
 
 
-<section class="hero-films">
-  <div class="hero-content">
-<h1>Screen Exposing</h1>
-<p>
-  High-precision screen exposing services and equipment for accurate, consistent stencil creation — ideal for industrial and artistic screen printing workflows.
-</p>
 
-
-  </div>
-</section>
-
-<style>
-  .hero-films {
-    height: 50vh;
-background: linear-gradient(#000000 0%, #1a1a1a 50%, #434343 100%);
-
-
-
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-content {
-    max-width: 800px;
-    z-index: 2;
-  }
-
-  .hero-films h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-top:150px;
-    font-weight: 800;
-  }
-
-.hero-films p {
-  font-size: 1.1rem;
-  background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
-  -webkit-background-clip: text;   /* For Chrome & Safari */
-  -webkit-text-fill-color: transparent;
-  background-clip: text;           /* For other browsers */
-  color: transparent;              /* Fallback */
-  max-width: 700px;
-  margin: 0 auto 30px;
-}
-
-
-  .hero-btn {
-    display: inline-block;
-    padding: 12px 28px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(to right, #fcd932, #f94c9c, #45c3f0);
-    border: none;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-
-  .hero-btn:hover {
-    filter: brightness(1.1);
-  }
-
-  @media (max-width: 600px) {
-    .hero-films {
-      height: auto;
-      padding: 80px 20px;
-    }
-
-    .hero-films h1 {
-      font-size: 2rem;
-    }
-
-    .hero-films p {
-      font-size: 1rem;
-    }
-  }
-</style>
-
-
-
-<section style="padding:60px 20px;background:linear-gradient(#434343,#1a1a1a,#000);font-family:'Poppins',sans-serif;">
+<section style="padding:180px 20px;background:linear-gradient(#1a1a1a);font-family:'Poppins',sans-serif;">
   <h2 style="text-align:center;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;
              background:linear-gradient(90deg,#6a8dff,#ff71c0);
              -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-             margin-bottom:30px;">
-    Product Gallery
+             margin-bottom:20px;">
+     Machines & Services Gallery
   </h2>
 
   <div style="position:relative;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px;">
@@ -525,79 +448,75 @@ background: linear-gradient(#000000 0%, #1a1a1a 50%, #434343 100%);
       <!-- Example card (repeat for all images) -->
       <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_01.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
       <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image2.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_02.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_03.png" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_04.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_05.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_06.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_07.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_01.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_02.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_04.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_03.png" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_05.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_06.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
             <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
         <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/ALL_Machines_07.JPG" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
-            <div class="card" style="background:white;border-radius:16px;max-height:420px;min-width:260px;max-width:280px;overflow:hidden;flex-shrink:0;">
-        <div style="width:100%;height:200px;overflow:hidden;">
-          <img src="images/image1.jpg" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-      </div>
+   
       <!-- Repeat for all images -->
     </div>
 
@@ -681,6 +600,189 @@ background: linear-gradient(#000000 0%, #1a1a1a 50%, #434343 100%);
 
 
 
+<!-- Screen Exposing Machine Section -->
+<section class="hero-exposing">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1 class="fade-in">Exposing Machines</h1>
+    <p class="fade-in delay-1">
+      A <strong>screen exposing machine</strong> is used to transfer a design onto a screen printing mesh, using UV light to harden the emulsion on the screen in the pattern of the design.
+    </p>
+    <p class="fade-in delay-1">
+      It’s different from a screen stretching machine, which stretches mesh onto a frame. The exposing machine’s role is to <strong>create the stencil</strong> for printing.
+    </p>
+
+    <h3 class="yellow-heading fade-in delay-1">Purpose:</h3>
+    <p class="fade-in delay-1">To create the stencil on the screen printing mesh.</p>
+
+    <h3 class="yellow-heading fade-in delay-1">Function:</h3>
+    <p class="fade-in delay-1">It uses UV light to harden the emulsion (a light-sensitive coating) on the screen, creating a stencil of the desired image.</p>
+
+    <h3 class="yellow-heading fade-in delay-1">Key Features:</h3>
+    <ul class="fade-in delay-2">
+      <li>Vacuum system for precise film-to-screen contact.</li>
+      <li>High stencil accuracy and sharp edges.</li>
+      <li>Adjustable exposure times for different emulsions.</li>
+    </ul>
+
+    <h3 class="yellow-heading fade-in delay-1">Types:</h3>
+    <p class="fade-in delay-1">From basic manual units to advanced automatic machines with auto-vacuum and programmable controls.</p>
+  </div>
+</section>
+
+<!-- Screen Stretching Machine Section -->
+<section class="hero-exposing">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1 class="fade-in">Stretching Machines</h1>
+    <p class="fade-in delay-1">
+      Achieve <strong>perfect tension every time</strong> with our pneumatic screen stretching machine, designed to apply uniform tension across the mesh and eliminate inconsistencies.
+    </p>
+    <p class="fade-in delay-1">
+      Say goodbye to the slow, manual process of hand-stretching — our machine speeds up setup while ensuring a perfectly taut screen for sharper prints and fewer misprints.
+    </p>
+
+    <h3 class="yellow-heading fade-in delay-1">Why Choose It:</h3>
+    <ul class="fade-in delay-2">
+      <li>Uniform pneumatic pressure eliminates wrinkles.</li>
+      <li>Rapid stretching reduces setup time.</li>
+      <li>Adjustable clamps fit various screen frame sizes.</li>
+      <li>Robust construction for long-term performance.</li>
+    </ul>
+
+    <h3 class="yellow-heading fade-in delay-1">Built to Last:</h3>
+    <p class="fade-in delay-1">
+      Made from high-quality, durable materials, this machine is a reliable workhorse that supports heavy-duty, continuous production.
+    </p>
+  </div>
+</section>
+
+
+<style>
+  .hero-exposing {
+    position: relative;
+    min-height: 85vh;
+    background:linear-gradient(#1a1a1a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 100px 30px;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+  }
+
+  .hero-exposing .overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(252,217,50,0.15), transparent 60%),
+                radial-gradient(circle at bottom left, rgba(69,195,240,0.15), transparent 60%);
+    z-index: 1;
+  }
+
+  .hero-exposing .hero-content {
+    max-width: 900px;
+    z-index: 2;
+    color: #fff;
+    padding: 0 10px;
+  }
+
+.hero-exposing h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 100;
+  margin-top: -12%;
+  line-height: 1.2;
+  animation: fadeInUp 1s ease-out forwards;
+  white-space: nowrap; /* prevent wrapping */
+}
+
+
+  .yellow-heading {
+    color: #ffcc33;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .hero-exposing p {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    line-height: 1.8;
+    margin-bottom: 18px;
+    color: #f0f0f0;
+  }
+
+  .hero-exposing strong {
+    background: linear-gradient(90deg, #ffcc33, #ff66cc, #33ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
+
+  .hero-exposing ul {
+    padding-left: 20px;
+    list-style: none;
+  }
+
+  .hero-exposing ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.6;
+  }
+
+  .hero-exposing ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #ffcc33;
+    font-size: 1.2rem;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  .delay-1 { animation-delay: 0.4s; }
+  .delay-2 { animation-delay: 0.8s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero-exposing {
+      padding: 80px 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-exposing {
+      padding: 150px 15px;
+      text-align: center;
+    }
+    .hero-exposing ul {
+      padding-left: 0;
+    }
+    .hero-exposing ul li {
+      padding-left: 0;
+    }
+    .hero-exposing ul li::before {
+      display: none;
+    }
+  }
+</style>
+
+
+
+
 
 
 
@@ -711,11 +813,11 @@ background: linear-gradient(#000000 0%, #1a1a1a 50%, #434343 100%);
         background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;">
-        Screen Source
+        Screensource
       </h3>
 
       <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
-        Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
+        Screensource provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
       </p>
       <!-- <div style="display: flex; gap: 15px; align-items: center;">
         <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
@@ -782,7 +884,7 @@ background: linear-gradient(#000000 0%, #1a1a1a 50%, #434343 100%);
   <hr style="margin: 40px auto 25px; border: 0; height: 1px; background: #ffffff33; width: 90%;">
 
   <div style="text-align: center; font-size: 14px; opacity: 0.85;">
-    © 2025 <strong>Screen Source</strong>. All rights reserved.
+    © 2025 <strong>Screensource</strong>. All rights reserved.
   </div>
   <div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
     Developed By <strong>DW INNOVATION PVT. LTD.</strong>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Screen Source - One Stop Solution</title>
+  <title>Screensource - One Stop Solution</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
@@ -39,20 +39,19 @@ background: linear-gradient(135deg, #000000, #434343);
 
 
     <!-- Header -->
-  <!-- NAVBAR SECTION START -->
 <section id="navbar-section">
 <style>
-  * {
+/* Base Reset */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Myriad Pro', Arial, sans-serif;
   background: #f9f9f9;
 }
-
 
 /* Navbar */
 .navbar {
@@ -68,12 +67,13 @@ body {
   z-index: 1000;
 }
 
+
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.3);
+background: rgba(0, 0, 0, 0.7);
+
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
-
 /* Logo */
 .logo img {
   height: 50px;
@@ -101,14 +101,13 @@ body {
 }
 
 .nav-links > li > a {
-  color: white ;
+  color: white;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
   padding: 5px 8px;
   transition: all 0.3s ease;
 }
-
 .nav-links > li > a:hover {
   color: #EC008C;
 }
@@ -129,7 +128,7 @@ body {
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
+   background: linear-gradient(to right, #00B5E2, #EC008C, #FFD200, #333);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -319,32 +318,42 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   </div>
 
   <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+<ul class="nav-links" id="navLinks">
+  <li><a href="index.html">HOME</a></li>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">HOME</a></li>
+  <li>
+    <a href="" class="dropdown-toggle">BRANDS <span class="dropdown-arrow">▾</span></a>
+    <ul class="dropdown-menu">
+      <li><a href="MAC_DERMIDE.html">MacDermid Alpha</a></li>
+      <li><a href="Orafol.html">Orafol</a></li>
+      <li><a href="3M.html">3M</a></li>
+      <li><a href="Sabic.html">Sabic</a></li>
+      <li><a href="Nittoku.html">Nittoku</a></li>
+      <li><a href="Print_color.html">Print color</a></li>
+      <li><a href="Yessor.html">Yessor</a></li>
+      <li><a href="Sansui.html">Sansui</a></li>
+      <li><a href="NittoL.html">Nitto</a></li>
+      <li><a href="Avery.html">Avery</a></li>
+    </ul>
+  </li>
 
-    <li>
-      <a href="" class="dropdown-toggle">PRODUCTS <span class="dropdown-arrow">▾</span></a>
-      <ul class="dropdown-menu">
-                <li><a href="MAC_DERMIDE.html">MacDermid Alpha </a></li>
-        <li><a href="Orafol.html">Orafol</a></li>
-        <li><a href="3M.html">3M</a></li>
-        <li><a href="Sabic.html">Sabic</a></li>
-        <li><a href="Stretching.html">Stretching</a></li>
-        <li><a href="Exposing.html">Exposing</a></li>
-        <li><a href="Nittoku.html">Nittoku</a></li>
-        <li><a href="Print_color.html">Print color</a></li>
-        <li><a href="Yessor.html">Yessor</a></li>
-        <li><a href="Sansui.html">Sansui</a></li>
-        <li><a href="NittoL.html">NittoL</a></li>
-        <li><a href="Avery.html">Avery</a></li>
-      </ul>
-    </li>
+  <!-- ✅ New SERVICES Menu -->
+  <li>
+    <a href="" class="dropdown-toggle">SERVICES <span class="dropdown-arrow">▾</span></a>
+<ul class="dropdown-menu">
+  <li><a href="Stretching.html">Stretching Services</a></li>
+  <li><a href="Exposing.html">Exposing Services</a></li>
+  <li><a href="Machines.html">Stretching Machines</a></li>
+  <li><a href="Machines.html">Exposing Machines</a></li>
+</ul>
+  </li>
 
+  <li><a href="About_US.html">ABOUT US</a></li>
+  <!-- ✅ End SERVICES Menu -->
 
-    <li><a href="About_US.html">ABOUT US</a></li>
-    <li><a href="Contact.html">CONTACT US</a></li>
-  </ul>
+  <li><a href="Contact.html">CONTACT US</a></li>
+</ul>
+
 </div>
 
   <div class="overlay" id="overlay"></div>
@@ -416,6 +425,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   </script>
 </section>
 
+
 <!-- NAVBAR SECTION END -->
 
 
@@ -436,7 +446,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     white-space: nowrap;
     text-align: center;
   ">
-  Sunsui & Nitto Tapes
+  Sunsui Tapes
   </h1>
 
   <h2 style="text-align:center;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;
@@ -511,41 +521,39 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
 <section class="hero-stretching">
   <div class="overlay"></div>
   <div class="hero-content">
-    <h1 class="fade-in">Sunsui Product Range
-</h1>
 
+    <!-- Sunsui Section -->
+    <h1 class="fade-in">Sunsui Tapes</h1>
     <p class="fade-in delay-1">
-      <strong>Sunsui:</strong> Sunsui Tapes is a trusted brand delivering industrial-grade adhesive tapes designed for demanding applications in printing, packaging, manufacturing, and more. Known for its high-performance double-sided tapes, Sunsui offers reliable bonding solutions across various sectors.
+      Sunsui Tapes is a well-established brand offering a comprehensive range of industrial-grade adhesive tapes. Designed for demanding applications in printing, packaging, and manufacturing, Sunsui is especially recognized for its specialized double-sided tapes that provide strong, reliable, and versatile bonding solutions.
     </p>
 
-    <h2 class="fade-in delay-2 yellow-heading">Sunsui – Key Features & Applications</h2>
+    <h2 class="fade-in delay-2 yellow-heading">Key Features & Applications</h2>
     <ul class="fade-in delay-2">
-      <li><strong>Double-Sided Tissue Tapes:</strong> High-tack, discreet bonding for screen mounting, foam/ felt lamination, splicing, and crafts.</li>
-      <li><strong>Repulpable Splicing Tapes:</strong> Eco-friendly, water-soluble adhesive ideal for paper and printing industries.</li>
-      <li><strong>High-Performance Polyester Tapes:</strong> Heat-resistant adhesives for high-temperature masking, lamination, and heavy-duty bonding.</li>
+      <li><strong>Double-Sided Tissue Tapes:</strong> Non-woven tissue carrier coated with powerful adhesive for clean, discreet, high-tack bonding. Ideal for:
+        <ul>
+          <li>Screen printing – mounting screens, securing substrates</li>
+          <li>Foam & felt lamination in automotive/appliance manufacturing</li>
+          <li>Paper, film, foil splicing in packaging & printing</li>
+          <li>Craft & DIY – posters, photos, decorative elements</li>
+        </ul>
+      </li>
+      <li><strong>Repulpable Splicing Tapes:</strong> Water-soluble adhesive for the paper/printing industry, fully recyclable with paper – ideal for high-speed splicing in newsprint and paper processing.</li>
+      <li><strong>High-Performance Polyester Tapes:</strong> Heat-resistant adhesives for:
+        <ul>
+          <li>High-temperature masking & bonding</li>
+          <li>Laminating decorative profiles, moldings, trims</li>
+          <li>Heavy-duty bonding to metal, plastic, powder-coated surfaces</li>
+        </ul>
+      </li>
     </ul>
+    <p class="fade-in delay-2">Sunsui tapes are engineered for reliability and performance, making them a trusted choice for professionals needing consistent results and high-quality materials.</p>
 
-    <p class="fade-in delay-2">
-      With durability, versatility, and proven performance, Sunsui Tapes remain a go-to solution for industrial bonding needs.
-    </p>
 
-    <p class="fade-in delay-2">
-      <strong>Nitto:</strong> Nitto is a global leader in advanced adhesive technologies, delivering solutions for industries from automotive to electronics, construction, and medical applications.
-    </p>
 
-    <h2 class="fade-in delay-2 yellow-heading">Nitto – Key Features & Applications</h2>
-    <ul class="fade-in delay-2">
-      <li><strong>Wide Product Range:</strong> From general-purpose double-sided tapes to specialized industrial-grade solutions.</li>
-      <li><strong>Automotive & Electronics:</strong> Mounting, sealing, insulation, and vibration control for precision manufacturing.</li>
-      <li><strong>Specialty Tapes:</strong> Electrical insulation, surface protection, flame retardant, and medical-grade tapes.</li>
-      <li><strong>Quality & Innovation:</strong> RoHS-compliant, low VOC, anti-static, and high-heat-resistant options for demanding environments.</li>
-    </ul>
-
-    <p class="fade-in delay-2">
-      Both Sunsui and Nitto tapes stand out for their consistent quality, innovative materials, and ability to perform in critical industrial applications worldwide.
-    </p>
   </div>
 </section>
+
 
 <style>
   .hero-stretching {
@@ -577,17 +585,18 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
     margin-top: -113px;
   }
 
-  .hero-stretching h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
-    background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 100;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    animation: fadeInUp 1s ease-out forwards;
-  }
+.hero-stretching h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  background: linear-gradient(90deg, #fcd932, #f94c9c, #45c3f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 100;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  animation: fadeInUp 1s ease-out forwards;
+  text-align: center; /* <-- centers the heading */
+}
 
   .yellow-heading {
     color: #ffcc33;
@@ -701,11 +710,11 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
         background: linear-gradient(135deg, #ffcc70, #ff71c0, #6a8dff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;">
-        Screen Source
+        Screensource
       </h3>
 
       <p style="font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
-        Screen Source provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
+        Screensource provides high-performance screen printing films, emulsions, squeegees, and industrial printing materials with reliable prepress services across Pune and beyond.
       </p>
       <!-- <div style="display: flex; gap: 15px; align-items: center;">
         <a href="#" style="color: white; font-size: 20px; transition: color 0.3s;"><i class="fab fa-facebook-f"></i></a>
@@ -772,7 +781,7 @@ background: linear-gradient(90deg, #EC008C, #FFC1E3);
   <hr style="margin: 40px auto 25px; border: 0; height: 1px; background: #ffffff33; width: 90%;">
 
   <div style="text-align: center; font-size: 14px; opacity: 0.85;">
-    © 2025 <strong>Screen Source</strong>. All rights reserved.
+    © 2025 <strong>Screensource</strong>. All rights reserved.
   </div>
   <div style="text-align: center; font-size: 13px; margin-top: 5px; color: #ffffffcc;">
     Developed By <strong>DW INNOVATION PVT. LTD.</strong>
